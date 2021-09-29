@@ -1,0 +1,627 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+     Title="Simulateur"
+
+    xmlns:local="clr-namespace:easyprice"
+    xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+    xmlns:forms1="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    BackgroundColor="#518faa"
+    NavigationPage.HasBackButton = "True"
+    x:Class="easyprice.Simulator">
+  
+    <ContentPage.Content>
+
+        <Grid>
+         <ScrollView HorizontalScrollBarVisibility="Always" VerticalScrollBarVisibility="Always">
+       
+          <StackLayout Spacing="0">
+                 <StackLayout BackgroundColor="#518faa" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                <Image  Margin="0,35,0,0" Source="dollars.png" Aspect="AspectFit"  HeightRequest="200" /> 
+             
+            </StackLayout >
+
+              <Image Source="lab_separator.png" Aspect="AspectFill"/>
+        <Label x:Name="resultProdLabel" TextColor="Black"
+               FontAttributes="Bold"
+               HorizontalTextAlignment="Center" />
+         <StackLayout Margin="0,20" Orientation="Vertical" BackgroundColor="#518faa">
+
+      <Frame BorderColor="#C4AB4D"
+         CornerRadius="10"
+         HasShadow="True">
+        <StackLayout Orientation="Vertical">
+
+             <StackLayout  Orientation="Vertical">
+         
+      <Frame BorderColor="#C4AB4D"
+         BackgroundColor="#518faa"
+         CornerRadius="10"
+         HasShadow="True">
+      <Label HorizontalTextAlignment="Center" FontAttributes="Bold" Text="Simulation du budget" TextColor="Black"/>
+        </Frame>
+     </StackLayout>
+      <StackLayout Margin="5,10" Orientation="Vertical">
+      <Frame BorderColor="#C4AB4D"
+         CornerRadius="10"
+         HasShadow="True">
+       <StackLayout   Spacing="0" BackgroundColor="White" Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Fill">
+         <Label TextColor="Black" Margin="5,0" x:Name="CoeffDeVente" Text="Coût des articles" HorizontalOptions="Start" VerticalOptions="Center"/>
+           <local:MyEntry x:Name="EntryCoutcollecion" HorizontalTextAlignment="Center" WidthRequest="70" FontSize="Small"
+                          HorizontalOptions="FillAndExpand"  VerticalOptions="Start" Keyboard="Telephone" TextColor="Black"/>
+        <Picker x:Name="picker1"
+             HorizontalOptions="EndAndExpand"
+             SelectedIndexChanged="OnPickerSelectedIndexChanged1"
+                FontSize="Small"
+            Title="Coeff"
+            TitleColor="Red">
+          <Picker.ItemsSource>
+            <x:Array Type="{x:Type x:String}">
+              <x:String>1</x:String>
+              <x:String>1,1</x:String>
+              <x:String>1,2</x:String>
+              <x:String>1,3</x:String>
+              <x:String>1,4</x:String>
+              <x:String>1,5</x:String>
+              <x:String>1,6</x:String>
+              <x:String>1,7</x:String>
+              <x:String>1,8</x:String>
+              <x:String>1,9</x:String>
+              <x:String>2</x:String>
+              <x:String>2,1</x:String>
+              <x:String>2,2</x:String>
+              <x:String>2,3</x:String>
+              <x:String>2,4</x:String>
+              <x:String>2,5</x:String>
+              <x:String>2,6</x:String>
+              <x:String>2,7</x:String>
+              <x:String>2,8</x:String>
+              <x:String>2,9</x:String>
+              <x:String>3</x:String>
+              <x:String>3,1</x:String>
+              <x:String>3,2</x:String>
+              <x:String>3,3</x:String>
+              <x:String>3,4</x:String>
+              <x:String>3,5</x:String>
+              <x:String>3,6</x:String>
+              <x:String>3,7</x:String>
+              <x:String>3,8</x:String>
+              <x:String>3,9</x:String>
+              <x:String>4</x:String>
+              <x:String>4,1</x:String>
+              <x:String>4,2</x:String>
+              <x:String>4,3</x:String>
+              <x:String>4,4</x:String>
+              <x:String>4,5</x:String>
+              <x:String>4,6</x:String>
+              <x:String>4,7</x:String>
+              <x:String>4,8</x:String>
+              <x:String>4,9</x:String>
+              <x:String>5</x:String>
+              <x:String>5,1</x:String>
+              <x:String>5,2</x:String>
+              <x:String>5,3</x:String>
+              <x:String>5,4</x:String>
+              <x:String>5,5</x:String>
+              <x:String>5,6</x:String>
+              <x:String>5,7</x:String>
+              <x:String>5,8</x:String>
+              <x:String>5,9</x:String>
+              <x:String>6</x:String>
+              <x:String>6,1</x:String>
+              <x:String>6,2</x:String>
+              <x:String>6,3</x:String>
+              <x:String>6,4</x:String>
+              <x:String>6,5</x:String>
+              <x:String>6,6</x:String>
+              <x:String>6,7</x:String>
+              <x:String>6,8</x:String>
+              <x:String>6,9</x:String>
+              <x:String>7</x:String>
+              <x:String>7,1</x:String>
+              <x:String>7,2</x:String>
+              <x:String>7,3</x:String>
+              <x:String>7,4</x:String>
+              <x:String>7,5</x:String>
+              <x:String>7,6</x:String>
+              <x:String>7,7</x:String>
+              <x:String>7,8</x:String>
+              <x:String>7,9</x:String>
+              <x:String>8</x:String>
+              <x:String>8,1</x:String>
+              <x:String>8,2</x:String>
+              <x:String>8,3</x:String>
+              <x:String>8,4</x:String>
+              <x:String>8,5</x:String>
+              <x:String>8,6</x:String>
+              <x:String>8,7</x:String>
+              <x:String>8,8</x:String>
+              <x:String>8,9</x:String>  
+            </x:Array>
+          </Picker.ItemsSource>
+        </Picker>
+    </StackLayout>
+
+        </Frame>
+     </StackLayout>
+       <StackLayout Margin="5,10" Orientation="Vertical">
+      <Frame BorderColor="#C4AB4D"
+         CornerRadius="10"
+         HasShadow="True">
+       <StackLayout   Spacing="0" BackgroundColor="White" Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Fill">
+         <Label TextColor="Black" Margin="5,0" x:Name="fraisDePort" Text="Frais de port" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+           <local:MyEntry x:Name="EntryFraisDePort" HorizontalTextAlignment="Center" FontSize="Small" HorizontalOptions="FillAndExpand" TextColor="Black" Margin="5,0" VerticalOptions="Start" Keyboard="Telephone" />
+            <Label TextColor="Black" x:Name="TotalFraisDePort"  HorizontalOptions="StartAndExpand" VerticalOptions="Center" IsVisible="false"/>
+        <Picker x:Name="picker2"
+             IsVisible="false"
+             HorizontalOptions="EndAndExpand"
+             SelectedIndexChanged="OnPickerSelectedIndexChanged2"
+             FontSize="Small"
+            Title=" % "
+            TitleColor="Red">
+          <Picker.ItemsSource>
+            <x:Array Type="{x:Type x:String}">
+              <x:String>1</x:String>
+              <x:String>2</x:String>
+              <x:String>3</x:String>
+              <x:String>4</x:String>
+              <x:String>5</x:String>
+              <x:String>6</x:String>
+              <x:String>7</x:String>
+              <x:String>8</x:String>
+              <x:String>9</x:String>
+              <x:String>10</x:String>
+              <x:String>11</x:String>
+              <x:String>12</x:String>
+              <x:String>13</x:String>
+              <x:String>14</x:String>
+              <x:String>15</x:String>
+              <x:String>16</x:String>
+              <x:String>17</x:String>
+              <x:String>18</x:String>
+              <x:String>19</x:String>
+              <x:String>20</x:String>
+              <x:String>21</x:String>
+              <x:String>22</x:String>
+              <x:String>23</x:String>
+              <x:String>24</x:String>
+              <x:String>25</x:String>
+              <x:String>26</x:String>
+              <x:String>27</x:String>
+              <x:String>28</x:String>
+              <x:String>29</x:String>
+              <x:String>30</x:String>
+              <x:String>31</x:String>
+              <x:String>32</x:String>
+              <x:String>33</x:String>
+              <x:String>34</x:String>
+              <x:String>35</x:String>
+              <x:String>36</x:String>
+              <x:String>37</x:String>
+              <x:String>38</x:String>
+              <x:String>39</x:String>
+              <x:String>40</x:String>
+              <x:String>41</x:String>
+              <x:String>42</x:String>
+              <x:String>43</x:String>
+              <x:String>44</x:String>
+              <x:String>45</x:String>
+              <x:String>46</x:String>
+              <x:String>47</x:String>
+              <x:String>48</x:String>
+              <x:String>49</x:String>
+              <x:String>50</x:String>
+              <x:String>51</x:String>
+              <x:String>52</x:String>
+              <x:String>53</x:String>
+              <x:String>54</x:String>
+              <x:String>55</x:String>
+              <x:String>56</x:String>
+              <x:String>57</x:String>
+              <x:String>58</x:String>
+              <x:String>59</x:String>
+              <x:String>60</x:String>
+              <x:String>61</x:String>
+              <x:String>62</x:String>
+              <x:String>63</x:String>
+              <x:String>64</x:String>
+              <x:String>65</x:String>
+              <x:String>66</x:String>
+              <x:String>67</x:String>
+              <x:String>68</x:String>
+              <x:String>69</x:String>
+              <x:String>70</x:String>
+              <x:String>71</x:String>
+              <x:String>72</x:String>
+              <x:String>73</x:String>
+              <x:String>74</x:String>
+              <x:String>75</x:String>
+              <x:String>76</x:String>
+              <x:String>77</x:String>
+              <x:String>78</x:String>
+              <x:String>79</x:String>
+              <x:String>80</x:String>
+              <x:String>81</x:String>
+              <x:String>82</x:String>
+              <x:String>83</x:String>
+              <x:String>84</x:String>
+              <x:String>85</x:String>
+              <x:String>86</x:String>
+              <x:String>87</x:String>
+              <x:String>88</x:String>
+              <x:String>89</x:String>  
+            </x:Array>
+          </Picker.ItemsSource>
+        </Picker>
+    </StackLayout>
+     </Frame>
+     </StackLayout>
+             <FlexLayout Margin="10,10,0,0" Direction="Row" JustifyContent="SpaceEvenly">         
+            <Label TextColor="Black" Text="Activer % "
+             VerticalOptions="Center" /> 
+            <Switch x:Name="includeSwitch"
+            Toggled="OnSwitchToggled" />
+        </FlexLayout>
+              <Frame BorderColor="#C4AB4D" 
+         CornerRadius="10"
+         HasShadow="True">
+       <StackLayout   Spacing="0" BackgroundColor="White" Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Fill">
+         <Label  TextColor="Black" Text="Frais Divers" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+         <local:MyEntry x:Name="EntryNoteDeFrais" HorizontalTextAlignment="Center" FontSize="Small" TextColor="Black"
+         HorizontalOptions="FillAndExpand" Margin="5,0" VerticalOptions="Start" Keyboard="Telephone" />
+    </StackLayout>
+     </Frame>
+    
+         <!--<Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+  first child
+         <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="0">   
+        <StackLayout Margin="5,10" Orientation="Vertical" > 
+    
+
+   <StackLayout x:Name="budgetTotalLayaout"  Orientation="Vertical">
+      <Frame x:Name="budgetTotalFrame" BorderColor="#C4AB4D"
+         BackgroundColor="#518faa"
+         CornerRadius="10"
+         HasShadow="True">
+          <StackLayout x:Name="budgetTotalLayaout1"  Orientation="Horizontal">
+               <StackLayout.GestureRecognizers>
+                  <TapGestureRecognizer NumberOfTapsRequired="1"  Tapped="OnTapGestureRecognizerTapped7"/>  
+         </StackLayout.GestureRecognizers>
+      <Label TextColor="Black" HorizontalTextAlignment="Center" FontAttributes="Bold" x:Name="totalBugetGeneral" Text="Budget" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+          <Label TextColor="Black" HorizontalTextAlignment="Center" FontAttributes="Bold" x:Name="BudgetCollectionArticleLable" VerticalOptions="Center"  HorizontalOptions="EndAndExpand" />
+              <Label TextColor="Black" x:Name="totalBugetGeneral1"  HorizontalTextAlignment="Center" FontAttributes="Bold" Text="Créer une collection à partie du budget calculé" VerticalOptions="Center" HorizontalOptions="StartAndExpand" IsVisible="false"/>
+               <Button x:Name="budgetTotalButtom"  Margin="5,0" 
+                       BackgroundColor="#c1ab24"
+                       Text="Créer collection"
+                       FontSize="9"
+                       WidthRequest="80"
+                       ContentLayout="left, 50"
+                       HorizontalOptions="FillAndExpand"
+                       Clicked="CreerCollection1ButtonClicked"
+                       BorderRadius="20" />
+              <Button x:Name="budgetTotalButtom1" IsVisible="false" Margin="5,0" 
+                        BackgroundColor="red"
+                        Text="New collection"
+                        FontSize="9"
+                        WidthRequest="80"
+                        ContentLayout="left, 50"
+                        HorizontalOptions="FillAndExpand"
+                        Clicked="CreerCollection2ButtonClicked"
+                        BorderRadius="20" />
+          </StackLayout>
+        </Frame>
+        </StackLayout>
+        <StackLayout x:Name="isvisible10"  Margin="5,20" Orientation="Vertical" IsVisible="false">
+              <StackLayout.GestureRecognizers>
+         <TapGestureRecognizer  Tapped="OnTapGestureRecognizerTapped17"/>
+      </StackLayout.GestureRecognizers>
+      <Frame BorderColor="#C4AB4D"
+         CornerRadius="10"
+         HasShadow="True">
+          <StackLayout Orientation="Vertical">
+   
+        <StackLayout Margin="0,20,0,0" Orientation="Vertical">
+              <StackLayout.GestureRecognizers>
+         <TapGestureRecognizer  Tapped="OnTapGestureRecognizerTapped18"/>
+      </StackLayout.GestureRecognizers>
+               <StackLayout Margin="0,20,0,0" Orientation="Vertical" BackgroundColor="White">
+      <Frame BorderColor="#C4AB4D" BackgroundColor="White"
+         CornerRadius="10"
+         HasShadow="True">
+          <StackLayout Orientation="Horizontal" Spacing="0" BackgroundColor="White" >
+         <Label Text="Start" TextColor="Black" FontSize="Micro" Margin="-1,10,10,0" BackgroundColor="White"  HorizontalOptions="Start" VerticalOptions="CenterAndExpand"/>  
+         <DatePicker x:Name="startDatePicker"
+                     FontSize="Micro"
+                     TextColor="#C4AB4D" 
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                     BackgroundColor="White" 
+                    Format= "d" 
+                    DateSelected="OnDateSelected" />
+               <Label Text="end" TextColor="Black" FontSize="Micro" Margin="5,10,0,0" BackgroundColor="White"  HorizontalOptions="Start" VerticalOptions="CenterAndExpand"/>
+
+        <DatePicker x:Name="endDatePicker"
+                    MinimumDate="{Binding Source={x:Reference startDatePicker},
+                    Path=Date}"
+                    Format="d"
+                    FontSize="Micro"
+                    TextColor="#C4AB4D" 
+                    Margin="10,0,-20,0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    BackgroundColor="White" 
+                    DateSelected="OnDateSelected" /> 
+
+         </StackLayout>
+
+        </Frame>
+     </StackLayout>
+
+      <Frame BorderColor="#C4AB4D"
+         CornerRadius="10"
+         HasShadow="True">
+          <StackLayout Orientation="Horizontal" Spacing="0">
+         <Label TextColor="Black" Text="Début" FontSize="9" Margin="-1,10,10,0" BackgroundColor="White"  HorizontalOptions="Start" VerticalOptions="CenterAndExpand"/>  
+         <DatePicker x:Name="startDatePicker"
+                     FontSize="9"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    Format= "d"
+                    DateSelected="OnDateSelected" />
+               <Label TextColor="Black" Text="Fin" FontSize="9" Margin="5,10,0,0" BackgroundColor="White"  HorizontalOptions="Start" VerticalOptions="CenterAndExpand"/>
+        <DatePicker x:Name="endDatePicker"
+                    MinimumDate="{Binding Source={x:Reference startDatePicker},
+                    Path=Date}"
+                    Format="d"
+                    FontSize="9"
+                    Margin="10,0,-20,0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    DateSelected="OnDateSelected" /> 
+         </StackLayout>
+        </Frame>
+
+
+               <StackLayout Margin="5,10" Orientation="Vertical" BackgroundColor="White">
+         <StackLayout.GestureRecognizers>
+         <TapGestureRecognizer  Tapped="OnTapGestureRecognizerTapped19"/>
+         </StackLayout.GestureRecognizers>
+      <Frame BorderColor="#C4AB4D" BackgroundColor="White"
+         CornerRadius="10"
+         HasShadow="True">
+          <StackLayout Margin="0,10,0,0"  Spacing="0" BackgroundColor="White" Orientation="Horizontal"
+             HorizontalOptions="Fill" VerticalOptions="Fill"> 
+           <Label TextColor="Black" x:Name="NomDeColletion" Text="Nom collecion" FontSize="Small"   BackgroundColor="White"  HorizontalOptions="Start" VerticalOptions="Center"/>
+           <local:MyEntry Margin="5,0,5,0" HorizontalTextAlignment="Center" x:Name="EntryNomDeCollection" FontSize="Small" HorizontalOptions="FillAndExpand"  VerticalOptions="Start"  />
+         </StackLayout>
+        </Frame>
+     </StackLayout>
+
+
+        <StackLayout Margin="5,10" Orientation="Vertical">
+             <StackLayout.GestureRecognizers>
+         <TapGestureRecognizer  Tapped="OnTapGestureRecognizerTapped19"/>
+      </StackLayout.GestureRecognizers>
+      <Frame BorderColor="#C4AB4D"
+         CornerRadius="10"
+         HasShadow="True">
+          <StackLayout Margin="0,10,0,0"  Spacing="0" BackgroundColor="White" Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Fill"> 
+           <Label x:Name="NomDeColletion" Text="Nom de la collecion"  BackgroundColor="White"  HorizontalOptions="Start" VerticalOptions="Center"/>
+           <local:MyEntry Margin="15,0,5,0" HorizontalTextAlignment="Center" x:Name="EntryNomDeCollection" FontSize="Small" HorizontalOptions="FillAndExpand"  VerticalOptions="Start"  />
+         </StackLayout>
+        </Frame>
+     </StackLayout>
+
+
+
+
+   <StackLayout Margin="5,20" Orientation="Vertical">
+      <Frame BorderColor="#C4AB4D"
+         CornerRadius="10"
+         HasShadow="True">
+    <StackLayout  Spacing="0"  Margin="10,0,10,0" Orientation="Vertical" HorizontalOptions="Fill" VerticalOptions="Fill">
+        <Frame Margin="0,0,0,0" HasShadow="True" CornerRadius="10" WidthRequest="200"
+                   Padding="2" BackgroundColor="#C4AB4D" HorizontalOptions="Center">
+                 <StackLayout  Orientation="Horizontal" HorizontalOptions="Center" WidthRequest="200" HeightRequest="60" >
+                        <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer  Tapped="OnTapGestureRecognizerTapped6"/>
+                        </StackLayout.GestureRecognizers>
+                        <Frame BorderColor="#C4AB4D"
+                       Padding="2"
+                       HorizontalOptions="FillAndExpand"
+                      BackgroundColor="White"
+                      CornerRadius="10"
+                    HasShadow="True">
+                  <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" >
+                    <forms1:AnimationView
+                 Margin="20,0,0,0"
+                x:Name="AnimationView"
+               HeightRequest="40"
+              WidthRequest="40"
+                Animation="pictures.json" 
+                AutoPlay="True" 
+            HorizontalOptions="StartAndExpand"
+            Command="{Binding AnimationClickedCommand3}"/>
+            <Label  VerticalTextAlignment="Center" TextColor="#C4AB4D"
+            HorizontalTextAlignment="End" FontAttributes="Bold" Text="Images" FontSize="Small" Margin="0,0,30,0"/>
+         </StackLayout>
+          </Frame>
+         </StackLayout>
+        </Frame>
+       <StackLayout x:Name="isvisible1"  Orientation="Vertical" IsVisible="False" Margin="0,20,0,0">
+      <Frame BorderColor="#C4AB4D" 
+         CornerRadius="10"
+         HasShadow="True">
+        <StackLayout>
+          <Image x:Name="imageurl" Aspect="AspectFill" />
+
+       </StackLayout>
+       </Frame>
+     </StackLayout>
+     </StackLayout >
+    </Frame>
+     </StackLayout>
+     </StackLayout>
+     </StackLayout>
+     </Frame>
+     </StackLayout>
+     </StackLayout>
+     second child
+    <StackLayout  x:Name="MaLayaoutNewCollection" HeightRequest="420" Margin="5,20"  Grid.Row="0" Grid.Column="0"
+    Orientation="Vertical" VerticalOptions="Center" IsVisible="false" >
+    <Frame BorderColor="#518faa"
+    CornerRadius="10"
+    HasShadow="True">
+    <StackLayout Orientation="Vertical">
+    <StackLayout   BackgroundColor="White" HorizontalOptions="Center"   Spacing="0" >
+    <CollectionView x:Name="collectionViewNoteDeFrais" SelectionMode="Single" 
+    SelectionChanged="OnCollectionViewSelectionChanged">
+    <CollectionView.ItemsLayout>
+     <GridItemsLayout Orientation="Vertical" Span="3"/>
+    </CollectionView.ItemsLayout>
+    <CollectionView.ItemTemplate>
+        <DataTemplate>
+            <Grid Margin="10,10" Padding="3">
+                <Grid.RowDefinitions>
+                <RowDefinition Height="90" /> 
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90" />
+                </Grid.ColumnDefinitions>
+                <Frame HasShadow="True" CornerRadius="10" Padding="1" BackgroundColor="#C4AB4D" HorizontalOptions="FillAndExpand" WidthRequest="380">
+                <Frame HasShadow="True" Margin="3,3" Padding="1" CornerRadius="10" BackgroundColor="White" HorizontalOptions="FillAndExpand" >
+ 
+                      <ffimageloading:CachedImage
+                       Grid.RowSpan="2"
+                       Source="{Binding UrlImages}"
+                       Aspect="Fill"
+                       HeightRequest="90"
+                       WidthRequest="90" >
+		      </ffimageloading:CachedImage>
+               </Frame>
+               </Frame>
+            </Grid>
+        </DataTemplate>eur
+</CollectionView.ItemTemplate>
+</CollectionView>
+ </StackLayout >
+ </StackLayout>
+ </Frame>
+</StackLayout>
+   </Grid>-->
+    <!--end-->         
+      <StackLayout Margin="5,10" Orientation="Vertical" VerticalOptions="CenterAndExpand">
+      <Frame BorderColor="#C4AB4D"
+         CornerRadius="10"
+         HasShadow="True">
+         <StackLayout Orientation="Vertical">
+            <!--titre gain total-->
+     <StackLayout  Orientation="Vertical">  
+      <Frame BorderColor="#C4AB4D"
+         BackgroundColor="#518faa"
+         CornerRadius="10"
+         HasShadow="True">
+      <Label TextColor="Black" HorizontalTextAlignment="Center" FontAttributes="Bold" Text="Valeur stock" />
+        </Frame>
+     </StackLayout>
+
+            <!--Encadrement gain total-->
+
+    <StackLayout Margin="0,0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+
+     <StackLayout x:Name="valeurStockTotalLayout" Orientation="Horizontal">
+
+     <Frame x:Name="valeurStockTotalFrame"  BorderColor="#C4AB4D"
+       CornerRadius="5"
+       Padding="2">
+  <StackLayout x:Name="valeurStockTotalLayout1" Margin="7,20" Orientation="Vertical" WidthRequest="130">
+    
+    <Label TextColor="Black" x:Name="valeurStockTotal" 
+           HorizontalTextAlignment="Center"
+            FontSize="13"
+           FontAttributes="Bold" />
+    <BoxView x:Name="valeurStockTotalBoxview"  Color="Gray"
+             HeightRequest="2"
+             HorizontalOptions="Fill" />
+    <Label TextColor="Black" x:Name="valeurStockTotalLabel"  FontSize="Small"  HorizontalTextAlignment="Center"/>
+    </StackLayout>
+    </Frame>
+     </StackLayout>
+
+      <StackLayout x:Name="valeurStockHorsFraisLayout" Margin="0,0,0,0" Orientation="Horizontal">
+     <Frame x:Name="valeurStockHorsFraisFrame"  BorderColor="#C4AB4D"
+       CornerRadius="5"
+       Padding="2">
+  <StackLayout x:Name="valeurStockHorsFraisLayout1" Margin="7,20" Orientation="Vertical" WidthRequest="130">
+     
+    <Label TextColor="Black" x:Name="valeurStockHorsFrais1"
+           HorizontalTextAlignment="Center"
+           FontSize="13"
+           FontAttributes="Bold" />
+    <BoxView x:Name="valeurStockHorsFraisBoxview" Color="Gray"
+             HeightRequest="2"        
+             HorizontalOptions="Fill" />
+    <Label TextColor="Black" x:Name="valeurStockHorsFrais"  FontSize="Small" HorizontalTextAlignment="Center"/>
+    </StackLayout>
+    </Frame>
+     </StackLayout>
+        </StackLayout>
+
+
+     <StackLayout x:Name="isvisible6" Margin="0,0,0,0" Orientation="Vertical" HorizontalOptions="Center">
+         <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+     <Frame  BorderColor="#C4AB4D"
+       CornerRadius="5"
+       Padding="2">
+    <StackLayout Margin="7,20" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+
+      <forms:ChartView x:Name="myCharts4"  HorizontalOptions="CenterAndExpand" HeightRequest="100" WidthRequest="{OnPlatform iOS=205, Android=273 ,Default=0}"/>
+
+
+    </StackLayout>
+    </Frame>
+     </StackLayout>
+    <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+     <Frame  BorderColor="#C4AB4D"
+       CornerRadius="5"
+       Padding="2">
+    <StackLayout Margin="7,20" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+
+      <forms:ChartView x:Name="myCharts5"  HorizontalOptions="CenterAndExpand" HeightRequest="100" WidthRequest="{OnPlatform iOS=210, Android=273 ,Default=0}"/>
+
+    </StackLayout>
+    </Frame>
+     </StackLayout>
+    </StackLayout>
+             
+              <Button Margin="10,10" 
+                        BackgroundColor="#c1ab24" Text="SIMULER"
+                        WidthRequest="150"
+                         HeightRequest="60"
+                         ContentLayout="left, 50"
+                        HorizontalOptions="FillAndExpand" Clicked="SimulerrCollection1ButtonClicked"
+                        BorderRadius="20" />
+       </StackLayout>
+        </Frame>
+     </StackLayout>
+
+
+               </StackLayout>
+        </Frame>
+     </StackLayout>
+
+              </StackLayout >
+               </ScrollView>
+              </Grid>
+
+      
+    </ContentPage.Content>
+</ContentPage>

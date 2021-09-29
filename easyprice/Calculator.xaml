@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+     Title="Calculateur"
+    xmlns:forms1="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+    xmlns:local="clr-namespace:easyprice"
+    x:Class="easyprice.Calculator">
+     <ContentPage.Content>
+                <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+ <ScrollView HorizontalScrollBarVisibility="Always" VerticalScrollBarVisibility="Always" >
+        <StackLayout BackgroundColor="White" Spacing="0"  Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0">
+      
+            <StackLayout Spacing="0"  BackgroundColor="#518faa" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                       <Frame BorderColor="#C4AB4D" Margin="5,10" BackgroundColor="#518faa"
+         CornerRadius="10"
+         HasShadow="True">
+
+      <StackLayout Spacing="0" BackgroundColor="#518faa" Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Fill">
+          <Label TextColor="Black" Margin="{OnPlatform iOS='0,0,20,0',Android='0,0,40,0' ,Default=0}" Text="Devises" FontSize="{OnPlatform iOS=15}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+        <Picker x:Name="picker2"
+             HorizontalOptions="EndAndExpand"
+             SelectedIndexChanged="OnPickerSelectedIndexChanged2"
+            Title="Devise"
+            FontSize="Large"
+            
+            Margin="{OnPlatform iOS='10,0,10,0' , Android='10,0,10,0' ,Default=0}"
+            TitleColor="Red">
+          <Picker.ItemsSource>
+            <x:Array Type="{x:Type x:String}">
+              <x:String>$</x:String>
+              <x:String>€</x:String>
+              <x:String>$C</x:String>
+              <x:String>￥</x:String>
+            </x:Array>
+          </Picker.ItemsSource>
+        </Picker>
+    </StackLayout>
+
+  </Frame>
+               
+                <Image  Margin="0,15,0,0" Source="dollars.png" Aspect="AspectFit"  HeightRequest="200" />
+                   <StackLayout Spacing="0" BackgroundColor="#518faa" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" x:Name="resultaFinal" HeightRequest="90"  >
+          <Grid HorizontalOptions="CenterAndExpand" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+              <ColumnDefinition Width="*"/>
+              <ColumnDefinition Width="*"/>
+             <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+             <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+              <Frame BorderColor="White" Grid.Row="0" Grid.Column="0" BackgroundColor="#C4AB4D" 
+          Padding="2"
+         CornerRadius="10"
+         HasShadow="True">  
+           <Label  x:Name="prixFinal1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="Black" Text="Prix" FontSize="12"> 
+     
+            </Label>
+             </Frame>
+
+          <Frame BorderColor="White" Grid.Row="1" Grid.Column="0" BackgroundColor="#C4AB4D" 
+                 Padding="2"
+         CornerRadius="10"
+         HasShadow="True">
+           
+           <Label  x:Name="prixFinal" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="Black" Text="0" FontSize="12"> 
+
+
+            </Label>
+             </Frame>
+             <Frame BorderColor="White" Grid.Row="0" Grid.Column="1" BackgroundColor="#C4AB4D" 
+                 Padding="2"
+         CornerRadius="10"
+         HasShadow="True">
+           <Label  x:Name="marge1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="Black" Text="Marge" FontSize="12"> 
+  
+            </Label>
+             </Frame>
+
+             <Frame BorderColor="White" Grid.Row="1" Grid.Column="1" BackgroundColor="#C4AB4D" 
+                 Padding="2"
+                 CornerRadius="10"
+                HasShadow="True">
+             <Label x:Name="marge" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="Black" Text="0" FontSize="12"> 
+
+            
+
+            </Label>
+              </Frame>
+
+            <Frame BorderColor="White" Grid.Row="0" Grid.Column="2" BackgroundColor="#C4AB4D" 
+                 Padding="2"
+         CornerRadius="10"
+         HasShadow="True">
+           
+           <Label  x:Name="tauxMarge1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="Black" Text="Taux Marge" FontSize="12"> 
+
+            
+
+            </Label>
+             </Frame>
+                  <Frame BorderColor="White" Grid.Row="1" Grid.Column="2" BackgroundColor="#C4AB4D" 
+                 Padding="2"
+         CornerRadius="10"
+         HasShadow="True">
+             <Label Margin="0,0" x:Name="tauxMarge" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" Text="0" FontSize="12"> 
+
+            </Label>
+                    </Frame>
+
+
+                  <Frame BorderColor="White" Grid.Row="0" Grid.Column="3" BackgroundColor="#C4AB4D" 
+                 Padding="2"
+         CornerRadius="10"
+         HasShadow="True">
+           
+           <Label  x:Name="tauxMarque1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="Black" Text="Taux Marque" FontSize="12"> 
+
+            
+
+            </Label>
+             </Frame>
+
+                  <Frame BorderColor="White" Grid.Row="1" Grid.Column="3" BackgroundColor="#C4AB4D"  
+                 Padding="2"
+         CornerRadius="10"
+         HasShadow="True">
+             <Label Margin="0,0" x:Name="tauxMarque" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" Text="0" FontSize="12"> 
+
+            </Label>
+                    </Frame>
+
+                   </Grid>
+        </StackLayout>
+             
+            </StackLayout >
+            
+              
+
+              <Image Source="lab_separator.png" Aspect="AspectFill"/>
+
+          
+
+             <StackLayout Spacing="0" BackgroundColor="White" Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Fill">
+
+                        <forms1:AnimationView
+                        Margin="10,10,0,0"
+                x:Name="AnimationView"
+               HeightRequest="60"
+              WidthRequest="60"
+                Animation="devises.json" 
+                AutoPlay="True" 
+            HorizontalOptions="Start"
+           />
+
+                 <Label x:Name="dollars3" TextColor="Black" FontSize="Title" Margin="0,10,10,0" BackgroundColor="White"  HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                
+                  <local:MyEntry x:Name="prixFournisseur" WidthRequest="15" FontSize="Title" TextColor="Black" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Keyboard="Telephone" />
+
+                 <Label  TextColor="Black" Margin="10,10,0,10" FontSize="Title"  BackgroundColor="White" Text="Prix" HorizontalOptions="Center" VerticalOptions="Center"/>
+                  
+                  <forms1:AnimationView
+                        Margin="10,10,20,0"
+                x:Name="AnimationView1"
+               HeightRequest="60"
+              WidthRequest="60"
+                Animation="prices.json" 
+                AutoPlay="True"
+                RepeatMode="Infinite"
+            HorizontalOptions="Start"
+           />
+            </StackLayout>
+
+            <StackLayout Spacing="0" Margin="0,0" BackgroundColor="White" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                 <forms1:AnimationView
+                 Margin="10,10,10,0"
+                x:Name="AnimationView2"
+               HeightRequest="60"
+              WidthRequest="60"
+                Animation="pourcentage.json" 
+                AutoPlay="True" 
+            HorizontalOptions="StartAndExpand"/>
+          <StackLayout x:Name="coefficientLayout" Grid.Row="0" Grid.Column="0"  Spacing="0" BackgroundColor="White" Orientation="Horizontal" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+        <Picker x:Name="picker1"
+             HorizontalOptions="StartAndExpand"
+             SelectedIndexChanged="OnPickerSelectedIndexChanged1"
+                FontSize="Title"
+            Title="coeff"
+            TitleColor="Red">
+          <Picker.ItemsSource>
+            <x:Array Type="{x:Type x:String}">
+              <x:String>1</x:String>
+              <x:String>1,1</x:String>
+              <x:String>1,2</x:String>
+              <x:String>1,3</x:String>
+              <x:String>1,4</x:String>
+              <x:String>1,5</x:String>
+              <x:String>1,6</x:String>
+              <x:String>1,7</x:String>
+              <x:String>1,8</x:String>
+              <x:String>1,9</x:String>
+              <x:String>2</x:String>
+              <x:String>2,1</x:String>
+              <x:String>2,2</x:String>
+              <x:String>2,3</x:String>
+              <x:String>2,4</x:String>
+              <x:String>2,5</x:String>
+              <x:String>2,6</x:String>
+              <x:String>2,7</x:String>
+              <x:String>2,8</x:String>
+              <x:String>2,9</x:String>
+              <x:String>3</x:String>
+              <x:String>3,1</x:String>
+              <x:String>3,2</x:String>
+              <x:String>3,3</x:String>
+              <x:String>3,4</x:String>
+              <x:String>3,5</x:String>
+              <x:String>3,6</x:String>
+              <x:String>3,7</x:String>
+              <x:String>3,8</x:String>
+              <x:String>3,9</x:String>
+              <x:String>4</x:String>
+              <x:String>4,1</x:String>
+              <x:String>4,2</x:String>
+              <x:String>4,3</x:String>
+              <x:String>4,4</x:String>
+              <x:String>4,5</x:String>
+              <x:String>4,6</x:String>
+              <x:String>4,7</x:String>
+              <x:String>4,8</x:String>
+              <x:String>4,9</x:String>
+              <x:String>5</x:String>
+              <x:String>5,1</x:String>
+              <x:String>5,2</x:String>
+              <x:String>5,3</x:String>
+              <x:String>5,4</x:String>
+              <x:String>5,5</x:String>
+              <x:String>5,6</x:String>
+              <x:String>5,7</x:String>
+              <x:String>5,8</x:String>
+              <x:String>5,9</x:String>
+              <x:String>6</x:String>
+              <x:String>6,1</x:String>
+              <x:String>6,2</x:String>
+              <x:String>6,3</x:String>
+              <x:String>6,4</x:String>
+              <x:String>6,5</x:String>
+              <x:String>6,6</x:String>
+              <x:String>6,7</x:String>
+              <x:String>6,8</x:String>
+              <x:String>6,9</x:String>
+              <x:String>7</x:String>
+              <x:String>7,1</x:String>
+              <x:String>7,2</x:String>
+              <x:String>7,3</x:String>
+              <x:String>7,4</x:String>
+              <x:String>7,5</x:String>
+              <x:String>7,6</x:String>
+              <x:String>7,7</x:String>
+              <x:String>7,8</x:String>
+              <x:String>7,9</x:String>
+              <x:String>8</x:String>
+              <x:String>8,1</x:String>
+              <x:String>8,2</x:String>
+              <x:String>8,3</x:String>
+              <x:String>8,4</x:String>
+              <x:String>8,5</x:String>
+              <x:String>8,6</x:String>
+              <x:String>8,7</x:String>
+              <x:String>8,8</x:String>
+              <x:String>8,9</x:String>  
+            </x:Array>
+          </Picker.ItemsSource>
+        </Picker>
+               <Label Margin="10,0" TextColor="Black" x:Name="CoeffDeVente" Text="Coefficient" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Title"/>
+    </StackLayout>
+
+             </StackLayout>
+
+             <StackLayout  Margin="0,0,0,10"  Spacing="0" BackgroundColor="White" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                  <!--<Image Source="tabletwithpricetag.png"  HorizontalOptions="Center" Margin="30,20" HeightRequest="50" VerticalOptions="Center"/>-->
+                     <forms1:AnimationView
+                 Margin="30,20"
+                x:Name="AnimationView21"
+              VerticalOptions="Center"
+               HeightRequest="60"
+              WidthRequest="60"
+                Animation="pourcentage.json" 
+                AutoPlay="True"
+           HorizontalOptions="Center"
+            />
+
+                
+                  <Button TextColor="White" FontSize="Title" Text="Prix final" Margin="50,0" HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="#c1ab24" Clicked="FinalButtonClick" BorderRadius="20" />
+                
+                  
+             </StackLayout>
+              <StackLayout Margin="0,50,0,0" Spacing="0" BackgroundColor="White" Orientation="Vertical" >
+            </StackLayout>
+              
+        </StackLayout>
+          </ScrollView>   
+             <!--<StackLayout HeightRequest="65" Margin="30,0"
+              WidthRequest="65" AbsoluteLayout.LayoutFlags="PositionProportional"  
+            AbsoluteLayout.LayoutBounds=".95,.95,80,60" HorizontalOptions="StartAndExpand"
+            VerticalOptions="End">
+            bouton flottant save et cancel
+             <forms1:AnimationView 
+                x:Name="AnimationView6"
+                 HeightRequest="65"
+                 WidthRequest="65"
+                Animation="cancel.json" 
+                AutoPlay="True" 
+                 Clicked="AnimationClickedCommand5"/>
+            </StackLayout>
+
+            <StackLayout HeightRequest="65" Margin="30,0"
+            WidthRequest="65" AbsoluteLayout.LayoutFlags="PositionProportional"  
+            AbsoluteLayout.LayoutBounds=".95,.95,80,60" HorizontalOptions="EndAndExpand"
+             VerticalOptions="End" >
+             <forms1:AnimationView
+                x:Name="AnimationView7"
+                 HeightRequest="65"
+                 WidthRequest="65"
+                Animation="add.json" 
+                AutoPlay="True" 
+              AbsoluteLayout.LayoutFlags="PositionProportional"  
+            AbsoluteLayout.LayoutBounds=".10,.95,80,60"
+                 Clicked="AnimationView2_OnClick"/>
+            </StackLayout>-->
+                    
+   </Grid>
+
+    </ContentPage.Content>
+</ContentPage>
