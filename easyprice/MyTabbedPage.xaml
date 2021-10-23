@@ -2,12 +2,12 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:views="clr-namespace:easyprice"
              xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             BackgroundColor="white"
             android:TabbedPage.ToolbarPlacement="Bottom"
-            BackgroundColor="White"
-            android:TabbedPage.BarItemColor="Blue"
-            android:TabbedPage.BarSelectedItemColor="Red"
-         
+            android:TabbedPage.BarItemColor="#518faa"
+            android:TabbedPage.BarSelectedItemColor="#C4AB4D"
              x:Class="easyprice.MyTabbedPage">
+   
 
   <!--Pages can be added as references or inline-->
 

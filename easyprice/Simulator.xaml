@@ -48,7 +48,7 @@
          CornerRadius="10"
          HasShadow="True">
        <StackLayout   Spacing="0" BackgroundColor="White" Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Fill">
-         <Label TextColor="Black" Margin="5,0" x:Name="CoeffDeVente" Text="Coût des articles" HorizontalOptions="Start" VerticalOptions="Center"/>
+         <Label TextColor="Black" Margin="5,0" x:Name="CoeffDeVente" Text="Coût des articles" HorizontalOptions="Start" FontSize="15"  VerticalOptions="Center"/>
            <local:MyEntry x:Name="EntryCoutcollecion" HorizontalTextAlignment="Center" WidthRequest="70" FontSize="Small"
                           HorizontalOptions="FillAndExpand"  VerticalOptions="Start" Keyboard="Telephone" TextColor="Black"/>
         <Picker x:Name="picker1"
@@ -640,7 +640,7 @@
          <Frame BorderColor="#C4AB4D" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4"
         Padding="10" 
         HorizontalOptions="FillAndExpand"
-        BackgroundColor="#C4AB4D"
+       
         CornerRadius="10"
         HasShadow="True">
         <FlexLayout Direction="Row" HorizontalOptions="FillAndExpand"  HeightRequest="80">
