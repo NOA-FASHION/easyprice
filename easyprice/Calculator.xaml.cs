@@ -943,7 +943,12 @@ namespace easyprice
             prixFournisseurFinal = prixFournisseurFinal * coeffDevise;
             prixFinalDe = prixFinalDe * coeffDevise;
             prixFinal.Text = prixFinalDe.ToString(".00") + devise;
-            prixFournisseur.Text = prixFournisseurFinal.ToString(".00");
+            if (prixFournisseurFinal==0)
+            {
+                prixFournisseur.Text = "";
+            }
+            else { prixFournisseur.Text = prixFournisseurFinal.ToString(".00"); }
+          
             marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
             animation();
 
@@ -953,7 +958,11 @@ namespace easyprice
             prixFournisseurFinal = (prixFournisseurFinal / devisesDollars) * coeffDevise;
             prixFinalDe = (prixFinalDe / devisesDollars) * coeffDevise;
             prixFinal.Text = prixFinalDe.ToString(".00") + devise;
-            prixFournisseur.Text = prixFournisseurFinal.ToString(".00");
+            if (prixFournisseurFinal == 0)
+            {
+                prixFournisseur.Text = "";
+            }
+            else { prixFournisseur.Text = prixFournisseurFinal.ToString(".00"); }
             marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
             animation();
 
@@ -962,7 +971,11 @@ namespace easyprice
         {
             prixFournisseurFinal = (prixFournisseurFinal / deviseCanadaDollars) * coeffDevise;
             prixFinalDe = (prixFinalDe / deviseCanadaDollars) * coeffDevise;
-            prixFournisseur.Text = prixFournisseurFinal.ToString(".00");
+            if (prixFournisseurFinal == 0)
+            {
+                prixFournisseur.Text = "";
+            }
+            else { prixFournisseur.Text = prixFournisseurFinal.ToString(".00"); }
             prixFinal.Text = prixFinalDe.ToString(".00") + devise;
             marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
             animation();
@@ -972,7 +985,11 @@ namespace easyprice
         {
             prixFournisseurFinal = (prixFournisseurFinal / devisesCny) * coeffDevise;
             prixFinalDe = (prixFinalDe / devisesCny) * coeffDevise;
-            prixFournisseur.Text = prixFournisseurFinal.ToString(".00");
+            if (prixFournisseurFinal == 0)
+            {
+                prixFournisseur.Text = "";
+            }
+            else { prixFournisseur.Text = prixFournisseurFinal.ToString(".00"); }
             prixFinal.Text = prixFinalDe.ToString(".00") + devise;
             marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
             animation();
@@ -992,7 +1009,11 @@ namespace easyprice
         {
             prixFournisseurFinal = (prixFournisseurFinal / devisesGbp) * coeffDevise;
             prixFinalDe = (prixFinalDe / devisesGbp) * coeffDevise;
-            prixFournisseur.Text = prixFournisseurFinal.ToString(".00");
+            if (prixFournisseurFinal == 0)
+            {
+                prixFournisseur.Text = "";
+            }
+            else { prixFournisseur.Text = prixFournisseurFinal.ToString(".00"); }
             prixFinal.Text = prixFinalDe.ToString(".00") + devise;
             marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
             animation();
@@ -1004,7 +1025,11 @@ namespace easyprice
         {
             prixFournisseurFinal = (prixFournisseurFinal / devisesAUD) * coeffDevise;
             prixFinalDe = (prixFinalDe / devisesAUD) * coeffDevise;
-            prixFournisseur.Text = prixFournisseurFinal.ToString(".00");
+            if (prixFournisseurFinal == 0)
+            {
+                prixFournisseur.Text = "";
+            }
+            else { prixFournisseur.Text = prixFournisseurFinal.ToString(".00"); }
             prixFinal.Text = prixFinalDe.ToString(".00") + devise;
             marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
             animation();
@@ -1014,7 +1039,11 @@ namespace easyprice
         {
             prixFournisseurFinal = (prixFournisseurFinal / devisesCHF) * coeffDevise;
             prixFinalDe = (prixFinalDe / devisesCHF) * coeffDevise;
-            prixFournisseur.Text = prixFournisseurFinal.ToString(".00");
+            if (prixFournisseurFinal == 0)
+            {
+                prixFournisseur.Text = "";
+            }
+            else { prixFournisseur.Text = prixFournisseurFinal.ToString(".00"); }
             prixFinal.Text = prixFinalDe.ToString(".00") + devise;
             marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
             animation();
@@ -1026,7 +1055,11 @@ namespace easyprice
         {
             prixFournisseurFinal = (prixFournisseurFinal / devisesJPY) * coeffDevise;
             prixFinalDe = (prixFinalDe / devisesJPY) * coeffDevise;
-            prixFournisseur.Text = prixFournisseurFinal.ToString(".00");
+            if (prixFournisseurFinal == 0)
+            {
+                prixFournisseur.Text = "";
+            }
+            else { prixFournisseur.Text = prixFournisseurFinal.ToString(".00"); }
             prixFinal.Text = prixFinalDe.ToString(".00") + devise;
             marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
             animation();
@@ -1037,7 +1070,11 @@ namespace easyprice
         {
             prixFournisseurFinal = (prixFournisseurFinal / devisesSEK) * coeffDevise;
             prixFinalDe = (prixFinalDe / devisesSEK) * coeffDevise;
-            prixFournisseur.Text = prixFournisseurFinal.ToString(".00");
+            if (prixFournisseurFinal == 0)
+            {
+                prixFournisseur.Text = "";
+            }
+            else { prixFournisseur.Text = prixFournisseurFinal.ToString(".00"); }
             prixFinal.Text = prixFinalDe.ToString(".00") + devise;
             marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
             animation();
@@ -1048,7 +1085,11 @@ namespace easyprice
         {
             prixFournisseurFinal = (prixFournisseurFinal / devisesNZD) * coeffDevise;
             prixFinalDe = (prixFinalDe / devisesNZD) * coeffDevise;
-            prixFournisseur.Text = prixFournisseurFinal.ToString(".00");
+            if (prixFournisseurFinal == 0)
+            {
+                prixFournisseur.Text = "";
+            }
+            else { prixFournisseur.Text = prixFournisseurFinal.ToString(".00"); }
             prixFinal.Text = prixFinalDe.ToString(".00") + devise;
             marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
             animation();
