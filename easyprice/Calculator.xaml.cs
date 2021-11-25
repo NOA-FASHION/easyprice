@@ -16,6 +16,13 @@ namespace easyprice
         double deviseEuros;
         double deviseCanadaDollars;
         double devisesCny;
+        double devisesGbp;
+        double devisesAUD;
+        double devisesCHF;
+        double devisesCNH;
+        double devisesJPY;
+        double devisesSEK;
+        double devisesNZD;
         string URL;
         string Key;
         double prixFournisseurFinal;
@@ -23,24 +30,50 @@ namespace easyprice
         string devise;
         string coeffMultArt;
         deviseClass Devises = new deviseClass();
+        devises2Class Devises1 = new devises2Class();
         public Calculator()
         {
             InitializeComponent();
             dollars3.Text = "€";
             titelPicker = "€";
-            url = "http://data.fixer.io/api/latest";
-            Key = "9a66f3ad73018c9ac9308ebbfc882899";
+            //url = "http://data.fixer.io/api/latest";
+            //Key = "9a66f3ad73018c9ac9308ebbfc882899";
+            //devise = "€";
+            //accesKey = "?access_key=" + Key;
+            //URL = url + accesKey;
+            //var Webclient = new WebClient();
+            //var json = Webclient.DownloadString(URL);
+            //Devises = JsonConvert.DeserializeObject<deviseClass>(json);
+            //devisesDollars = Devises.Rates["USD"];
+            //deviseEuros = Devises.Rates["EUR"];
+            //deviseCanadaDollars = Devises.Rates["CAD"];
+            //devisesCny = Devises.Rates["CNY"];
+            url = "https://freecurrencyapi.net/api/v2/latest";
+            Key = "79900380-4d99-11ec-8414-356a4b7a335b&base_currency=EUR";
             devise = "€";
-            accesKey = "?access_key=" + Key;
+            accesKey = "?apikey=" + Key;
             URL = url + accesKey;
             var Webclient = new WebClient();
             var json = Webclient.DownloadString(URL);
-            Devises = JsonConvert.DeserializeObject<deviseClass>(json);
-            devisesDollars = Devises.Rates["USD"];
-            deviseEuros = Devises.Rates["EUR"];
-            deviseCanadaDollars = Devises.Rates["CAD"];
-            devisesCny = Devises.Rates["CNY"];
+            Devises1 = JsonConvert.DeserializeObject<devises2Class>(json);
+            devisesDollars = Devises1.Data["USD"];
+            deviseEuros = Devises1.Data["EUR"];
+            deviseCanadaDollars = Devises1.Data["CAD"];
+            devisesCny = Devises1.Data["CNY"];
+            devisesGbp = Devises1.Data["GBP"];
+
+            devisesAUD = Devises1.Data["AUD"];
+            devisesCHF = Devises1.Data["CHF"];
+            //devisesCNH = Devises1.Data["CNH"];
+            devisesJPY = Devises1.Data["JPY"];
+            devisesSEK = Devises1.Data["SEK"];
+            devisesNZD = Devises1.Data["NZD"];
         }
+
+
+
+   
+
 
         void OnPickerSelectedIndexChanged2(object sender, EventArgs e)
         {
@@ -73,13 +106,70 @@ namespace easyprice
                     devise = valeurPicker;
                     titelPicker = "$C";
                 }
-                else if (valeurPicker == "￥" && titelPicker == "€")
+                else if (valeurPicker == "£" && titelPicker == "€")
+                {
+                    changDevisesEuros(valeurPicker, devisesGbp);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "£";
+                }
+                else if (valeurPicker == "￥Cny" && titelPicker == "€")
                 {
                     changDevisesEuros(valeurPicker, devisesCny);
                     dollars3.Text = valeurPicker;
                     devise = valeurPicker;
-                    titelPicker = "￥";
+                    titelPicker = "￥Cny";
                 }
+
+
+                else if (valeurPicker == "$A" && titelPicker == "€")
+                {
+                    changDevisesEuros(valeurPicker, devisesAUD);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$A";
+                }
+                else if (valeurPicker == "FrS" && titelPicker == "€")
+                {
+                    changDevisesEuros(valeurPicker, devisesCHF);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "FrS";
+                }
+                //else if (valeurPicker == "￥Cnh" && titelPicker == "€")
+                //{
+                //    changDevisesOriginDollars(valeurPicker, devisesCNH);
+                //    dollars3.Text = valeurPicker;
+                //    devise = valeurPicker;
+                //    titelPicker = "￥Cnh";
+                //}
+                else if (valeurPicker == "kr" && titelPicker == "€")
+                {
+                    changDevisesEuros(valeurPicker, devisesSEK);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "kr";
+                }
+                else if (valeurPicker == "JP¥" && titelPicker == "€")
+                {
+                    changDevisesEuros(valeurPicker, devisesJPY);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "JP¥";
+                }
+                else if (valeurPicker == "$N" && titelPicker == "€")
+                {
+                    changDevisesEuros(valeurPicker, devisesNZD);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$N";
+                }
+
+
+
+
+
+
                 else if (valeurPicker == "€" && titelPicker == "$")
                 {
                     changDevisesOriginDollars(valeurPicker, deviseEuros);
@@ -101,13 +191,73 @@ namespace easyprice
                     devise = valeurPicker;
                     titelPicker = "$C";
                 }
-                else if (valeurPicker == "￥" && titelPicker == "$")
+                else if (valeurPicker == "£" && titelPicker == "$")
+                {
+                    changDevisesOriginDollars(valeurPicker, devisesGbp);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "£";
+                }
+                else if (valeurPicker == "￥Cny" && titelPicker == "$")
                 {
                     changDevisesOriginDollars(valeurPicker, devisesCny);
                     dollars3.Text = valeurPicker;
                     devise = valeurPicker;
-                    titelPicker = "￥";
+                    titelPicker = "￥Cny";
                 }
+                else if (valeurPicker == "$A" && titelPicker == "$")
+                {
+                    changDevisesOriginDollars(valeurPicker, devisesAUD);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$A";
+                }
+                else if (valeurPicker == "FrS" && titelPicker == "$")
+                {
+                    changDevisesOriginDollars(valeurPicker, devisesCHF);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "FrS";
+                }
+                //else if (valeurPicker == "￥Cnh" && titelPicker == "$")
+                //{
+                //    changDevisesOriginDollars(valeurPicker, devisesCNH);
+                //    dollars3.Text = valeurPicker;
+                //    devise = valeurPicker;
+                //    titelPicker = "￥Cnh";
+                //}
+                else if (valeurPicker == "kr" && titelPicker == "$")
+                {
+                    changDevisesOriginDollars(valeurPicker, devisesSEK);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "kr";
+                }
+                else if (valeurPicker == "JP¥" && titelPicker == "$")
+                {
+                    changDevisesOriginDollars(valeurPicker, devisesJPY);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "JP¥";
+                }
+                else if (valeurPicker == "$N" && titelPicker == "$")
+                {
+                    changDevisesOriginDollars(valeurPicker, devisesNZD);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$N";
+                }
+
+
+
+
+
+
+
+
+
+
+
                 else if (valeurPicker == "€" && titelPicker == "$C")
                 {
                     changDevisesOriginDollarsCan(valeurPicker, deviseEuros);
@@ -130,41 +280,735 @@ namespace easyprice
                     titelPicker = "$C";
 
                 }
-                else if (valeurPicker == "￥" && titelPicker == "$C")
+                else if (valeurPicker == "£" && titelPicker == "$C")
+                {
+                    changDevisesOriginDollars(valeurPicker, devisesGbp);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "£";
+                }
+                else if (valeurPicker == "￥Cny" && titelPicker == "$C")
                 {
                     changDevisesOriginDollarsCan(valeurPicker, devisesCny);
                     dollars3.Text = valeurPicker;
                     devise = valeurPicker;
-                    titelPicker = "￥";
+                    titelPicker = "￥Cny";
                 }
-                else if (valeurPicker == "€" && titelPicker == "￥")
+
+                else if (valeurPicker == "$A" && titelPicker == "$C")
+                {
+                    changDevisesOriginDollarsCan(valeurPicker, devisesAUD);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$A";
+                }
+                else if (valeurPicker == "FrS" && titelPicker == "$C")
+                {
+                    changDevisesOriginDollarsCan(valeurPicker, devisesCHF);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "FrS";
+                }
+                //else if (valeurPicker == "￥Cnh" && titelPicker == "$C")
+                //{
+                //    changDevisesOriginDollars(valeurPicker, devisesCNH);
+                //    dollars3.Text = valeurPicker;
+                //    devise = valeurPicker;
+                //    titelPicker = "￥Cnh";
+                //}
+                else if (valeurPicker == "kr" && titelPicker == "$C")
+                {
+                    changDevisesOriginDollarsCan(valeurPicker, devisesSEK);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "kr";
+                }
+                else if (valeurPicker == "JP¥" && titelPicker == "$C")
+                {
+                    changDevisesOriginDollarsCan(valeurPicker, devisesJPY);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "JP¥";
+                }
+                else if (valeurPicker == "$N" && titelPicker == "$C")
+                {
+                    changDevisesOriginDollarsCan(valeurPicker, devisesNZD);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$N";
+                }
+
+
+
+
+
+
+
+
+
+                else if (valeurPicker == "€" && titelPicker == "￥Cny")
                 {
                     changDevisesOriginYuan(valeurPicker, deviseEuros);
                     dollars3.Text = valeurPicker;
                     devise = valeurPicker;
                     titelPicker = "€";
                 }
-                else if (valeurPicker == "$" && titelPicker == "￥")
+                else if (valeurPicker == "$" && titelPicker == "￥Cny")
                 {
                     changDevisesOriginYuan(valeurPicker, devisesDollars);
                     dollars3.Text = valeurPicker;
                     devise = valeurPicker;
                     titelPicker = "$";
                 }
-                else if (valeurPicker == "$C" && titelPicker == "￥")
+                else if (valeurPicker == "$C" && titelPicker == "￥Cny")
                 {
                     changDevisesOriginYuan(valeurPicker, deviseCanadaDollars);
                     dollars3.Text = valeurPicker;
                     devise = valeurPicker;
                     titelPicker = "$C";
                 }
-                else if (valeurPicker == "￥" && titelPicker == "￥")
+                else if (valeurPicker == "£" && titelPicker == "￥Cny")
+                {
+                    changDevisesOriginYuan(valeurPicker, devisesGbp);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "£";
+                }
+                else if (valeurPicker == "￥Cny" && titelPicker == "￥Cny")
                 {
                     changDevisesOriginYuan(valeurPicker, devisesCny);
                     dollars3.Text = valeurPicker;
                     devise = valeurPicker;
-                    titelPicker = "￥";
+                    titelPicker = "￥Cny";
                 }
+
+                else if (valeurPicker == "$A" && titelPicker == "￥Cny")
+                {
+                    changDevisesOriginYuan(valeurPicker, devisesAUD);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$A";
+                }
+                else if (valeurPicker == "FrS" && titelPicker == "￥Cny")
+                {
+                    changDevisesOriginYuan(valeurPicker, devisesCHF);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "FrS";
+                }
+                //else if (valeurPicker == "￥Cnh" && titelPicker == "￥Cny")
+                //{
+                //    changDevisesOriginDollars(valeurPicker, devisesCNH);
+                //    dollars3.Text = valeurPicker;
+                //    devise = valeurPicker;
+                //    titelPicker = "￥Cnh";
+                //}
+                else if (valeurPicker == "kr" && titelPicker == "￥Cny")
+                {
+                    changDevisesOriginYuan(valeurPicker, devisesSEK);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "kr";
+                }
+                else if (valeurPicker == "JP¥" && titelPicker == "￥Cny")
+                {
+                    changDevisesOriginYuan(valeurPicker, devisesJPY);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "JP¥";
+                }
+                else if (valeurPicker == "$N" && titelPicker == "￥Cny")
+                {
+                    changDevisesOriginYuan(valeurPicker, devisesNZD);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$N";
+                }
+
+
+
+
+
+
+                else if (valeurPicker == "€" && titelPicker == "£")
+                {
+                    changDevisesOriginGBP(valeurPicker, deviseEuros);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "€";
+                }
+                else if (valeurPicker == "$" && titelPicker == "£")
+                {
+                    changDevisesOriginGBP(valeurPicker, devisesDollars);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$";
+                }
+                else if (valeurPicker == "$C" && titelPicker == "£")
+                {
+                    changDevisesOriginGBP(valeurPicker, deviseCanadaDollars);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$C";
+                }
+                else if (valeurPicker == "￥Cny" && titelPicker == "£")
+                {
+                    changDevisesOriginGBP(valeurPicker, devisesCny);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "￥Cny";
+                }
+                else if (valeurPicker == "£" && titelPicker == "£")
+                {
+                    changDevisesOriginGBP(valeurPicker, devisesGbp);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "£";
+                }
+                else if (valeurPicker == "$A" && titelPicker == "£")
+                {
+                    changDevisesOriginGBP(valeurPicker, devisesAUD);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$A";
+                }
+                else if (valeurPicker == "FrS" && titelPicker == "£")
+                {
+                    changDevisesOriginGBP(valeurPicker, devisesCHF);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "FrS";
+                }
+                //else if (valeurPicker == "￥Cnh" && titelPicker == "£")
+                //{
+                //    changDevisesOriginGBP(valeurPicker, devisesCNH);
+                //    dollars3.Text = valeurPicker;
+                //    devise = valeurPicker;
+                //    titelPicker = "￥Cnh";
+                //}
+                else if (valeurPicker == "kr" && titelPicker == "£")
+                {
+                    changDevisesOriginGBP(valeurPicker, devisesSEK);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "kr";
+                }
+                else if (valeurPicker == "JP¥" && titelPicker == "£")
+                {
+                    changDevisesOriginGBP(valeurPicker, devisesJPY);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "JP¥";
+                }
+                else if (valeurPicker == "$N" && titelPicker == "£")
+                {
+                    changDevisesOriginGBP(valeurPicker, devisesNZD);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$N";
+                }
+
+
+
+
+
+                else if (valeurPicker == "€" && titelPicker == "$A")
+                {
+                    changDevisesOriginAUD(valeurPicker, deviseEuros);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "€";
+                }
+                else if (valeurPicker == "$" && titelPicker == "$A")
+                {
+                    changDevisesOriginAUD(valeurPicker, devisesDollars);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$";
+                }
+                else if (valeurPicker == "$C" && titelPicker == "$A")
+                {
+                    changDevisesOriginAUD(valeurPicker, deviseCanadaDollars);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$C";
+                }
+                else if (valeurPicker == "￥Cny" && titelPicker == "$A")
+                {
+                    changDevisesOriginAUD(valeurPicker, devisesCny);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "￥Cny";
+                }
+                else if (valeurPicker == "£" && titelPicker == "$A")
+                {
+                    changDevisesOriginAUD(valeurPicker, devisesGbp);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "￥Cny";
+                }
+                else if (valeurPicker == "$A" && titelPicker == "$A")
+                {
+                    changDevisesOriginAUD(valeurPicker, devisesAUD);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$A";
+                }
+                else if (valeurPicker == "FrS" && titelPicker == "$A")
+                {
+                    changDevisesOriginAUD(valeurPicker, devisesCHF);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "FrS";
+                }
+                //else if (valeurPicker == "￥Cnh" && titelPicker == "$A")
+                //{
+                //    changDevisesOriginDollars(valeurPicker, devisesCNH);
+                //    dollars3.Text = valeurPicker;
+                //    devise = valeurPicker;
+                //    titelPicker = "￥Cnh";
+                //}
+                else if (valeurPicker == "kr" && titelPicker == "$A")
+                {
+                    changDevisesOriginAUD(valeurPicker, devisesSEK);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "kr";
+                }
+                else if (valeurPicker == "JP¥" && titelPicker == "$A")
+                {
+                    changDevisesOriginAUD(valeurPicker, devisesJPY);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "JP¥";
+                }
+                else if (valeurPicker == "$N" && titelPicker == "$A")
+                {
+                    changDevisesOriginAUD(valeurPicker, devisesNZD);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$N";
+                }
+
+
+
+
+
+
+                else if (valeurPicker == "€" && titelPicker == "FrS")
+                {
+                    changDevisesOriginCHF(valeurPicker, deviseEuros);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "€";
+                }
+                else if (valeurPicker == "$" && titelPicker == "FrS")
+                {
+                    changDevisesOriginCHF(valeurPicker, devisesDollars);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$";
+                }
+                else if (valeurPicker == "$C" && titelPicker == "FrS")
+                {
+                    changDevisesOriginCHF(valeurPicker, deviseCanadaDollars);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$C";
+                }
+                else if (valeurPicker == "￥Cny" && titelPicker == "FrS")
+                {
+                    changDevisesOriginCHF(valeurPicker, devisesCny);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "￥Cny";
+                }
+                else if (valeurPicker == "£" && titelPicker == "FrS")
+                {
+                    changDevisesOriginCHF(valeurPicker, devisesGbp);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "￥Cny";
+                }
+                else if (valeurPicker == "$A" && titelPicker == "FrS")
+                {
+                    changDevisesOriginCHF(valeurPicker, devisesAUD);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$A";
+                }
+                else if (valeurPicker == "FrS" && titelPicker == "FrS")
+                {
+                    changDevisesOriginCHF(valeurPicker, devisesCHF);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "FrS";
+                }
+                //else if (valeurPicker == "￥Cnh" && titelPicker == "FrS")
+                //{
+                //    changDevisesOriginDollars(valeurPicker, devisesCNH);
+                //    dollars3.Text = valeurPicker;
+                //    devise = valeurPicker;
+                //    titelPicker = "￥Cnh";
+                //}
+                else if (valeurPicker == "kr" && titelPicker == "FrS")
+                {
+                    changDevisesOriginCHF(valeurPicker, devisesSEK);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "kr";
+                }
+                else if (valeurPicker == "JP¥" && titelPicker == "FrS")
+                {
+                    changDevisesOriginCHF(valeurPicker, devisesJPY);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "JP¥";
+                }
+                else if (valeurPicker == "$N" && titelPicker == "FrS")
+                {
+                    changDevisesOriginCHF(valeurPicker, devisesNZD);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$N";
+                }
+
+
+
+
+
+
+                //else if (valeurPicker == "€" && titelPicker == "￥Cnh")
+                //{
+                //    changDevisesOriginDollars(valeurPicker, deviseEuros);
+                //    dollars3.Text = valeurPicker;
+                //    devise = valeurPicker;
+                //    titelPicker = "€";
+                //}
+                //else if (valeurPicker == "$" && titelPicker == "￥Cnh")
+                //{
+                //    changDevisesOriginDollars(valeurPicker, devisesDollars);
+                //    dollars3.Text = valeurPicker;
+                //    devise = valeurPicker;
+                //    titelPicker = "$";
+                //}
+                //else if (valeurPicker == "$C" && titelPicker == "￥Cnh")
+                //{
+                //    changDevisesOriginDollars(valeurPicker, deviseCanadaDollars);
+                //    dollars3.Text = valeurPicker;
+                //    devise = valeurPicker;
+                //    titelPicker = "$C";
+                //}
+                //else if (valeurPicker == "￥Cny" && titelPicker == "￥Cnh")
+                //{
+                //    changDevisesOriginYuan(valeurPicker, devisesCny);
+                //    dollars3.Text = valeurPicker;
+                //    devise = valeurPicker;
+                //    titelPicker = "￥Cny";
+                //}
+                //else if (valeurPicker == "£" && titelPicker == "￥Cnh")
+                //{
+                //    changDevisesOriginDollars(valeurPicker, devisesGbp);
+                //    dollars3.Text = valeurPicker;
+                //    devise = valeurPicker;
+                //    titelPicker = "￥Cny";
+                //}
+                //else if (valeurPicker == "$A" && titelPicker == "￥Cnh")
+                //{
+                //    changDevisesOriginDollars(valeurPicker, devisesAUD);
+                //    dollars3.Text = valeurPicker;
+                //    devise = valeurPicker;
+                //    titelPicker = "$A";
+                //}
+                //else if (valeurPicker == "FrS" && titelPicker == "￥Cnh")
+                //{
+                //    changDevisesOriginDollars(valeurPicker, devisesCHF);
+                //    dollars3.Text = valeurPicker;
+                //    devise = valeurPicker;
+                //    titelPicker = "FrS";
+                //}
+                //else if (valeurPicker == "￥Cnh" && titelPicker == "￥Cnh")
+                //{
+                //    changDevisesOriginDollars(valeurPicker, devisesCNH);
+                //    dollars3.Text = valeurPicker;
+                //    devise = valeurPicker;
+                //    titelPicker = "￥Cnh";
+                ////}
+                //else if (valeurPicker == "kr" && titelPicker == "￥Cnh")
+                //{
+                //    changDevisesOriginDollars(valeurPicker, devisesSEK);
+                //    dollars3.Text = valeurPicker;
+                //    devise = valeurPicker;
+                //    titelPicker = "kr";
+                //}
+                //else if (valeurPicker == "JP¥" && titelPicker == "￥Cnh")
+                //{
+                //    changDevisesOriginDollars(valeurPicker, devisesJPY);
+                //    dollars3.Text = valeurPicker;
+                //    devise = valeurPicker;
+                //    titelPicker = "JP¥";
+                //}
+                //else if (valeurPicker == "$N" && titelPicker == "￥Cnh")
+                //{
+                //    changDevisesOriginDollars(valeurPicker, devisesNZD);
+                //    dollars3.Text = valeurPicker;
+                //    devise = valeurPicker;
+                //    titelPicker = "$N";
+                //}
+
+
+
+
+
+
+                else if (valeurPicker == "€" && titelPicker == "kr")
+                {
+                    changDevisesOriginSEK(valeurPicker, deviseEuros);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "€";
+                }
+                else if (valeurPicker == "$" && titelPicker == "kr")
+                {
+                    changDevisesOriginSEK(valeurPicker, devisesDollars);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$";
+                }
+                else if (valeurPicker == "$C" && titelPicker == "kr")
+                {
+                    changDevisesOriginSEK(valeurPicker, deviseCanadaDollars);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$C";
+                }
+                else if (valeurPicker == "￥Cny" && titelPicker == "kr")
+                {
+                    changDevisesOriginSEK(valeurPicker, devisesCny);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "￥Cny";
+                }
+                else if (valeurPicker == "£" && titelPicker == "kr")
+                {
+                    changDevisesOriginSEK(valeurPicker, devisesGbp);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "￥Cny";
+                }
+                else if (valeurPicker == "$A" && titelPicker == "kr")
+                {
+                    changDevisesOriginSEK(valeurPicker, devisesAUD);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$A";
+                }
+                else if (valeurPicker == "FrS" && titelPicker == "kr")
+                {
+                    changDevisesOriginSEK(valeurPicker, devisesCHF);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "FrS";
+                }
+                //else if (valeurPicker == "￥Cnh" && titelPicker == "kr")
+                //{
+                //    changDevisesOriginDollars(valeurPicker, devisesCNH);
+                //    dollars3.Text = valeurPicker;
+                //    devise = valeurPicker;
+                //    titelPicker = "￥Cnh";
+                //}
+                else if (valeurPicker == "kr" && titelPicker == "kr")
+                {
+                    changDevisesOriginSEK(valeurPicker, devisesSEK);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "kr";
+                }
+                else if (valeurPicker == "JP¥" && titelPicker == "kr")
+                {
+                    changDevisesOriginSEK(valeurPicker, devisesJPY);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "JP¥";
+                }
+                else if (valeurPicker == "$N" && titelPicker == "kr")
+                {
+                    changDevisesOriginSEK(valeurPicker, devisesNZD);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$N";
+                }
+
+
+
+
+
+
+
+                else if (valeurPicker == "€" && titelPicker == "JP¥")
+                {
+                    changDevisesOriginJPY(valeurPicker, deviseEuros);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "€";
+                }
+                else if (valeurPicker == "$" && titelPicker == "JP¥")
+                {
+                    changDevisesOriginJPY(valeurPicker, devisesDollars);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$";
+                }
+                else if (valeurPicker == "$C" && titelPicker == "JP¥")
+                {
+                    changDevisesOriginJPY(valeurPicker, deviseCanadaDollars);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$C";
+                }
+                else if (valeurPicker == "￥Cny" && titelPicker == "JP¥")
+                {
+                    changDevisesOriginJPY(valeurPicker, devisesCny);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "￥Cny";
+                }
+                else if (valeurPicker == "£" && titelPicker == "JP¥")
+                {
+                    changDevisesOriginJPY(valeurPicker, devisesGbp);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "￥Cny";
+                }
+                else if (valeurPicker == "$A" && titelPicker == "JP¥")
+                {
+                    changDevisesOriginJPY(valeurPicker, devisesAUD);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$A";
+                }
+                else if (valeurPicker == "FrS" && titelPicker == "JP¥")
+                {
+                    changDevisesOriginJPY(valeurPicker, devisesCHF);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "FrS";
+                }
+                //else if (valeurPicker == "￥Cnh" && titelPicker == "JP¥")
+                //{
+                //    changDevisesOriginDollars(valeurPicker, devisesCNH);
+                //    dollars3.Text = valeurPicker;
+                //    devise = valeurPicker;
+                //    titelPicker = "￥Cnh";
+                //}
+                else if (valeurPicker == "kr" && titelPicker == "JP¥")
+                {
+                    changDevisesOriginJPY(valeurPicker, devisesSEK);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "kr";
+                }
+                else if (valeurPicker == "JP¥" && titelPicker == "JP¥")
+                {
+                    changDevisesOriginJPY(valeurPicker, devisesJPY);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "JP¥";
+                }
+                else if (valeurPicker == "$N" && titelPicker == "JP¥")
+                {
+                    changDevisesOriginJPY(valeurPicker, devisesNZD);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$N";
+                }
+
+
+
+
+
+
+
+
+
+                else if (valeurPicker == "€" && titelPicker == "$N")
+                {
+                    changDevisesOriginNZD(valeurPicker, deviseEuros);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "€";
+                }
+                else if (valeurPicker == "$" && titelPicker == "$N")
+                {
+                    changDevisesOriginNZD(valeurPicker, devisesDollars);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$";
+                }
+                else if (valeurPicker == "$C" && titelPicker == "$N")
+                {
+                    changDevisesOriginNZD(valeurPicker, deviseCanadaDollars);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$C";
+                }
+                else if (valeurPicker == "￥Cny" && titelPicker == "$N")
+                {
+                    changDevisesOriginNZD(valeurPicker, devisesCny);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "￥Cny";
+                }
+                else if (valeurPicker == "£" && titelPicker == "$N")
+                {
+                    changDevisesOriginNZD(valeurPicker, devisesGbp);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "￥Cny";
+                }
+                else if (valeurPicker == "$A" && titelPicker == "$N")
+                {
+                    changDevisesOriginNZD(valeurPicker, devisesAUD);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$A";
+                }
+                else if (valeurPicker == "FrS" && titelPicker == "$N")
+                {
+                    changDevisesOriginNZD(valeurPicker, devisesCHF);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "FrS";
+                }
+                //else if (valeurPicker == "￥Cnh" && titelPicker == "$N")
+                //{
+                //    changDevisesOriginDollars(valeurPicker, devisesCNH);
+                //    dollars3.Text = valeurPicker;
+                //    devise = valeurPicker;
+                //    titelPicker = "￥Cnh";
+                //}
+                else if (valeurPicker == "kr" && titelPicker == "$N")
+                {
+                    changDevisesOriginNZD(valeurPicker, devisesSEK);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "kr";
+                }
+                else if (valeurPicker == "JP¥" && titelPicker == "$N")
+                {
+                    changDevisesOriginNZD(valeurPicker, devisesJPY);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "JP¥";
+                }
+                else if (valeurPicker == "$N" && titelPicker == "$N")
+                {
+                    changDevisesOriginNZD(valeurPicker, devisesNZD);
+                    dollars3.Text = valeurPicker;
+                    devise = valeurPicker;
+                    titelPicker = "$N";
+                }
+
             }
 
 
@@ -207,16 +1051,7 @@ namespace easyprice
 
             }
         }
-        //private void AnimationView2_OnClick(object sender, System.EventArgs e)
-        //{
-        //    //NewProduitPage.coeffcientCalculer = double.Parse(coeffMultArt);
-        //    Navigation.PopAsync(true);
-        //}
-        //private void AnimationClickedCommand5(object sender, System.EventArgs e)
-        //{
-        //    Navigation.PopAsync(true);
-
-        //}
+   
 
 
 
@@ -283,6 +1118,96 @@ namespace easyprice
             animation();
 
         }
+
+
+
+
+
+
+
+
+
+
+        public void changDevisesOriginGBP(string devise, double coeffDevise)
+        {
+            prixFournisseurFinal = (prixFournisseurFinal / devisesGbp) * coeffDevise;
+            prixFinalDe = (prixFinalDe / devisesGbp) * coeffDevise;
+            prixFournisseur.Text = prixFournisseurFinal.ToString(".00");
+            prixFinal.Text = prixFinalDe.ToString(".00") + devise;
+            marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
+            animation();
+
+        }
+
+
+        public void changDevisesOriginAUD(string devise, double coeffDevise)
+        {
+            prixFournisseurFinal = (prixFournisseurFinal / devisesAUD) * coeffDevise;
+            prixFinalDe = (prixFinalDe / devisesAUD) * coeffDevise;
+            prixFournisseur.Text = prixFournisseurFinal.ToString(".00");
+            prixFinal.Text = prixFinalDe.ToString(".00") + devise;
+            marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
+            animation();
+
+        }
+        public void changDevisesOriginCHF(string devise, double coeffDevise)
+        {
+            prixFournisseurFinal = (prixFournisseurFinal / devisesCHF) * coeffDevise;
+            prixFinalDe = (prixFinalDe / devisesCHF) * coeffDevise;
+            prixFournisseur.Text = prixFournisseurFinal.ToString(".00");
+            prixFinal.Text = prixFinalDe.ToString(".00") + devise;
+            marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
+            animation();
+
+        }
+
+        //public void changDevisesOriginCNH(string devise, double coeffDevise)
+        //{
+        //    prixFournisseurFinal = (prixFournisseurFinal / devisesCNH) * coeffDevise;
+        //    prixFinalDe = (prixFinalDe / devisesCNH) * coeffDevise;
+        //    prixFournisseur.Text = prixFournisseurFinal.ToString(".00");
+        //    prixFinal.Text = prixFinalDe.ToString(".00") + devise;
+        //    marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
+        //    animation();
+
+        //}
+
+
+        public void changDevisesOriginJPY(string devise, double coeffDevise)
+        {
+            prixFournisseurFinal = (prixFournisseurFinal / devisesJPY) * coeffDevise;
+            prixFinalDe = (prixFinalDe / devisesJPY) * coeffDevise;
+            prixFournisseur.Text = prixFournisseurFinal.ToString(".00");
+            prixFinal.Text = prixFinalDe.ToString(".00") + devise;
+            marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
+            animation();
+
+        }
+
+        public void changDevisesOriginSEK(string devise, double coeffDevise)
+        {
+            prixFournisseurFinal = (prixFournisseurFinal / devisesSEK) * coeffDevise;
+            prixFinalDe = (prixFinalDe / devisesSEK) * coeffDevise;
+            prixFournisseur.Text = prixFournisseurFinal.ToString(".00");
+            prixFinal.Text = prixFinalDe.ToString(".00") + devise;
+            marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
+            animation();
+
+        }
+
+        public void changDevisesOriginNZD(string devise, double coeffDevise)
+        {
+            prixFournisseurFinal = (prixFournisseurFinal / devisesNZD) * coeffDevise;
+            prixFinalDe = (prixFinalDe / devisesNZD) * coeffDevise;
+            prixFournisseur.Text = prixFournisseurFinal.ToString(".00");
+            prixFinal.Text = prixFinalDe.ToString(".00") + devise;
+            marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
+            animation();
+
+        }
+
+
+
 
     }
 

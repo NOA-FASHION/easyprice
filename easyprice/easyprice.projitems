@@ -43,5 +43,6 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)deviseClass.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MyEntry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)devises2Class.cs" />
   </ItemGroup>
 </Project>

@@ -29,7 +29,7 @@
         <Picker x:Name="picker2"
              HorizontalOptions="EndAndExpand"
              SelectedIndexChanged="OnPickerSelectedIndexChanged2"
-            Title="Devise"
+            Title="défaut(€)"
             FontSize="Large"
             BackgroundColor="#518faa"
             Margin="{OnPlatform iOS='10,0,10,0' , Android='10,0,10,0' ,Default=0}"
@@ -39,7 +39,14 @@
               <x:String>$</x:String>
               <x:String>€</x:String>
               <x:String>$C</x:String>
-              <x:String>￥</x:String>
+              <x:String>￥Cny</x:String>
+                <x:String>£</x:String>
+                <x:String>$A</x:String>
+                <x:String>FrS</x:String>
+                <x:String>kr</x:String>
+                <x:String>JP¥</x:String>
+                <x:String>$N</x:String>
+
             </x:Array>
           </Picker.ItemsSource>
         </Picker>
@@ -47,7 +54,7 @@
 
   </Frame>
                
-                <Image  Margin="0,15,0,0" Source="dollars.png" Aspect="AspectFit"  HeightRequest="200" />
+                <Image  Margin="0,15,0,15" Source="dollars.png" Aspect="AspectFit"  HeightRequest="100" />
                    <StackLayout Spacing="0" BackgroundColor="#518faa" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" x:Name="resultaFinal" HeightRequest="90"  >
           <Grid HorizontalOptions="CenterAndExpand" >
         <Grid.ColumnDefinitions>

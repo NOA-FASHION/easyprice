@@ -19,7 +19,7 @@
        
           <StackLayout Spacing="0">
                  <StackLayout BackgroundColor="#518faa" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
-                <Image  Margin="0,35,0,0" Source="dollars.png" Aspect="AspectFit"  HeightRequest="200" /> 
+                <Image  Margin="0,35,0,0" Source="dollars.png" Aspect="AspectFit"  HeightRequest="100" /> 
              
             </StackLayout >
 

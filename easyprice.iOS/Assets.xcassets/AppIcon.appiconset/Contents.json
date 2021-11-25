@@ -1,7 +1,7 @@
 {
   "images": [
     {
-      "filename": "40.png",
+      "filename": "40-3.png",
       "size": "20x20",
       "scale": "2x",
       "idiom": "iphone"
@@ -13,7 +13,7 @@
       "idiom": "iphone"
     },
     {
-      "filename": "58-2.png",
+      "filename": "58-1.png",
       "size": "29x29",
       "scale": "2x",
       "idiom": "iphone"
@@ -25,19 +25,19 @@
       "idiom": "iphone"
     },
     {
-      "filename": "80.png",
+      "filename": "80-1.png",
       "size": "40x40",
       "scale": "2x",
       "idiom": "iphone"
     },
     {
-      "filename": "120.png",
+      "filename": "120-1.png",
       "size": "40x40",
       "scale": "3x",
       "idiom": "iphone"
     },
     {
-      "filename": "120-1.png",
+      "filename": "120-2.png",
       "size": "60x60",
       "scale": "2x",
       "idiom": "iphone"
@@ -55,7 +55,7 @@
       "idiom": "ipad"
     },
     {
-      "filename": "40-1.png",
+      "filename": "40-2.png",
       "size": "20x20",
       "scale": "2x",
       "idiom": "ipad"
@@ -73,13 +73,13 @@
       "idiom": "ipad"
     },
     {
-      "filename": "40-1-1.png",
+      "filename": "40.png",
       "size": "40x40",
       "scale": "1x",
       "idiom": "ipad"
     },
     {
-      "filename": "80-1.png",
+      "filename": "80-2.png",
       "size": "40x40",
       "scale": "2x",
       "idiom": "ipad"
@@ -103,7 +103,7 @@
       "idiom": "ipad"
     },
     {
-      "filename": "1024.png",
+      "filename": "easyprices.png",
       "size": "1024x1024",
       "scale": "1x",
       "idiom": "ios-marketing"
