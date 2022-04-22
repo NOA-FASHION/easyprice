@@ -36,25 +36,25 @@ namespace easyprice
             InitializeComponent();
             dollars3.Text = "€";
             titelPicker = "€";
-            //url = "http://data.fixer.io/api/latest";
-            //Key = "9a66f3ad73018c9ac9308ebbfc882899";
-            //devise = "€";
-            //accesKey = "?access_key=" + Key;
-            //URL = url + accesKey;
-            //var Webclient = new WebClient();
-            //var json = Webclient.DownloadString(URL);
-            //Devises = JsonConvert.DeserializeObject<deviseClass>(json);
-            //devisesDollars = Devises.Rates["USD"];
-            //deviseEuros = Devises.Rates["EUR"];
-            //deviseCanadaDollars = Devises.Rates["CAD"];
-            //devisesCny = Devises.Rates["CNY"];
-            url = "https://freecurrencyapi.net/api/v2/latest";
-            Key = "79900380-4d99-11ec-8414-356a4b7a335b&base_currency=EUR";
+            url = "http://data.fixer.io/api/latest";
+            Key = "9a66f3ad73018c9ac9308ebbfc882899";
             devise = "€";
-            accesKey = "?apikey=" + Key;
+            accesKey = "?access_key=" + Key;
             URL = url + accesKey;
+  
+
+            //url = "https://api.currencyapi.com/v3/latest";
+            //Key = "79900380-4d99-11ec-8414-356a4b7a335b&base_currency=EUR";
+            //devise = "€";
+            //accesKey = "?apikey=" + Key;
+            //URL = url + accesKey;
+
+
             var Webclient = new WebClient();
-            var json = Webclient.DownloadString(URL);
+
+            //var HttpClients = new HttpClient();
+            var json = Webclient.DownloadString(new Uri(URL));
+
             Devises1 = JsonConvert.DeserializeObject<devises2Class>(json);
             devisesDollars = Devises1.Data["USD"];
             deviseEuros = Devises1.Data["EUR"];
@@ -64,15 +64,10 @@ namespace easyprice
 
             devisesAUD = Devises1.Data["AUD"];
             devisesCHF = Devises1.Data["CHF"];
-            //devisesCNH = Devises1.Data["CNH"];
             devisesJPY = Devises1.Data["JPY"];
             devisesSEK = Devises1.Data["SEK"];
             devisesNZD = Devises1.Data["NZD"];
         }
-
-
-
-   
 
 
         void OnPickerSelectedIndexChanged2(object sender, EventArgs e)
@@ -1095,10 +1090,6 @@ namespace easyprice
             animation();
 
         }
-
-
-
-
     }
 
 }

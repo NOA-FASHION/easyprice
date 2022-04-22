@@ -175,7 +175,7 @@
                 
                   <local:MyEntry x:Name="prixFournisseur" BackgroundColor="white" WidthRequest="30" FontSize="Default" TextColor="Black" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Keyboard="Telephone" />
 
-                 <Label  TextColor="Black" Margin="10,10,0,10" FontSize="Title"  BackgroundColor="White" Text="Prix" HorizontalOptions="End" VerticalOptions="Center"/>
+                 <Label TextColor="Black" Margin="10,10,0,10" FontSize="Title"  BackgroundColor="White" Text="Prix" HorizontalOptions="End" VerticalOptions="Center"/>
                   
                   <forms1:AnimationView
                         Margin="10,10,20,0"
