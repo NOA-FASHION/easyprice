@@ -41,7 +41,7 @@ namespace easyprice
             devise = "€";
             accesKey = "?access_key=" + Key;
             URL = url + accesKey;
-  
+
 
             //url = "https://api.currencyapi.com/v3/latest";
             //Key = "79900380-4d99-11ec-8414-356a4b7a335b&base_currency=EUR";
@@ -53,20 +53,20 @@ namespace easyprice
             var Webclient = new WebClient();
 
             //var HttpClients = new HttpClient();
-            var json = Webclient.DownloadString(new Uri(URL));
+            //var json = Webclient.DownloadString(new Uri(URL));
+            var json = Webclient.DownloadString(URL);
+            Devises = JsonConvert.DeserializeObject<deviseClass>(json);
+            devisesDollars = Devises.Rates["USD"];
+            deviseEuros = Devises.Rates["EUR"];
+            deviseCanadaDollars = Devises.Rates["CAD"];
+            devisesCny = Devises.Rates["CNY"];
+            devisesGbp = Devises.Rates["GBP"];
 
-            Devises1 = JsonConvert.DeserializeObject<devises2Class>(json);
-            devisesDollars = Devises1.Data["USD"];
-            deviseEuros = Devises1.Data["EUR"];
-            deviseCanadaDollars = Devises1.Data["CAD"];
-            devisesCny = Devises1.Data["CNY"];
-            devisesGbp = Devises1.Data["GBP"];
-
-            devisesAUD = Devises1.Data["AUD"];
-            devisesCHF = Devises1.Data["CHF"];
-            devisesJPY = Devises1.Data["JPY"];
-            devisesSEK = Devises1.Data["SEK"];
-            devisesNZD = Devises1.Data["NZD"];
+            devisesAUD = Devises.Rates["AUD"];
+            devisesCHF = Devises.Rates["CHF"];
+            devisesJPY = Devises.Rates["JPY"];
+            devisesSEK = Devises.Rates["SEK"];
+            devisesNZD = Devises.Rates["NZD"];
         }
 
 
