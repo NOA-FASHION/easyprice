@@ -310,7 +310,9 @@
             />
 
                 
-                  <Button TextColor="White" FontSize="Title" Text="Prix final" Margin="50,0" HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="#c1ab24" Clicked="FinalButtonClick" BorderRadius="20" />
+                  <Button TextColor="White" FontSize="Title" Text="Prix final" Margin="50,0"
+                          HorizontalOptions="FillAndExpand" VerticalOptions="Center"
+                          BackgroundColor="#c1ab24" Clicked="FinalButtonClick" BorderRadius="20" />
                 
                   
              </StackLayout>
