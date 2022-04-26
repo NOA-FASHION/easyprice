@@ -8,27 +8,32 @@
     <ContentPage.Content>
           <ScrollView HorizontalScrollBarVisibility="Always" VerticalScrollBarVisibility="Always">
          <StackLayout  Spacing="0" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-         
+    
             <StackLayout  BackgroundColor="#518faa" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
                 <Image  Margin="0,35,0,0" Source="dollars.png" Aspect="AspectFit"  HeightRequest="100" />
+                  </StackLayout >
+                  <Frame BorderColor="#C4AB4D" Margin="10"
+         CornerRadius="10"
+         HasShadow="True">
+                <StackLayout Orientation="Vertical">
                 <StackLayout Orientation="Horizontal">
                     <Image Margin="10,0,0,0" HeightRequest="20"
                             Source="happy.png"/>
-             <Label Margin="20,5" Text="C'est le moment de continuer l'aventure.  ">
+             <Label FontSize="15" Margin="5,5,5,5" Text="C'est le moment de continuer l'aventure.  ">
 
               </Label>
                 </StackLayout>
                      <StackLayout Orientation="Horizontal">
                     <Image  Margin="10,0,0,0" HeightRequest="20"
                             Source="contact.png"/>
-             <Label Margin="20,5"  Text="Contactez nous : Easytodo972@gmail.com. ">
+             <Label FontSize="15" Margin="5,5,5,5"  Text="Contact : Easytodo972@gmail.com. ">
 
               </Label>
                 </StackLayout>
              
             </StackLayout >
-
-          
+                
+          </Frame>
 
              <StackLayout Orientation="Vertical" BackgroundColor="white">
                    <Image Source="lab_separator.png" Aspect="AspectFill"/>
@@ -67,7 +72,7 @@
                 </controls:TwoCardsAnimationControl.FrontView>
           </controls:TwoCardsAnimationControl>
              </StackLayout>
-              <Label Margin="20,20" FontSize="Medium" Text= "Si vous avez déja eu la chance de l'acheter, et que vous souhaitez l'installer sur un nouveau smartphone, procédez à une restauration d'achat.">
+              <Label Margin="20,20" FontSize="20" Text= "Si vous avez déja eu la chance de l'acheter, et que vous souhaitez l'installer sur un nouveau smartphone, procédez à une restauration d'achat.">
 
               </Label>
                 

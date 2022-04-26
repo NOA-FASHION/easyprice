@@ -17,11 +17,15 @@ namespace easyprice
         }
 
         public async void AchatButtonClicked(object sender, System.EventArgs e)
-        { }
+        {
+            await PurchaseItem();
+        }
         public async void RestaurButtonClicked(object sender, System.EventArgs e)
-        { }
+        {
+            await ReataurPurchased();
+        }
 
-        public async Task<bool> WasItemPurchased(string productId)
+        public async Task<bool> ReataurPurchased()
         {
             var billing = CrossInAppBilling.Current;
             try
@@ -35,15 +39,17 @@ namespace easyprice
                 }
 
                 //check purchases
-                var idsToNotFinish = new List<string>(new[] { "myconsumable" });
+                
 
-                var purchases = await billing.GetPurchasesAsync(ItemType.InAppPurchase, idsToNotFinish);
+                var purchases = await billing.GetPurchasesAsync(ItemType.InAppPurchase);
 
                 //check for null just in case
                 if (purchases?.Any(p => p.ProductId == productId) ?? false)
                 {
                     //Purchase restored
-                    // if on Android may be good to 
+                    // if on Android may be good to
+
+                    await DisplayAlert("Bravo", " Achat restauré avec succès", "Cancel");
                     return true;
                 }
                 else
@@ -55,10 +61,12 @@ namespace easyprice
             catch (InAppBillingPurchaseException purchaseEx)
             {
                 //Billing Exception handle this based on the type
+                await DisplayAlert("Désolé", $"Méssage d'erreur Code: {purchaseEx.Message}", "Cancel");
                 Debug.WriteLine("Error: " + purchaseEx);
             }
             catch (Exception ex)
             {
+                await DisplayAlert("Désolé", $"Méssage d'erreur Code: {ex.Message}", "Cancel");
                 //Something has gone wrong
             }
             finally
@@ -68,7 +76,10 @@ namespace easyprice
 
             return false;
         }
-        public async Task<bool> PurchaseItem(string productId)
+
+
+
+        public async Task PurchaseItem()
         {
             var billing = CrossInAppBilling.Current;
             try
@@ -76,12 +87,12 @@ namespace easyprice
                 var connected = await billing.ConnectAsync();
                 if (!connected)
                 {
-                    //we are offline or can't connect, don't try to purchase
-                    return false;
+                    await DisplayAlert("Désolé", " Pas de connexion","Cancel");
+                    return ;
                 }
 
                 //check purchases
-                var purchase = await billing.PurchaseAsync(productId, ItemType.InAppPurchase, payload);
+                var purchase = await billing.PurchaseAsync(productId, ItemType.InAppPurchase);
 
                 //possibility that a null came through.
                 if (purchase == null)
@@ -90,21 +101,25 @@ namespace easyprice
                 }
                 else if (purchase.State == PurchaseState.Purchased)
                 {
+                    await DisplayAlert("Bravo", " Achat effectué avec succès", "Cancel");
                     //purchased!
                     if (Device.RuntimePlatform == Device.Android)
                     {
                         // Must call AcknowledgePurchaseAsync else the purchase will be refunded
+                        await CrossInAppBilling.Current.AcknowledgePurchaseAsync(purchase.PurchaseToken);
                     }
                 }
             }
             catch (InAppBillingPurchaseException purchaseEx)
             {
                 //Billing Exception handle this based on the type
+                await DisplayAlert("Désolé", $"Méssage d'erreur Code: {purchaseEx.Message}", "Cancel");
                 Debug.WriteLine("Error: " + purchaseEx);
             }
             catch (Exception ex)
             {
                 //Something else has gone wrong, log it
+                await DisplayAlert("Désolé", $"Méssage d'erreur Code: {ex.Message}", "Cancel");
                 Debug.WriteLine("Issue connecting: " + ex);
             }
             finally
