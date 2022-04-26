@@ -143,6 +143,8 @@
     <BundleResource Include="un.png" />
     <BundleResource Include="deux.png" />
     <BundleResource Include="trois.png" />
+    <BundleResource Include="happy.png" />
+    <BundleResource Include="contact.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\easyprice\easyprice.projitems" Label="Shared" />
