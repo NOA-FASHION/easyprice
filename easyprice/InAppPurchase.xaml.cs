@@ -10,7 +10,7 @@ namespace easyprice
 {
     public partial class InAppPurchase : ContentPage
     {
-        String productId = "";
+        String productId = "in_app_purchase_price";
         public InAppPurchase()
         {
             InitializeComponent();
@@ -49,24 +49,25 @@ namespace easyprice
                     //Purchase restored
                     // if on Android may be good to
 
-                    await DisplayAlert("Bravo", " Achat restauré avec succès", "Cancel");
+                    await DisplayAlert("Bravo", " Achat restauré avec succès", "Ok");
                     return true;
                 }
                 else
                 {
                     //no purchases found
+                    await DisplayAlert("Dommage", " Vous n'avez pas encore acheté cet article", "Ok");
                     return false;
                 }
             }
             catch (InAppBillingPurchaseException purchaseEx)
             {
                 //Billing Exception handle this based on the type
-                await DisplayAlert("Désolé", $"Méssage d'erreur Code: {purchaseEx.Message}", "Cancel");
+                await DisplayAlert("Désolé", $"Méssage d'erreur Code: {purchaseEx.Message}", "Ok");
                 Debug.WriteLine("Error: " + purchaseEx);
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Désolé", $"Méssage d'erreur Code: {ex.Message}", "Cancel");
+                await DisplayAlert("Désolé", $"Méssage d'erreur Code: {ex.Message}", "Ok");
                 //Something has gone wrong
             }
             finally
@@ -87,7 +88,7 @@ namespace easyprice
                 var connected = await billing.ConnectAsync();
                 if (!connected)
                 {
-                    await DisplayAlert("Désolé", " Pas de connexion","Cancel");
+                    await DisplayAlert("Désolé", " Pas de connexion","Ok");
                     return ;
                 }
 
@@ -101,7 +102,7 @@ namespace easyprice
                 }
                 else if (purchase.State == PurchaseState.Purchased)
                 {
-                    await DisplayAlert("Bravo", " Achat effectué avec succès", "Cancel");
+                    await DisplayAlert("Bravo", " Achat effectué avec succès", "Ok");
                     //purchased!
                     if (Device.RuntimePlatform == Device.Android)
                     {
@@ -113,13 +114,13 @@ namespace easyprice
             catch (InAppBillingPurchaseException purchaseEx)
             {
                 //Billing Exception handle this based on the type
-                await DisplayAlert("Désolé", $"Méssage d'erreur Code: {purchaseEx.Message}", "Cancel");
+                await DisplayAlert("Désolé", $"Méssage d'erreur Code: {purchaseEx.Message}", "Ok");
                 Debug.WriteLine("Error: " + purchaseEx);
             }
             catch (Exception ex)
             {
                 //Something else has gone wrong, log it
-                await DisplayAlert("Désolé", $"Méssage d'erreur Code: {ex.Message}", "Cancel");
+                await DisplayAlert("Désolé", $"Méssage d'erreur Code: {ex.Message}", "Ok");
                 Debug.WriteLine("Issue connecting: " + ex);
             }
             finally
