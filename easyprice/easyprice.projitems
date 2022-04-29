@@ -52,5 +52,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)InAppPurchase.xaml.cs">
       <DependentUpon>InAppPurchase.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)deviseclassCurrencyFreacks.cs" />
   </ItemGroup>
 </Project>

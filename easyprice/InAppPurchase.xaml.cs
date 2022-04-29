@@ -14,6 +14,7 @@ namespace easyprice
         public InAppPurchase()
         {
             InitializeComponent();
+            validPurch.IsVisible = false;
         }
 
         public async void AchatButtonClicked(object sender, System.EventArgs e)
@@ -50,6 +51,7 @@ namespace easyprice
                     // if on Android may be good to
 
                     await DisplayAlert("Bravo", " Achat restauré avec succès", "Ok");
+                    validPurch.IsVisible = true;
                     return true;
                 }
                 else
@@ -109,6 +111,7 @@ namespace easyprice
                         // Must call AcknowledgePurchaseAsync else the purchase will be refunded
                         await CrossInAppBilling.Current.AcknowledgePurchaseAsync(purchase.PurchaseToken);
                     }
+                    validPurch.IsVisible = true;
                 }
             }
             catch (InAppBillingPurchaseException purchaseEx)
@@ -130,5 +133,16 @@ namespace easyprice
 
 
         }
+        public async void validPurchase(object sender, System.EventArgs e)
+        {
+            Application.Current.Properties["activation"] = "true";
+            await Application.Current.SavePropertiesAsync();
+            await this.Navigation.PushAsync(new MyTabbedPage());
+
+            Navigation.RemovePage(this);
+
+        }
+
+        
     }
 }

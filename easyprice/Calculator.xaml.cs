@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 
@@ -29,44 +30,242 @@ namespace easyprice
         double prixFinalDe = 0;
         string devise;
         string coeffMultArt;
-        deviseClass Devises = new deviseClass();
+
+        deviseclassCurrencyFreacks Devises = new deviseclassCurrencyFreacks();
         devises2Class Devises1 = new devises2Class();
         public Calculator()
         {
             InitializeComponent();
+            activeDeviseAsync();
+            activaAppAsync();
+           
             dollars3.Text = "€";
             titelPicker = "€";
-            url = "http://data.fixer.io/api/latest";
-            Key = "9a66f3ad73018c9ac9308ebbfc882899";
-            devise = "€";
-            accesKey = "?access_key=" + Key;
-            URL = url + accesKey;
+
+            //url = "http://data.fixer.io/api/latest";
+            //Key = "9a66f3ad73018c9ac9308ebbfc882899";
+            //devise = "€";
+            //accesKey = "?access_key=" + Key;
+            //URL = url + accesKey;
 
 
-            //url = "https://api.currencyapi.com/v3/latest";
-            //Key = "79900380-4d99-11ec-8414-356a4b7a335b&base_currency=EUR";
+            ////url = "https://api.currencyapi.com/v3/latest";
+            ////Key = "79900380-4d99-11ec-8414-356a4b7a335b&base_currency=EUR";
+            ////devise = "€";
+            ////accesKey = "?apikey=" + Key;
+            ////URL = url + accesKey;
+            ////leubon
+            ///
+            //url = "https://api.currencyfreaks.com/latest";
+            //Key = "7fd3f6d0a0e34a6899cb5c32b08cbdad";
             //devise = "€";
             //accesKey = "?apikey=" + Key;
             //URL = url + accesKey;
-            //leubon
 
-            var Webclient = new WebClient();
+            //var Webclient = new WebClient();
 
-            //var HttpClients = new HttpClient();
-            //var json = Webclient.DownloadString(new Uri(URL));
-            var json = Webclient.DownloadString(URL);
-            Devises = JsonConvert.DeserializeObject<deviseClass>(json);
-            devisesDollars = Devises.Rates["USD"];
-            deviseEuros = Devises.Rates["EUR"];
-            deviseCanadaDollars = Devises.Rates["CAD"];
-            devisesCny = Devises.Rates["CNY"];
-            devisesGbp = Devises.Rates["GBP"];
+            //var json = Webclient.DownloadString(URL);
+            //Devises = JsonConvert.DeserializeObject<deviseclassCurrencyFreacks>(json);
 
-            devisesAUD = Devises.Rates["AUD"];
-            devisesCHF = Devises.Rates["CHF"];
-            devisesJPY = Devises.Rates["JPY"];
-            devisesSEK = Devises.Rates["SEK"];
-            devisesNZD = Devises.Rates["NZD"];
+            //var Webclient = new WebClient();
+            //url = "http://api.exchangeratesapi.io/v1/latest";
+            //Key = "af3ec8193ff38a0758849154aa1593cf";
+            //devise = "€";
+            //accesKey = "?access_key=" + Key;
+            //URL = url + accesKey;
+            //var json = Webclient.DownloadString(URL);
+            //Devises = JsonConvert.DeserializeObject<deviseclassCurrencyFreacks>(json);
+
+            //devisesDollars = Devises.Rates["USD"];
+            //deviseEuros = Devises.Rates["EUR"];
+            //deviseCanadaDollars = Devises.Rates["CAD"];
+            //devisesCny = Devises.Rates["CNY"];
+            //devisesGbp = Devises.Rates["GBP"];
+
+            //devisesAUD = Devises.Rates["AUD"];
+            //devisesCHF = Devises.Rates["CHF"];
+            //devisesJPY = Devises.Rates["JPY"];
+            //devisesSEK = Devises.Rates["SEK"];
+            //devisesNZD = Devises.Rates["NZD"];
+
+        }
+        async Task activaAppAsync()
+        {
+
+            if (!Application.Current.Properties.ContainsKey("dateDaysDevise"))
+            {
+                var Webclient = new WebClient();
+                url = "http://api.exchangeratesapi.io/v1/latest";
+                Key = "af3ec8193ff38a0758849154aa1593cf";
+                devise = "€";
+                accesKey = "?access_key=" + Key;
+                URL = url + accesKey;
+                var json = Webclient.DownloadString(URL);
+                Devises = JsonConvert.DeserializeObject<deviseclassCurrencyFreacks>(json);
+                Application.Current.Properties["dateMonthDevise"] = DateTime.Now.ToString("MM");
+                await Application.Current.SavePropertiesAsync();
+
+                Application.Current.Properties["dateDaysDevise"] = DateTime.Now.ToString("dd");
+                await Application.Current.SavePropertiesAsync();
+
+
+
+                Application.Current.Properties["devisesDollars"] = Devises.Rates["USD"].ToString();
+                await Application.Current.SavePropertiesAsync();
+
+                Application.Current.Properties["deviseEuros"] = Devises.Rates["EUR"].ToString();
+                await Application.Current.SavePropertiesAsync();
+                Application.Current.Properties["deviseCanadaDollars"] = Devises.Rates["CAD"].ToString();
+                await Application.Current.SavePropertiesAsync();
+
+                Application.Current.Properties["devisesCny"] = Devises.Rates["CNY"].ToString();
+                await Application.Current.SavePropertiesAsync();
+
+                Application.Current.Properties["devisesGbp"] = Devises.Rates["GBP"].ToString();
+                await Application.Current.SavePropertiesAsync();
+
+                Application.Current.Properties["devisesAUD"] = Devises.Rates["AUD"].ToString();
+                await Application.Current.SavePropertiesAsync();
+
+                Application.Current.Properties["devisesCHF"] = Devises.Rates["CHF"].ToString();
+                await Application.Current.SavePropertiesAsync();
+
+                Application.Current.Properties["devisesJPY"] = Devises.Rates["JPY"].ToString();
+                await Application.Current.SavePropertiesAsync();
+
+                Application.Current.Properties["devisesSEK"] = Devises.Rates["SEK"].ToString();
+                await Application.Current.SavePropertiesAsync();
+
+                Application.Current.Properties["devisesNZD"] = Devises.Rates["NZD"].ToString();
+                await Application.Current.SavePropertiesAsync();
+
+
+                validDevise();
+            }
+
+        }
+
+
+        void validDevise()
+        {
+
+            if (Application.Current.Properties.ContainsKey("devisesDollars"))
+            {
+                var result = Application.Current.Properties["devisesDollars"].ToString();
+
+                devisesDollars = double.Parse(result);
+            }
+            if (Application.Current.Properties.ContainsKey("deviseEuros"))
+            {
+                var result = Application.Current.Properties["deviseEuros"].ToString();
+                deviseEuros = double.Parse(result);
+            }
+            if (Application.Current.Properties.ContainsKey("deviseCanadaDollars"))
+            {
+                var result = Application.Current.Properties["deviseCanadaDollars"].ToString();
+                deviseCanadaDollars = double.Parse(result);
+            }
+            if (Application.Current.Properties.ContainsKey("devisesCny"))
+            {
+                var result = Application.Current.Properties["devisesCny"].ToString();
+                devisesCny = double.Parse(result);
+            }
+            if (Application.Current.Properties.ContainsKey("devisesGbp"))
+            {
+                var result = Application.Current.Properties["devisesGbp"].ToString();
+                devisesGbp = double.Parse(result);
+            }
+            if (Application.Current.Properties.ContainsKey("devisesAUD"))
+            {
+                var result = Application.Current.Properties["devisesAUD"].ToString();
+                devisesAUD = double.Parse(result);
+            }
+            if (Application.Current.Properties.ContainsKey("devisesCHF"))
+            {
+                var result = Application.Current.Properties["devisesCHF"].ToString();
+                devisesCHF = double.Parse(result);
+            }
+            if (Application.Current.Properties.ContainsKey("devisesJPY"))
+            {
+                var result = Application.Current.Properties["devisesJPY"].ToString();
+                devisesJPY = double.Parse(result);
+            }
+            if (Application.Current.Properties.ContainsKey("devisesSEK"))
+            {
+                var result = Application.Current.Properties["devisesSEK"].ToString();
+                devisesSEK = double.Parse(result);
+            }
+            if (Application.Current.Properties.ContainsKey("devisesNZD"))
+            {
+                var result = Application.Current.Properties["devisesNZD"].ToString();
+                devisesNZD = double.Parse(result);
+            }
+
+        }
+
+        async Task activeDeviseAsync()
+        {
+
+
+            if (Application.Current.Properties.ContainsKey("dateDaysDevise") || Application.Current.Properties.ContainsKey("dateMonthDevise"))
+            {
+                String dayNow = DateTime.Now.ToString("dd");
+                String monthNow = DateTime.Now.ToString("MM");
+
+                var result = Application.Current.Properties["dateDaysDevise"].ToString();
+                var result2 = Application.Current.Properties["dateMonthDevise"].ToString();
+                if ((int.Parse(dayNow) != (int.Parse(result))) || (int.Parse(monthNow) != (int.Parse(result2))))
+                {
+                    var Webclient = new WebClient();
+                    url = "http://api.exchangeratesapi.io/v1/latest";
+                    Key = "af3ec8193ff38a0758849154aa1593cf";
+                    devise = "€";
+                    accesKey = "?access_key=" + Key;
+                    URL = url + accesKey;
+                    var json = Webclient.DownloadString(URL);
+                    Devises = JsonConvert.DeserializeObject<deviseclassCurrencyFreacks>(json);
+                    Application.Current.Properties["dateMonthDevise"] = DateTime.Now.ToString("MM");
+                    await Application.Current.SavePropertiesAsync();
+
+                    Application.Current.Properties["dateDaysDevise"] = DateTime.Now.ToString("dd");
+                    await Application.Current.SavePropertiesAsync();
+
+
+
+                    Application.Current.Properties["devisesDollars"] = Devises.Rates["USD"].ToString();
+                    await Application.Current.SavePropertiesAsync();
+
+                    Application.Current.Properties["deviseEuros"] = Devises.Rates["EUR"].ToString();
+                    await Application.Current.SavePropertiesAsync();
+                    Application.Current.Properties["deviseCanadaDollars"] = Devises.Rates["CAD"].ToString();
+                    await Application.Current.SavePropertiesAsync();
+
+                    Application.Current.Properties["devisesCny"] = Devises.Rates["CNY"].ToString();
+                    await Application.Current.SavePropertiesAsync();
+
+                    Application.Current.Properties["devisesGbp"] = Devises.Rates["GBP"].ToString();
+                    await Application.Current.SavePropertiesAsync();
+
+                    Application.Current.Properties["devisesAUD"] = Devises.Rates["AUD"].ToString();
+                    await Application.Current.SavePropertiesAsync();
+
+                    Application.Current.Properties["devisesCHF"] = Devises.Rates["CHF"].ToString();
+                    await Application.Current.SavePropertiesAsync();
+
+                    Application.Current.Properties["devisesJPY"] = Devises.Rates["JPY"].ToString();
+                    await Application.Current.SavePropertiesAsync();
+
+                    Application.Current.Properties["devisesSEK"] = Devises.Rates["SEK"].ToString();
+                    await Application.Current.SavePropertiesAsync();
+
+                    Application.Current.Properties["devisesNZD"] = Devises.Rates["NZD"].ToString();
+                    await Application.Current.SavePropertiesAsync();
+                    validDevise();
+
+                }
+            }
+
+
         }
 
 

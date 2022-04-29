@@ -15,10 +15,12 @@
                     <FormattedString.Spans>
                         <Span Text="Learn more at "/>
                         <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
+
                     </FormattedString.Spans>
                 </FormattedString>
             </Label.FormattedText>
         </Label>
+        <Label x:Name="test"></Label>
     </StackLayout>
 
 </ContentPage>

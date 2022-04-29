@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-
+using Newtonsoft.Json;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,10 +13,18 @@ namespace easyprice
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MyTabbedPage : TabbedPage
     {
+        deviseclassCurrencyFreacks Devises = new deviseclassCurrencyFreacks();
+        string accesKey;
+        string url;
+        string devise;
+        string URL;
+        string Key;
         public MyTabbedPage()
         {
             InitializeComponent();
+            //activaAppAsync();
             activaApp();
+
         }
         void activaApp()
         {
@@ -46,5 +55,7 @@ namespace easyprice
         }
 
       
+        
+
     }
 }
