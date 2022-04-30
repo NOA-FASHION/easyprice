@@ -108,8 +108,6 @@ namespace easyprice
                 Application.Current.Properties["dateDaysDevise"] = DateTime.Now.ToString("dd");
                 await Application.Current.SavePropertiesAsync();
 
-
-
                 Application.Current.Properties["devisesDollars"] = Devises.Rates["USD"].ToString();
                 await Application.Current.SavePropertiesAsync();
 
@@ -142,6 +140,7 @@ namespace easyprice
 
                 validDevise();
             }
+         
 
         }
 
@@ -205,8 +204,6 @@ namespace easyprice
 
         async Task activeDeviseAsync()
         {
-
-
             if (Application.Current.Properties.ContainsKey("dateDaysDevise") || Application.Current.Properties.ContainsKey("dateMonthDevise"))
             {
                 String dayNow = DateTime.Now.ToString("dd");
@@ -229,8 +226,6 @@ namespace easyprice
 
                     Application.Current.Properties["dateDaysDevise"] = DateTime.Now.ToString("dd");
                     await Application.Current.SavePropertiesAsync();
-
-
 
                     Application.Current.Properties["devisesDollars"] = Devises.Rates["USD"].ToString();
                     await Application.Current.SavePropertiesAsync();
@@ -262,6 +257,10 @@ namespace easyprice
                     await Application.Current.SavePropertiesAsync();
                     validDevise();
 
+                }
+                else
+                {
+                    validDevise();
                 }
             }
 
