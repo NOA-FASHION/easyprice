@@ -14,11 +14,11 @@ namespace easyprice
     public partial class MyTabbedPage : TabbedPage
     {
         deviseclassCurrencyFreacks Devises = new deviseclassCurrencyFreacks();
-        string accesKey;
-        string url;
-        string devise;
-        string URL;
-        string Key;
+        //string accesKey;
+        //string url;
+        //string devise;
+        //string URL;
+        //string Key;
         public MyTabbedPage()
         {
             InitializeComponent();
@@ -41,7 +41,7 @@ namespace easyprice
                         String dateActivation = Application.Current.Properties["dateDays"].ToString();
                         String dayNow = DateTime.Now.ToString("dd");
                         String monthNow = DateTime.Now.ToString("MM");
-                        if ((int.Parse(dayNow) > (int.Parse(dateActivation) + 1)) || (int.Parse(monthNow) > (int.Parse(dateActivation1))))
+                        if ((int.Parse(dayNow) > (int.Parse(dateActivation) + 1)) && (int.Parse(monthNow) > (int.Parse(dateActivation1))))
                         {
                             Application.Current.Properties["activation"] = "false";
                             Application.Current.SavePropertiesAsync();

@@ -20,7 +20,7 @@ namespace easyprice
         double devisesGbp;
         double devisesAUD;
         double devisesCHF;
-        double devisesCNH;
+        //double devisesCNH;
         double devisesJPY;
         double devisesSEK;
         double devisesNZD;
@@ -36,9 +36,14 @@ namespace easyprice
         public Calculator()
         {
             InitializeComponent();
+
             activeDeviseAsync();
+
+
             activaAppAsync();
-           
+
+
+
             dollars3.Text = "€";
             titelPicker = "€";
 
@@ -89,7 +94,7 @@ namespace easyprice
             //devisesNZD = Devises.Rates["NZD"];
 
         }
-        async Task activaAppAsync()
+        void activaAppAsync()
         {
 
             if (!Application.Current.Properties.ContainsKey("dateDaysDevise"))
@@ -103,39 +108,39 @@ namespace easyprice
                 var json = Webclient.DownloadString(URL);
                 Devises = JsonConvert.DeserializeObject<deviseclassCurrencyFreacks>(json);
                 Application.Current.Properties["dateMonthDevise"] = DateTime.Now.ToString("MM");
-                await Application.Current.SavePropertiesAsync();
+                 //Application.Current.SavePropertiesAsync();
 
                 Application.Current.Properties["dateDaysDevise"] = DateTime.Now.ToString("dd");
-                await Application.Current.SavePropertiesAsync();
+                 //Application.Current.SavePropertiesAsync();
 
                 Application.Current.Properties["devisesDollars"] = Devises.Rates["USD"].ToString();
-                await Application.Current.SavePropertiesAsync();
+                 //Application.Current.SavePropertiesAsync();
 
                 Application.Current.Properties["deviseEuros"] = Devises.Rates["EUR"].ToString();
-                await Application.Current.SavePropertiesAsync();
+                 //Application.Current.SavePropertiesAsync();
                 Application.Current.Properties["deviseCanadaDollars"] = Devises.Rates["CAD"].ToString();
-                await Application.Current.SavePropertiesAsync();
+                 //Application.Current.SavePropertiesAsync();
 
                 Application.Current.Properties["devisesCny"] = Devises.Rates["CNY"].ToString();
-                await Application.Current.SavePropertiesAsync();
+                 //Application.Current.SavePropertiesAsync();
 
                 Application.Current.Properties["devisesGbp"] = Devises.Rates["GBP"].ToString();
-                await Application.Current.SavePropertiesAsync();
+                 //Application.Current.SavePropertiesAsync();
 
                 Application.Current.Properties["devisesAUD"] = Devises.Rates["AUD"].ToString();
-                await Application.Current.SavePropertiesAsync();
+                 //Application.Current.SavePropertiesAsync();
 
                 Application.Current.Properties["devisesCHF"] = Devises.Rates["CHF"].ToString();
-                await Application.Current.SavePropertiesAsync();
+                 //Application.Current.SavePropertiesAsync();
 
                 Application.Current.Properties["devisesJPY"] = Devises.Rates["JPY"].ToString();
-                await Application.Current.SavePropertiesAsync();
+                 //Application.Current.SavePropertiesAsync();
 
                 Application.Current.Properties["devisesSEK"] = Devises.Rates["SEK"].ToString();
-                await Application.Current.SavePropertiesAsync();
+                 //Application.Current.SavePropertiesAsync();
 
                 Application.Current.Properties["devisesNZD"] = Devises.Rates["NZD"].ToString();
-                await Application.Current.SavePropertiesAsync();
+                 Application.Current.SavePropertiesAsync();
 
 
                 validDevise();
@@ -202,7 +207,7 @@ namespace easyprice
 
         }
 
-        async Task activeDeviseAsync()
+        void activeDeviseAsync()
         {
             if (Application.Current.Properties.ContainsKey("dateDaysDevise") || Application.Current.Properties.ContainsKey("dateMonthDevise"))
             {
@@ -222,39 +227,39 @@ namespace easyprice
                     var json = Webclient.DownloadString(URL);
                     Devises = JsonConvert.DeserializeObject<deviseclassCurrencyFreacks>(json);
                     Application.Current.Properties["dateMonthDevise"] = DateTime.Now.ToString("MM");
-                    await Application.Current.SavePropertiesAsync();
+                     //Application.Current.SavePropertiesAsync();
 
                     Application.Current.Properties["dateDaysDevise"] = DateTime.Now.ToString("dd");
-                    await Application.Current.SavePropertiesAsync();
+                     //Application.Current.SavePropertiesAsync();
 
                     Application.Current.Properties["devisesDollars"] = Devises.Rates["USD"].ToString();
-                    await Application.Current.SavePropertiesAsync();
+                     //Application.Current.SavePropertiesAsync();
 
                     Application.Current.Properties["deviseEuros"] = Devises.Rates["EUR"].ToString();
-                    await Application.Current.SavePropertiesAsync();
+                     //Application.Current.SavePropertiesAsync();
                     Application.Current.Properties["deviseCanadaDollars"] = Devises.Rates["CAD"].ToString();
-                    await Application.Current.SavePropertiesAsync();
+                     //Application.Current.SavePropertiesAsync();
 
                     Application.Current.Properties["devisesCny"] = Devises.Rates["CNY"].ToString();
-                    await Application.Current.SavePropertiesAsync();
+                     //Application.Current.SavePropertiesAsync();
 
                     Application.Current.Properties["devisesGbp"] = Devises.Rates["GBP"].ToString();
-                    await Application.Current.SavePropertiesAsync();
+                     //Application.Current.SavePropertiesAsync();
 
                     Application.Current.Properties["devisesAUD"] = Devises.Rates["AUD"].ToString();
-                    await Application.Current.SavePropertiesAsync();
+                     //Application.Current.SavePropertiesAsync();
 
                     Application.Current.Properties["devisesCHF"] = Devises.Rates["CHF"].ToString();
-                    await Application.Current.SavePropertiesAsync();
+                     //Application.Current.SavePropertiesAsync();
 
                     Application.Current.Properties["devisesJPY"] = Devises.Rates["JPY"].ToString();
-                    await Application.Current.SavePropertiesAsync();
+                     //Application.Current.SavePropertiesAsync();
 
                     Application.Current.Properties["devisesSEK"] = Devises.Rates["SEK"].ToString();
-                    await Application.Current.SavePropertiesAsync();
+                     //Application.Current.SavePropertiesAsync();
 
                     Application.Current.Properties["devisesNZD"] = Devises.Rates["NZD"].ToString();
-                    await Application.Current.SavePropertiesAsync();
+                     Application.Current.SavePropertiesAsync();
                     validDevise();
 
                 }
@@ -428,15 +433,6 @@ namespace easyprice
                     devise = valeurPicker;
                     titelPicker = "$N";
                 }
-
-
-
-
-
-
-
-
-
 
 
                 else if (valeurPicker == "€" && titelPicker == "$C")
