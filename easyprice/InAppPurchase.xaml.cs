@@ -11,10 +11,11 @@ namespace easyprice
     public partial class InAppPurchase : ContentPage
     {
         String productId = "in_app_purchase_price";
+        //InAppBillingPurchase purchase;
         public InAppPurchase()
         {
             InitializeComponent();
-            validPurch.IsVisible = false;
+            validPurch.IsVisible = true;
         }
 
         public async void AchatButtonClicked(object sender, System.EventArgs e)
@@ -96,7 +97,9 @@ namespace easyprice
 
                 //check purchases
                 var purchase = await billing.PurchaseAsync(productId, ItemType.InAppPurchase);
-
+               
+               
+                
                 //possibility that a null came through.
                 if (purchase == null)
                 {
@@ -104,13 +107,14 @@ namespace easyprice
                 }
                 else if (purchase.State == PurchaseState.Purchased)
                 {
-                    await DisplayAlert("Bravo", " Achat effectué avec succès", "Ok");
+                   
                     //purchased!
                     if (Device.RuntimePlatform == Device.Android)
                     {
                         // Must call AcknowledgePurchaseAsync else the purchase will be refunded
                         await CrossInAppBilling.Current.AcknowledgePurchaseAsync(purchase.PurchaseToken);
                     }
+                    await DisplayAlert("Bravo", " Achat effectué avec succès", "Ok");
                     validPurch.IsVisible = true;
                 }
             }
@@ -139,10 +143,9 @@ namespace easyprice
             await Application.Current.SavePropertiesAsync();
             await this.Navigation.PushAsync(new MyTabbedPage());
 
-            Navigation.RemovePage(this);
+            //Navigation.RemovePage(this);
 
         }
-
-        
+    
     }
 }

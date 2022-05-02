@@ -39,13 +39,13 @@
 
                  <Button x:Name="validPurch"  Clicked="validPurchase" HorizontalOptions="CenterAndExpand" VerticalOptions="Fill" Text="GO">              
             <Button.WidthRequest>
-              <OnIdiom x:TypeArguments="x:Double" Phone="60" Tablet="80" />
+              <OnIdiom x:TypeArguments="x:Double" Phone="80" Tablet="80" />
             </Button.WidthRequest>
             <Button.HeightRequest>
-              <OnIdiom x:TypeArguments="x:Double" Phone="60" Tablet="80" />
+              <OnIdiom x:TypeArguments="x:Double" Phone="80" Tablet="80" />
             </Button.HeightRequest>
             <Button.BorderRadius>
-              <OnIdiom x:TypeArguments="x:Int32" Phone="30" Tablet="40" />
+              <OnIdiom x:TypeArguments="x:Int32" Phone="40" Tablet="40" />
             </Button.BorderRadius>
             </Button>
                   <controls:TwoCardsAnimationControl>
@@ -83,7 +83,8 @@
                 </controls:TwoCardsAnimationControl.FrontView>
           </controls:TwoCardsAnimationControl>
              </StackLayout>
-              <Label Margin="20,20" FontSize="20" Text= "Si vous avez déja eu la chance de l'acheter, et que vous souhaitez l'installer sur un nouveau smartphone, procédez à une restauration d'achat.">
+              <Label Margin="20,20" FontSize="15" Text= "Si vous avez déja eu la chance de l'acheter,
+                     et que vous souhaitez l'installer sur un nouveau smartphone, procédez à une restauration d'achat.">
 
               </Label>
                 
