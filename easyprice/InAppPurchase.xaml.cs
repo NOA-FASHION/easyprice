@@ -15,7 +15,7 @@ namespace easyprice
         public InAppPurchase()
         {
             InitializeComponent();
-            validPurch.IsVisible = true;
+            validPurch.IsVisible = false;
         }
 
         public async void AchatButtonClicked(object sender, System.EventArgs e)

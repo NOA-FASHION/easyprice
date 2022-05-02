@@ -37,7 +37,8 @@
              <StackLayout Orientation="Vertical" BackgroundColor="white">
                    <Image Source="lab_separator.png" Aspect="AspectFill"/>
 
-                 <Button x:Name="validPurch"  Clicked="validPurchase" HorizontalOptions="CenterAndExpand" VerticalOptions="Fill" Text="GO">              
+                 <Button x:Name="validPurch"  Clicked="validPurchase" BackgroundColor="#518faa"
+                         HorizontalOptions="CenterAndExpand" VerticalOptions="Fill" TextColor="black" Text="GO">              
             <Button.WidthRequest>
               <OnIdiom x:TypeArguments="x:Double" Phone="80" Tablet="80" />
             </Button.WidthRequest>
@@ -52,15 +53,16 @@
                 <controls:TwoCardsAnimationControl.BackView>
                     <StackLayout Orientation="Vertical">
                           <Image HeightRequest="200"
-                            Source="un.png"/>
+                            Source="trois.png"/>
 
                         <Button Margin="10,10" 
-                        BackgroundColor="#c1ab24" Text="Acheter"
+                        BackgroundColor="#c1ab24" Text="Valider"
                         WidthRequest="100"
                             HeightRequest="50"
                           
                         HorizontalOptions="Center"
-                                Clicked="AchatButtonClicked"
+                                 Clicked="RestaurButtonClicked"
+                                
                         BorderRadius="20" />
                     </StackLayout>
                    
@@ -69,15 +71,15 @@
                     <controls:TwoCardsAnimationControl.FrontView>
                             <StackLayout Orientation="Vertical">
                           <Image HeightRequest="200"
-                            Source="trois.png"/>
+                            Source="un.png"/>
 
                         <Button Margin="10,10" 
-                        BackgroundColor="#c1ab24" Text="Valider"
+                        BackgroundColor="#c1ab24" Text="Acheter"
                         WidthRequest="100"
                             HeightRequest="50"
                            
                         HorizontalOptions="Center"
-                                Clicked="RestaurButtonClicked"
+                               Clicked="AchatButtonClicked"
                         BorderRadius="20" />
                     </StackLayout>
                 </controls:TwoCardsAnimationControl.FrontView>
