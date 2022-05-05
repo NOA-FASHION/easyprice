@@ -49,13 +49,15 @@
               <OnIdiom x:TypeArguments="x:Int32" Phone="40" Tablet="40" />
             </Button.BorderRadius>
             </Button>
-                  <controls:TwoCardsAnimationControl>
-                <controls:TwoCardsAnimationControl.BackView>
-                    <StackLayout Orientation="Vertical">
-                          <Image HeightRequest="200"
+              
+                    <StackLayout Orientation="Vertical" >
+                         <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer  Tapped="RestaurButtonClicked"/>
+              </StackLayout.GestureRecognizers>
+                          <Image HeightRequest="200" Margin="10,10,10,10" 
                             Source="trois.png"/>
 
-                        <Button Margin="10,10" 
+                        <!--<Button Margin="10,0,10,10" 
                         BackgroundColor="#c1ab24" Text="Valider"
                         WidthRequest="100"
                             HeightRequest="50"
@@ -63,27 +65,27 @@
                         HorizontalOptions="Center"
                                  Clicked="RestaurButtonClicked"
                                 
-                        BorderRadius="20" />
+                        BorderRadius="20" />-->
                     </StackLayout>
                    
-                </controls:TwoCardsAnimationControl.BackView>
-
-                    <controls:TwoCardsAnimationControl.FrontView>
+             
                             <StackLayout Orientation="Vertical">
-                          <Image HeightRequest="200"
+                                    <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer  Tapped="AchatButtonClicked"/>
+              </StackLayout.GestureRecognizers>
+                          <Image HeightRequest="200" Margin="10,10,10,15" 
                             Source="un.png"/>
 
-                        <Button Margin="10,10" 
+                        <!--<Button Margin="10,0,10,10" 
                         BackgroundColor="#c1ab24" Text="Acheter"
                         WidthRequest="100"
                             HeightRequest="50"
                            
                         HorizontalOptions="Center"
                                Clicked="AchatButtonClicked"
-                        BorderRadius="20" />
+                        BorderRadius="20" />-->
                     </StackLayout>
-                </controls:TwoCardsAnimationControl.FrontView>
-          </controls:TwoCardsAnimationControl>
+             
              </StackLayout>
               <Label Margin="20,20" FontSize="15" Text= "Si vous avez déja eu la chance de l'acheter,
                      et que vous souhaitez l'installer sur un nouveau smartphone, procédez à une restauration d'achat.">
