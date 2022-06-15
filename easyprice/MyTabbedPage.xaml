@@ -14,6 +14,8 @@
     <views:Calculator  Icon="dollar3.png" BackgroundColor="#518faa"/>
     <views:Simulator Icon="euro3.png" BackgroundColor="#518faa"/>
     <views:InAppPurchase Icon="cart.png" BackgroundColor="#518faa"/>
+    <views:calculator2 Icon="cart.png" BackgroundColor="#518faa"/>
+     
     
 
 
