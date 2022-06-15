@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace easyprice
 {
-    public partial class Calculator : ContentPage
+    public partial class calculator2 : ContentPage
     {
         string Pourcentage;
         string titelPicker;
@@ -30,70 +30,20 @@ namespace easyprice
         double prixFinalDe = 0;
         string devise = "€";
         string coeffMultArt;
+        bool pickerBool;
 
         deviseclassCurrencyFreacks Devises = new deviseclassCurrencyFreacks();
         devises2Class Devises1 = new devises2Class();
-        public Calculator()
+        public calculator2 ()
         {
             InitializeComponent();
-            BindingContext = new MainPageModel();
             activeDeviseAsync();
-           
             activaAppAsync();
-
-
-            //dollars3.Text = "devise: "+"€";
             titelPicker = "€";
-
-            //url = "http://data.fixer.io/api/latest";
-            //Key = "9a66f3ad73018c9ac9308ebbfc882899";
-            //devise = "€";
-            //accesKey = "?access_key=" + Key;
-            //URL = url + accesKey;
-
-
-            ////url = "https://api.currencyapi.com/v3/latest";
-            ////Key = "79900380-4d99-11ec-8414-356a4b7a335b&base_currency=EUR";
-            ////devise = "€";
-            ////accesKey = "?apikey=" + Key;
-            ////URL = url + accesKey;
-            ////leubon
-            ///
-            //url = "https://api.currencyfreaks.com/latest";
-            //Key = "7fd3f6d0a0e34a6899cb5c32b08cbdad";
-            //devise = "€";
-            //accesKey = "?apikey=" + Key;
-            //URL = url + accesKey;
-
-            //var Webclient = new WebClient();
-
-            //var json = Webclient.DownloadString(URL);
-            //Devises = JsonConvert.DeserializeObject<deviseclassCurrencyFreacks>(json);
-
-            //var Webclient = new WebClient();
-            //url = "http://api.exchangeratesapi.io/v1/latest";
-            //Key = "af3ec8193ff38a0758849154aa1593cf";
-            //devise = "€";
-            //accesKey = "?access_key=" + Key;
-            //URL = url + accesKey;
-            //var json = Webclient.DownloadString(URL);
-            //Devises = JsonConvert.DeserializeObject<deviseclassCurrencyFreacks>(json);
-
-            //devisesDollars = Devises.Rates["USD"];
-            //deviseEuros = Devises.Rates["EUR"];
-            //deviseCanadaDollars = Devises.Rates["CAD"];
-            //devisesCny = Devises.Rates["CNY"];
-            //devisesGbp = Devises.Rates["GBP"];
-
-            //devisesAUD = Devises.Rates["AUD"];
-            //devisesCHF = Devises.Rates["CHF"];
-            //devisesJPY = Devises.Rates["JPY"];
-            //devisesSEK = Devises.Rates["SEK"];
-            //devisesNZD = Devises.Rates["NZD"];
-
+            pickerBool = false;
         }
 
-       
+
         void activaAppAsync()
         {
 
@@ -108,44 +58,34 @@ namespace easyprice
                 var json = Webclient.DownloadString(URL);
                 Devises = JsonConvert.DeserializeObject<deviseclassCurrencyFreacks>(json);
                 Application.Current.Properties["dateMonthDevise"] = DateTime.Now.ToString("MM");
-                 //Application.Current.SavePropertiesAsync();
 
                 Application.Current.Properties["dateDaysDevise"] = DateTime.Now.ToString("dd");
-                 //Application.Current.SavePropertiesAsync();
 
                 Application.Current.Properties["devisesDollars"] = Devises.Rates["USD"].ToString();
-                 //Application.Current.SavePropertiesAsync();
 
                 Application.Current.Properties["deviseEuros"] = Devises.Rates["EUR"].ToString();
-                 //Application.Current.SavePropertiesAsync();
+
                 Application.Current.Properties["deviseCanadaDollars"] = Devises.Rates["CAD"].ToString();
-                 //Application.Current.SavePropertiesAsync();
 
                 Application.Current.Properties["devisesCny"] = Devises.Rates["CNY"].ToString();
-                 //Application.Current.SavePropertiesAsync();
 
                 Application.Current.Properties["devisesGbp"] = Devises.Rates["GBP"].ToString();
-                 //Application.Current.SavePropertiesAsync();
 
                 Application.Current.Properties["devisesAUD"] = Devises.Rates["AUD"].ToString();
-                 //Application.Current.SavePropertiesAsync();
 
                 Application.Current.Properties["devisesCHF"] = Devises.Rates["CHF"].ToString();
-                 //Application.Current.SavePropertiesAsync();
 
                 Application.Current.Properties["devisesJPY"] = Devises.Rates["JPY"].ToString();
-                 //Application.Current.SavePropertiesAsync();
 
                 Application.Current.Properties["devisesSEK"] = Devises.Rates["SEK"].ToString();
-                 //Application.Current.SavePropertiesAsync();
 
                 Application.Current.Properties["devisesNZD"] = Devises.Rates["NZD"].ToString();
-                 Application.Current.SavePropertiesAsync();
+                Application.Current.SavePropertiesAsync();
 
 
                 validDevise();
             }
-         
+
 
         }
 
@@ -227,39 +167,29 @@ namespace easyprice
                     var json = Webclient.DownloadString(URL);
                     Devises = JsonConvert.DeserializeObject<deviseclassCurrencyFreacks>(json);
                     Application.Current.Properties["dateMonthDevise"] = DateTime.Now.ToString("MM");
-                     //Application.Current.SavePropertiesAsync();
 
                     Application.Current.Properties["dateDaysDevise"] = DateTime.Now.ToString("dd");
-                     //Application.Current.SavePropertiesAsync();
 
                     Application.Current.Properties["devisesDollars"] = Devises.Rates["USD"].ToString();
-                     //Application.Current.SavePropertiesAsync();
 
                     Application.Current.Properties["deviseEuros"] = Devises.Rates["EUR"].ToString();
-                     //Application.Current.SavePropertiesAsync();
+
                     Application.Current.Properties["deviseCanadaDollars"] = Devises.Rates["CAD"].ToString();
-                     //Application.Current.SavePropertiesAsync();
 
                     Application.Current.Properties["devisesCny"] = Devises.Rates["CNY"].ToString();
-                     //Application.Current.SavePropertiesAsync();
 
                     Application.Current.Properties["devisesGbp"] = Devises.Rates["GBP"].ToString();
-                     //Application.Current.SavePropertiesAsync();
 
                     Application.Current.Properties["devisesAUD"] = Devises.Rates["AUD"].ToString();
-                     //Application.Current.SavePropertiesAsync();
 
                     Application.Current.Properties["devisesCHF"] = Devises.Rates["CHF"].ToString();
-                     //Application.Current.SavePropertiesAsync();
 
                     Application.Current.Properties["devisesJPY"] = Devises.Rates["JPY"].ToString();
-                     //Application.Current.SavePropertiesAsync();
 
                     Application.Current.Properties["devisesSEK"] = Devises.Rates["SEK"].ToString();
-                     //Application.Current.SavePropertiesAsync();
 
                     Application.Current.Properties["devisesNZD"] = Devises.Rates["NZD"].ToString();
-                     Application.Current.SavePropertiesAsync();
+                    Application.Current.SavePropertiesAsync();
                     validDevise();
 
                 }
@@ -268,8 +198,6 @@ namespace easyprice
                     validDevise();
                 }
             }
-
-
         }
 
 
@@ -282,25 +210,26 @@ namespace easyprice
 
             if (selectedIndex != -1)
             {
+                pickerBool = true;
                 valeurPicker = (string)picker2.ItemsSource[selectedIndex];
                 if (valeurPicker == "€" && titelPicker == "€")
                 {
                     changDevisesEuros(valeurPicker, deviseEuros);
-                      //dollars3.Text = "Devise: " + "NZD";
+                    //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "€";
                 }
                 else if (valeurPicker == "$" && titelPicker == "€")
                 {
                     changDevisesEuros(valeurPicker, devisesDollars);
-                      //dollars3.Text = "Devise: " + "NZD";
+                    //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "$";
                 }
                 else if (valeurPicker == "$C" && titelPicker == "€")
                 {
                     changDevisesEuros(valeurPicker, deviseCanadaDollars);
-                      //dollars3.Text = "Devise: " + "NZD";
+                    //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "$C";
                 }
@@ -365,21 +294,21 @@ namespace easyprice
                 else if (valeurPicker == "€" && titelPicker == "$")
                 {
                     changDevisesOriginDollars(valeurPicker, deviseEuros);
-                      //dollars3.Text = "Devise: " + "NZD";
+                    //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "€";
                 }
                 else if (valeurPicker == "$" && titelPicker == "$")
                 {
                     changDevisesOriginDollars(valeurPicker, devisesDollars);
-                      //dollars3.Text = "Devise: " + "NZD";
+                    //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "$";
                 }
                 else if (valeurPicker == "$C" && titelPicker == "$")
                 {
                     changDevisesOriginDollars(valeurPicker, deviseCanadaDollars);
-                      //dollars3.Text = "Devise: " + "NZD";
+                    //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "$C";
                 }
@@ -438,21 +367,21 @@ namespace easyprice
                 else if (valeurPicker == "€" && titelPicker == "$C")
                 {
                     changDevisesOriginDollarsCan(valeurPicker, deviseEuros);
-                      //dollars3.Text = "Devise: " + "NZD";
+                    //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "€";
                 }
                 else if (valeurPicker == "$" && titelPicker == "$C")
                 {
                     changDevisesOriginDollarsCan(valeurPicker, devisesDollars);
-                      //dollars3.Text = "Devise: " + "NZD";
+                    //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "$";
                 }
                 else if (valeurPicker == "$C" && titelPicker == "$C")
                 {
                     changDevisesOriginDollarsCan(valeurPicker, deviseCanadaDollars);
-                      //dollars3.Text = "Devise: " + "NZD";
+                    //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "$C";
 
@@ -520,21 +449,21 @@ namespace easyprice
                 else if (valeurPicker == "€" && titelPicker == "￥")
                 {
                     changDevisesOriginYuan(valeurPicker, deviseEuros);
-                      //dollars3.Text = "Devise: " + "NZD";
+                    //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "€";
                 }
                 else if (valeurPicker == "$" && titelPicker == "￥")
                 {
                     changDevisesOriginYuan(valeurPicker, devisesDollars);
-                      //dollars3.Text = "Devise: " + "NZD";
+                    //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "$";
                 }
                 else if (valeurPicker == "$C" && titelPicker == "￥")
                 {
                     changDevisesOriginYuan(valeurPicker, deviseCanadaDollars);
-                      //dollars3.Text = "Devise: " + "NZD";
+                    //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "$C";
                 }
@@ -585,7 +514,7 @@ namespace easyprice
                 else if (valeurPicker == "$N" && titelPicker == "￥")
                 {
                     changDevisesOriginYuan(valeurPicker, devisesNZD);
-                      //dollars3.Text = "Devise: " + "NZD";
+                    //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "$N";
                 }
@@ -598,21 +527,21 @@ namespace easyprice
                 else if (valeurPicker == "€" && titelPicker == "£")
                 {
                     changDevisesOriginGBP(valeurPicker, deviseEuros);
-                      //  //dollars3.Text = "Devise: " + "NZD";
+                    //  //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "€";
                 }
                 else if (valeurPicker == "$" && titelPicker == "£")
                 {
                     changDevisesOriginGBP(valeurPicker, devisesDollars);
-                      //dollars3.Text = "Devise: " + "NZD";
+                    //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "$";
                 }
                 else if (valeurPicker == "$C" && titelPicker == "£")
                 {
                     changDevisesOriginGBP(valeurPicker, deviseCanadaDollars);
-                      //dollars3.Text = "Devise: " + "NZD";
+                    //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "$C";
                 }
@@ -674,21 +603,21 @@ namespace easyprice
                 else if (valeurPicker == "€" && titelPicker == "$A")
                 {
                     changDevisesOriginAUD(valeurPicker, deviseEuros);
-                      //  //dollars3.Text = "Devise: " + "NZD";
+                    //  //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "€";
                 }
                 else if (valeurPicker == "$" && titelPicker == "$A")
                 {
                     changDevisesOriginAUD(valeurPicker, devisesDollars);
-                      //dollars3.Text = "Devise: " + "NZD";
+                    //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "$";
                 }
                 else if (valeurPicker == "$C" && titelPicker == "$A")
                 {
                     changDevisesOriginAUD(valeurPicker, deviseCanadaDollars);
-                      //dollars3.Text = "Devise: " + "NZD";
+                    //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "$C";
                 }
@@ -738,7 +667,7 @@ namespace easyprice
                 else if (valeurPicker == "$N" && titelPicker == "$A")
                 {
                     changDevisesOriginAUD(valeurPicker, devisesNZD);
-                      //dollars3.Text = "Devise: " + "NZD";
+                    //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "$N";
                 }
@@ -751,21 +680,21 @@ namespace easyprice
                 else if (valeurPicker == "€" && titelPicker == "FrS")
                 {
                     changDevisesOriginCHF(valeurPicker, deviseEuros);
-                      //  //dollars3.Text = "Devise: " + "NZD";
+                    //  //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "€";
                 }
                 else if (valeurPicker == "$" && titelPicker == "FrS")
                 {
                     changDevisesOriginCHF(valeurPicker, devisesDollars);
-                      //dollars3.Text = "Devise: " + "NZD";
+                    //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "$";
                 }
                 else if (valeurPicker == "$C" && titelPicker == "FrS")
                 {
                     changDevisesOriginCHF(valeurPicker, deviseCanadaDollars);
-                      //dollars3.Text = "Devise: " + "NZD";
+                    //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "$C";
                 }
@@ -815,7 +744,7 @@ namespace easyprice
                 else if (valeurPicker == "$N" && titelPicker == "FrS")
                 {
                     changDevisesOriginCHF(valeurPicker, devisesNZD);
-                      //dollars3.Text = "Devise: " + "NZD";
+                    //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "$N";
                 }
@@ -831,21 +760,21 @@ namespace easyprice
                 else if (valeurPicker == "€" && titelPicker == "kr")
                 {
                     changDevisesOriginSEK(valeurPicker, deviseEuros);
-                      //  //dollars3.Text = "Devise: " + "NZD";
+                    //  //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "€";
                 }
                 else if (valeurPicker == "$" && titelPicker == "kr")
                 {
                     changDevisesOriginSEK(valeurPicker, devisesDollars);
-                      //dollars3.Text = "Devise: " + "NZD";
+                    //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "$";
                 }
                 else if (valeurPicker == "$C" && titelPicker == "kr")
                 {
                     changDevisesOriginSEK(valeurPicker, deviseCanadaDollars);
-                      //dollars3.Text = "Devise: " + "NZD";
+                    //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "$C";
                 }
@@ -877,7 +806,7 @@ namespace easyprice
                     devise = valeurPicker;
                     titelPicker = "FrS";
                 }
-      
+
                 else if (valeurPicker == "kr" && titelPicker == "kr")
                 {
                     changDevisesOriginSEK(valeurPicker, devisesSEK);
@@ -895,7 +824,7 @@ namespace easyprice
                 else if (valeurPicker == "$N" && titelPicker == "kr")
                 {
                     changDevisesOriginSEK(valeurPicker, devisesNZD);
-                      //dollars3.Text = "Devise: " + "NZD";
+                    //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "$N";
                 }
@@ -909,21 +838,21 @@ namespace easyprice
                 else if (valeurPicker == "€" && titelPicker == "JP¥")
                 {
                     changDevisesOriginJPY(valeurPicker, deviseEuros);
-                      //  //dollars3.Text = "Devise: " + "NZD";
+                    //  //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "€";
                 }
                 else if (valeurPicker == "$" && titelPicker == "JP¥")
                 {
                     changDevisesOriginJPY(valeurPicker, devisesDollars);
-                      //dollars3.Text = "Devise: " + "NZD";
+                    //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "$";
                 }
                 else if (valeurPicker == "$C" && titelPicker == "JP¥")
                 {
                     changDevisesOriginJPY(valeurPicker, deviseCanadaDollars);
-                      //dollars3.Text = "Devise: " + "NZD";
+                    //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "$C";
                 }
@@ -955,7 +884,7 @@ namespace easyprice
                     devise = valeurPicker;
                     titelPicker = "FrS";
                 }
-    
+
                 else if (valeurPicker == "kr" && titelPicker == "JP¥")
                 {
                     changDevisesOriginJPY(valeurPicker, devisesSEK);
@@ -973,7 +902,7 @@ namespace easyprice
                 else if (valeurPicker == "$N" && titelPicker == "JP¥")
                 {
                     changDevisesOriginJPY(valeurPicker, devisesNZD);
-                      //dollars3.Text = "Devise: " + "NZD";
+                    //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "$N";
                 }
@@ -989,7 +918,7 @@ namespace easyprice
                 else if (valeurPicker == "€" && titelPicker == "$N")
                 {
                     changDevisesOriginNZD(valeurPicker, deviseEuros);
-                      //  //dollars3.Text = "Devise: " + "NZD";
+                    //  //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "€";
                 }
@@ -1003,7 +932,7 @@ namespace easyprice
                 else if (valeurPicker == "$C" && titelPicker == "$N")
                 {
                     changDevisesOriginNZD(valeurPicker, deviseCanadaDollars);
-                      //dollars3.Text = "Devise: " + "NZD";
+                    //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "$C";
                 }
@@ -1035,7 +964,7 @@ namespace easyprice
                     devise = valeurPicker;
                     titelPicker = "FrS";
                 }
-  
+
                 else if (valeurPicker == "kr" && titelPicker == "$N")
                 {
                     changDevisesOriginNZD(valeurPicker, devisesSEK);
@@ -1053,15 +982,11 @@ namespace easyprice
                 else if (valeurPicker == "$N" && titelPicker == "$N")
                 {
                     changDevisesOriginNZD(valeurPicker, devisesNZD);
-                      //dollars3.Text = "Devise: " + "NZD";
+                    //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "$N";
                 }
-
             }
-
-
-
         }
         //private void animation()
         //{
@@ -1084,6 +1009,7 @@ namespace easyprice
 
             if (selectedIndex != -1)
             {
+               
                 coeffMultArt = (string)picker1.ItemsSource[selectedIndex];
 
             }
@@ -1100,12 +1026,14 @@ namespace easyprice
 
             }
         }
-   
+
 
 
 
         private async void FinalButtonClick(object sender, System.EventArgs e)
         {
+
+
             if (string.IsNullOrWhiteSpace(prixFournisseur.Text))
             {
                 await DisplayAlert("Ooops", "vous devez rentrer un prix fournisseur", "Ok");
@@ -1127,6 +1055,7 @@ namespace easyprice
             coeff2.Text = coeffMultArt;
             coeff3.Text = coeffMultArt;
             coeff4.Text = coeffMultArt;
+            prixFournisseur1.Text = prixFournisseur.Text+ devise;
             prixFournisseurFinal = double.Parse(prixFourn);
             prixFinalDe = prixFournisseurFinal * coeffFinal;
             prixFinal.Text = prixFinalDe.ToString(".00") + devise;
@@ -1134,20 +1063,27 @@ namespace easyprice
             tauxMarge.Text = (((prixFinalDe - prixFournisseurFinal) / prixFournisseurFinal) * 100).ToString(".00") + " %";
             tauxMarque.Text = (((prixFinalDe - prixFournisseurFinal) / prixFinalDe) * 100).ToString(".00") + " %";
             //animation();
+            layoutCollectReverse(MaLayaoutNewCollection1);
         }
 
         public void changDevisesEuros(string devise, double coeffDevise)
         {
             prixFournisseurFinal = prixFournisseurFinal * coeffDevise;
             prixFinalDe = prixFinalDe * coeffDevise;
-            prixFinal.Text = prixFinalDe.ToString(".00") + devise;
-            if (prixFournisseurFinal==0)
-            {
-                prixFournisseur1.Text = "";
-            }
-            else { prixFournisseur1.Text = prixFournisseurFinal.ToString(".00"); }
           
-            marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
+            if (prixFournisseurFinal == 0)
+            {
+                prixFournisseur1.Text = "0" + devise;
+                prixFinal.Text = "0" + devise;
+                marge.Text = "0" + devise;
+            }
+            else {
+                prixFournisseur1.Text = prixFournisseurFinal.ToString(".00") + devise;
+                prixFinal.Text = prixFinalDe.ToString(".00") + devise;
+                marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
+            }
+
+          
             //animation();
 
         }
@@ -1158,10 +1094,15 @@ namespace easyprice
             prixFinal.Text = prixFinalDe.ToString(".00") + devise;
             if (prixFournisseurFinal == 0)
             {
-                prixFournisseur1.Text = "";
+                prixFournisseur1.Text = "0" + devise;
+                marge.Text = "0" + devise;
+                prixFinal.Text = "0" + devise;
             }
-            else { prixFournisseur1.Text = prixFournisseurFinal.ToString(".00"); }
-            marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
+            else { prixFournisseur1.Text = prixFournisseurFinal.ToString(".00") + devise;
+                marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
+                prixFinal.Text = prixFinalDe.ToString(".00") + devise;
+            }
+           
             //animation();
 
         }
@@ -1171,11 +1112,15 @@ namespace easyprice
             prixFinalDe = (prixFinalDe / deviseCanadaDollars) * coeffDevise;
             if (prixFournisseurFinal == 0)
             {
-                prixFournisseur1.Text = "";
+                prixFournisseur1.Text = "0" + devise;
+                prixFinal.Text = "0" + devise;
+                marge.Text = "0" + devise;
             }
-            else { prixFournisseur1.Text = prixFournisseurFinal.ToString(".00"); }
-            prixFinal.Text = prixFinalDe.ToString(".00") + devise;
-            marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
+            else { prixFournisseur1.Text = prixFournisseurFinal.ToString(".00") + devise;
+                prixFinal.Text = prixFinalDe.ToString(".00") + devise;
+                marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
+            }
+      
             //animation();
 
         }
@@ -1185,20 +1130,18 @@ namespace easyprice
             prixFinalDe = (prixFinalDe / devisesCny) * coeffDevise;
             if (prixFournisseurFinal == 0)
             {
-                prixFournisseur1.Text = "";
+                prixFournisseur1.Text = "0" + devise;
+                prixFinal.Text = "0" + devise;
+                marge.Text = "0" + devise;
             }
-            else { prixFournisseur1.Text = prixFournisseurFinal.ToString(".00"); }
-            prixFinal.Text = prixFinalDe.ToString(".00") + devise;
-            marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
+            else { prixFournisseur1.Text = prixFournisseurFinal.ToString(".00") + devise;
+                prixFinal.Text = prixFinalDe.ToString(".00") + devise;
+                marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
+            }
+           
             //animation();
 
         }
-
-
-
-
-
-
 
 
 
@@ -1209,11 +1152,15 @@ namespace easyprice
             prixFinalDe = (prixFinalDe / devisesGbp) * coeffDevise;
             if (prixFournisseurFinal == 0)
             {
-                prixFournisseur1.Text = "";
+                prixFournisseur1.Text = "0" + devise;
+                prixFinal.Text = "0" + devise;
+                marge.Text = "0" + devise;
             }
-            else { prixFournisseur1.Text = prixFournisseurFinal.ToString(".00"); }
-            prixFinal.Text = prixFinalDe.ToString(".00") + devise;
-            marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
+            else { prixFournisseur1.Text = prixFournisseurFinal.ToString(".00") + devise;
+                prixFinal.Text = prixFinalDe.ToString(".00") + devise;
+                marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
+            }
+           
             //animation();
 
         }
@@ -1225,11 +1172,15 @@ namespace easyprice
             prixFinalDe = (prixFinalDe / devisesAUD) * coeffDevise;
             if (prixFournisseurFinal == 0)
             {
-                prixFournisseur1.Text = "";
+                prixFournisseur1.Text = "0" + devise;
+                prixFinal.Text = "0" + devise;
+                marge.Text = "0" + devise;
             }
-            else { prixFournisseur1.Text = prixFournisseurFinal.ToString(".00"); }
-            prixFinal.Text = prixFinalDe.ToString(".00") + devise;
-            marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
+            else { prixFournisseur1.Text = prixFournisseurFinal.ToString(".00") + devise;
+                prixFinal.Text = prixFinalDe.ToString(".00") + devise;
+                marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
+            }
+        
             //animation();
 
         }
@@ -1239,11 +1190,15 @@ namespace easyprice
             prixFinalDe = (prixFinalDe / devisesCHF) * coeffDevise;
             if (prixFournisseurFinal == 0)
             {
-                prixFournisseur1.Text = "";
+                prixFournisseur1.Text = "0" + devise;
+                prixFinal.Text = "0" + devise;
+                marge.Text = "0" + devise;
             }
-            else { prixFournisseur1.Text = prixFournisseurFinal.ToString(".00"); }
-            prixFinal.Text = prixFinalDe.ToString(".00") + devise;
-            marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
+            else { prixFournisseur1.Text = prixFournisseurFinal.ToString(".00") + devise;
+                prixFinal.Text = prixFinalDe.ToString(".00") + devise;
+                marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
+            }
+          
             //animation();
 
         }
@@ -1255,11 +1210,15 @@ namespace easyprice
             prixFinalDe = (prixFinalDe / devisesJPY) * coeffDevise;
             if (prixFournisseurFinal == 0)
             {
-                prixFournisseur1.Text = "";
+                prixFournisseur1.Text = "0" + devise;
+                prixFinal.Text = "0" + devise;
+                marge.Text = "0" + devise;
             }
-            else { prixFournisseur1.Text = prixFournisseurFinal.ToString(".00"); }
-            prixFinal.Text = prixFinalDe.ToString(".00") + devise;
-            marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
+            else { prixFournisseur1.Text = prixFournisseurFinal.ToString(".00") + devise;
+                prixFinal.Text = prixFinalDe.ToString(".00") + devise;
+                marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
+            }
+          
             //animation();
 
         }
@@ -1270,11 +1229,15 @@ namespace easyprice
             prixFinalDe = (prixFinalDe / devisesSEK) * coeffDevise;
             if (prixFournisseurFinal == 0)
             {
-                prixFournisseur1.Text = "";
+                prixFournisseur1.Text = "0" + devise;
+                prixFinal.Text = "0" + devise;
+                marge.Text = "0" + devise;
             }
-            else { prixFournisseur1.Text = prixFournisseurFinal.ToString(".00"); }
-            prixFinal.Text = prixFinalDe.ToString(".00") + devise;
-            marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
+            else { prixFournisseur1.Text = prixFournisseurFinal.ToString(".00") + devise;
+                prixFinal.Text = prixFinalDe.ToString(".00") + devise;
+                marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
+            }
+           
             //animation();
 
         }
@@ -1285,11 +1248,16 @@ namespace easyprice
             prixFinalDe = (prixFinalDe / devisesNZD) * coeffDevise;
             if (prixFournisseurFinal == 0)
             {
-                prixFournisseur1.Text = "";
+                prixFournisseur1.Text = "0" + devise;
+                prixFinal.Text = "0" + devise;
+                marge.Text = "0" + devise;
             }
-            else { prixFournisseur1.Text = prixFournisseurFinal.ToString(".00"); }
-            prixFinal.Text = prixFinalDe.ToString(".00") + devise;
-            marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
+            else { prixFournisseur1.Text = prixFournisseurFinal.ToString(".00") + devise;
+
+                prixFinal.Text = prixFinalDe.ToString(".00") + devise;
+                marge.Text = (prixFinalDe - prixFournisseurFinal).ToString(".00") + devise;
+            }
+           
             //animation();
 
         }
@@ -1302,37 +1270,50 @@ namespace easyprice
             if (selectedIndex != -1)
             {
 
-               var Pourcentage = (string)pickerTest.ItemsSource[selectedIndex];
+                var Pourcentage = (string)pickerTest.ItemsSource[selectedIndex];
 
                 DisplayAlert("Ooops", Pourcentage, "Ok");
             }
-            
+
+        }
+        public async void layoutCollect(Frame MaLayaoutCollection)
+        {
+
+         
+            await MaLayaoutCollection.TranslateTo(0, 300);
+            MaLayaoutCollection.IsVisible = true;
+            await MaLayaoutCollection.TranslateTo(0, 100);
+            await MaLayaoutCollection.TranslateTo(0, 0);
+            await MaLayaoutCollection.TranslateTo(0, -100, 500, Easing.SpringOut);
+            await MaLayaoutCollection.TranslateTo(0, -200);
         }
 
-
-     
-    }
-
-}
-
-
-
-
-public class MainPageModel
-{
-    public List<string> Days { get; } = new List<string>
-    {
-        "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday",
-    };
-
-    public Command ItemSelectedCommand { get; }
-
-    public MainPageModel()
-    {
-        ItemSelectedCommand = new Command<(int, int, IList<int>)>(tuple =>
+        public async void layoutCollectReverse(Frame MaLayaoutCollection)
         {
-            var (selectedWheelIndex, indexOfItemChangedInSelectedWheel, selectedItemsIndexes) = tuple;
-            //...
-        });
+            await MaLayaoutCollection.TranslateTo(0, -200);
+            await MaLayaoutCollection.TranslateTo(0, -100);
+            await MaLayaoutCollection.TranslateTo(0, 0);
+            await MaLayaoutCollection.TranslateTo(0, 100);
+            await MaLayaoutCollection.TranslateTo(0, 300);
+            MaLayaoutCollection.IsVisible = false;
+
+        }
+
+        private async void ImageButton_Clicked (System.Object sender, System.EventArgs e)
+        {
+
+            if (!pickerBool)
+            {
+                await DisplayAlert("Ooops", "vous devez choisir une devise", "Ok");
+                return;
+            }
+
+            layoutCollect(MaLayaoutNewCollection1);
+        }
+
     }
+
 }
+
+
+
