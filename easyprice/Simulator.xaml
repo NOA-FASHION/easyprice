@@ -19,7 +19,7 @@
        
           <StackLayout Spacing="0">
                  <StackLayout BackgroundColor="#518faa" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
-                <Image  Margin="0,35,0,0" Source="dollars.png" Aspect="AspectFit"  HeightRequest="200" /> 
+                <Image  Margin="0,35,0,0" Source="dollars.png" Aspect="AspectFit"  HeightRequest="100" /> 
              
             </StackLayout >
 
@@ -48,7 +48,7 @@
          CornerRadius="10"
          HasShadow="True">
        <StackLayout   Spacing="0" BackgroundColor="White" Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Fill">
-         <Label TextColor="Black" Margin="5,0" x:Name="CoeffDeVente" Text="Coût des articles" HorizontalOptions="Start" VerticalOptions="Center"/>
+         <Label TextColor="Black" Margin="5,0" x:Name="CoeffDeVente" Text="Coût des articles" HorizontalOptions="Start" FontSize="15"  VerticalOptions="Center"/>
            <local:MyEntry x:Name="EntryCoutcollecion" HorizontalTextAlignment="Center" WidthRequest="70" FontSize="Small"
                           HorizontalOptions="FillAndExpand"  VerticalOptions="Start" Keyboard="Telephone" TextColor="Black"/>
         <Picker x:Name="picker1"
@@ -517,13 +517,15 @@
  </Frame>
 </StackLayout>
    </Grid>-->
-    <!--end-->         
-      <StackLayout Margin="5,10" Orientation="Vertical" VerticalOptions="CenterAndExpand">
+    <!--end-->
+
+            <!--Encadrement gain total-->
+      <!--<StackLayout Margin="5,10" Orientation="Vertical" VerticalOptions="CenterAndExpand">
       <Frame BorderColor="#C4AB4D"
          CornerRadius="10"
          HasShadow="True">
          <StackLayout Orientation="Vertical">
-            <!--titre gain total-->
+            
      <StackLayout  Orientation="Vertical">  
       <Frame BorderColor="#C4AB4D"
          BackgroundColor="#518faa"
@@ -533,7 +535,7 @@
         </Frame>
      </StackLayout>
 
-            <!--Encadrement gain total-->
+            
 
     <StackLayout Margin="0,0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
 
@@ -611,9 +613,126 @@
                         BorderRadius="20" />
        </StackLayout>
         </Frame>
-     </StackLayout>
+     </StackLayout>-->
 
 
+               <!--//////////////////////////////////-->   <!--//////////////////////////////////-->
+
+         <Frame BorderColor="#C4AB4D" Margin="5,10,5,10" Padding="20"
+        CornerRadius="10"
+            HasShadow="True">
+        <StackLayout  Orientation="Vertical" VerticalOptions="CenterAndExpand">
+        
+         <Grid HorizontalOptions="FillAndExpand">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+             <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75" />
+            <RowDefinition Height="75" />
+        </Grid.RowDefinitions>
+                    <!--//////////////////////////////////-->
+   
+         <Frame BorderColor="#C4AB4D" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4"
+        Padding="10" 
+        HorizontalOptions="FillAndExpand"
+       
+        CornerRadius="10"
+        HasShadow="True">
+        <FlexLayout Direction="Row" HorizontalOptions="FillAndExpand"  HeightRequest="80">
+       <!--<FlexLayout.GestureRecognizers>
+            <TapGestureRecognizer  Tapped="OnTapGestureRecognizerTapped4"/>
+       </FlexLayout.GestureRecognizers>-->
+    <!--<forms1:AnimationView
+     Margin="10,10,60,0"
+    x:Name="AnimationView9"
+    HeightRequest="60"
+    WidthRequest="60"
+    Animation="valeurst.json" 
+    AutoPlay="True" 
+    HorizontalOptions="StartAndExpand"/>-->
+    <Label VerticalTextAlignment="Center" 
+        HorizontalTextAlignment="End" FontAttributes="Bold" Text="Valeur stock"  Margin="{OnPlatform iOS='15,0,5,0', Android='60,0,20,0' ,Default=0}"/>
+        </FlexLayout>
+        </Frame>
+      
+                    <!--//////////////////////////////////-->
+           
+          <StackLayout x:Name="valeurStockTotalLayout" Orientation="Horizontal" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">    
+        <Frame  BorderColor="#C4AB4D" x:Name="valeurStockTotalFrame" Margin="0,0,0,0" HorizontalOptions="FillAndExpand"
+       CornerRadius="5" Padding="2">
+        <StackLayout Margin="0,10" Orientation="Vertical"  x:Name="valeurStockTotalLayout1">
+   <Label TextColor="Black" x:Name="valeurStockTotal" 
+           HorizontalTextAlignment="Center"
+            FontSize="13"
+           FontAttributes="Bold" />
+    <BoxView x:Name="valeurStockTotalBoxview"  Color="Gray"
+             HeightRequest="2"
+             HorizontalOptions="Center" />
+    <Label TextColor="Black" x:Name="valeurStockTotalLabel"  FontSize="Small"  HorizontalTextAlignment="Center"/>
+    </StackLayout>
+    </Frame>
+  </StackLayout>
+                               <!--//////////////////////////////////-->
+          <StackLayout x:Name="valeurStockHorsFraisLayout" Margin="0,0,0,0" Orientation="Horizontal"  Grid.Row="1" Grid.Column="2"  Grid.ColumnSpan="2">                   
+        <Frame  BorderColor="#C4AB4D" x:Name="valeurStockHorsFraisFrame" Margin="0,0,0,0" HorizontalOptions="FillAndExpand"
+       CornerRadius="5" Padding="2">
+        <StackLayout Margin="0,10" Orientation="Vertical"  x:Name="valeurStockHorsFraisLayout1">
+        <Label TextColor="Black" x:Name="valeurStockHorsFrais1"
+           HorizontalTextAlignment="Center"
+           FontSize="13"
+           FontAttributes="Bold" />
+    <BoxView x:Name="valeurStockHorsFraisBoxview" Color="Gray"
+             HeightRequest="2"        
+             HorizontalOptions="Center" />
+    <Label TextColor="Black" x:Name="valeurStockHorsFrais"  FontSize="Small" HorizontalTextAlignment="Center"/>
+        </StackLayout>
+        </Frame>
+ </StackLayout>
+     <!--//////////////////////////////////-->
+                                 
+
+    </Grid>
+           
+    <Frame  BorderColor="#C4AB4D" x:Name="isvisible5"  HorizontalOptions="FillAndExpand" 
+     CornerRadius="5"
+     Padding="2">
+         <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+         <StackLayout x:Name="isvisible6" Margin="0,0,0,0" Orientation="Vertical" HorizontalOptions="Center">
+        
+     <FlexLayout Margin="20,20" Direction="Row" HorizontalOptions="FillAndExpand"> 
+
+     <forms:ChartView x:Name="myCharts4" HeightRequest="120" WidthRequest="{OnPlatform iOS=245, Android=265 ,Default=0}"  HorizontalOptions="FillAndExpand" /> 
+
+        </FlexLayout>
+          <FlexLayout Margin="20,20" Direction="Row" HorizontalOptions="FillAndExpand"> 
+
+     <forms:ChartView x:Name="myCharts5" HeightRequest="120" WidthRequest="{OnPlatform iOS=245, Android=265 ,Default=0}"  HorizontalOptions="FillAndExpand" /> 
+
+        </FlexLayout>
+
+             
+  </StackLayout>
+
+<Button Margin="10,10" 
+BackgroundColor="#c1ab24" Text="SIMULER"
+WidthRequest="150"
+    HeightRequest="60"
+    ContentLayout="left, 50"
+HorizontalOptions="FillAndExpand" Clicked="SimulerrCollection1ButtonClicked"
+BorderRadius="20" />
+</StackLayout>
+
+       </Frame>
+
+</StackLayout>
+</Frame>
+
+   <!--//////////////////////////////////-->   <!--//////////////////////////////////-->
                </StackLayout>
         </Frame>
      </StackLayout>

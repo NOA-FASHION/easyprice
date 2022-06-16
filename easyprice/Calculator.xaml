@@ -5,8 +5,28 @@
      Title="Calculateur"
     xmlns:forms1="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
     xmlns:local="clr-namespace:easyprice"
+    xmlns:customControl="clr-namespace:CoolBottomSheet;assembly=CoolBottomSheet"
+    xmlns:wp="clr-namespace:Vapolia.WheelPickerForms;assembly=Vapolia.WheelPickerForms"
+ 
     x:Class="easyprice.Calculator">
-     <ContentPage.Content>
+
+        <customControl:BottomSheet
+           
+        PercentageHeightMainPage=".55" 
+        PercentageLockMainPageTranslation=".3"
+        PercentageHideBottomSheet=".90"
+        PercentageExpandBottomSheet=".8"
+        MinPercentageBottomSheetSwipe=".95"
+        MaxPercentageBottomSheetSwipe="-0.03"
+        CornerRadiusBottomSheet="25"
+        BackgroundBottomSheetColor="#518faa"
+        IsBottomButtonEnable="True"
+       
+        x:Name="bottomSheetTest"
+        BottomButtonText="Expand">
+        <customControl:BottomSheet.ContentMainPage>
+
+    
                 <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -46,8 +66,8 @@
 
   </Frame>
                
-                <Image  Margin="0,15,0,0" Source="dollars.png" Aspect="AspectFit"  HeightRequest="200" />
-                   <StackLayout Spacing="0" BackgroundColor="#518faa" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" x:Name="resultaFinal" HeightRequest="90"  >
+                <!--<Image  Margin="0,15,0,0" Source="dollars.png" Aspect="AspectFit"  HeightRequest="70" />-->
+                   <!--<StackLayout Spacing="0" BackgroundColor="#518faa" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" x:Name="resultaFinal" HeightRequest="90"  >
           <Grid HorizontalOptions="CenterAndExpand" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -73,7 +93,7 @@
          CornerRadius="10"
          HasShadow="True">
            
-           <Label  x:Name="prixFinal" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="Black" Text="0" FontSize="12"> 
+           <Label   HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="Black" Text="0" FontSize="12"> 
 
 
             </Label>
@@ -141,61 +161,275 @@
                     </Frame>
 
                    </Grid>
-        </StackLayout>
+        </StackLayout>-->
              
             </StackLayout >
-            
+
+
+  <Frame IsClippedToBounds="True" HasShadow="True" Padding="0" BackgroundColor="White" >
+  <Frame.Margin>
+    <OnPlatform x:TypeArguments="Thickness" Android="10" iOS="10" />
+  </Frame.Margin>
+  <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+    <Frame HorizontalOptions="FillAndExpand" Margin="0,0,0,0" HasShadow="False" Padding="0"  >
+      <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Padding="0" Margin="0,0,0,0"  BackgroundColor="Transparent">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="auto"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackLayout Grid.Row="0" Grid.Column="0" VerticalOptions="CenterAndExpand" Margin="0,0,0,0">
+          <Frame HasShadow="False" CornerRadius="20" 
+           Padding="0"
+           IsClippedToBounds="True">
+            <Image  Source="prix.jpeg" Aspect="Fill"  WidthRequest="90" HeightRequest="90" />
+          </Frame>
+        </StackLayout>
+        <StackLayout Grid.Row="0" Grid.Column="1" Padding="0"  Orientation="Vertical" VerticalOptions="CenterAndExpand">
+          <StackLayout Orientation="Horizontal" >
+            <Label Text="Prix d'achat" TextColor="#222" FontSize = "20" VerticalOptions="CenterAndExpand"/>
+            <!--<Label Text="Prix d'achat" FontSize = "16" VerticalOptions="CenterAndExpand" x:Name="prixAchat" />-->
+          </StackLayout>
+          <StackLayout Orientation="Horizontal">
+            <Label Text="0€" FontSize = "16" x:Name="prixFournisseur1"/>
+          </StackLayout>
+          <StackLayout Orientation="Horizontal">
+            <Label Text="Coeficient :" FontSize = "14" VerticalOptions="CenterAndExpand"/>
+            <Label Text=" " FontSize = "14" x:Name="coeff0"/>
+          </StackLayout>
+         </StackLayout>
+      </Grid>
+    </Frame>  
+  </StackLayout>              
+</Frame>
+
+
+
+
+  <Frame IsClippedToBounds="True" HasShadow="True" Padding="0" BackgroundColor="White" >
+  <Frame.Margin>
+    <OnPlatform x:TypeArguments="Thickness" Android="10" iOS="10" />
+  </Frame.Margin>
+  <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+    <Frame HorizontalOptions="FillAndExpand" Margin="0,0,0,0" HasShadow="False" Padding="0"  >
+      <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Padding="0" Margin="0,0,0,0"  BackgroundColor="Transparent">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="auto"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackLayout Grid.Row="0" Grid.Column="0" VerticalOptions="CenterAndExpand" Margin="0,0,0,0">
+          <Frame HasShadow="False" CornerRadius="20" 
+           Padding="0"
+           IsClippedToBounds="True">
+            <Image  Source="prix.jpeg" Aspect="Fill"  WidthRequest="90" HeightRequest="90" />
+          </Frame>
+        </StackLayout>
+        <StackLayout Grid.Row="0" Grid.Column="1" Padding="0"  Orientation="Vertical" VerticalOptions="CenterAndExpand">
+          <StackLayout Orientation="Horizontal" >
+            <Label Text="Prix de vente " TextColor="#222" FontSize = "20" VerticalOptions="CenterAndExpand"/>
+            <!--<Label Text="Prix d'achat" FontSize = "16" VerticalOptions="CenterAndExpand" x:Name="prixAchat" />-->
+          </StackLayout>
+          <StackLayout Orientation="Horizontal">
+            <Label Text="0€" FontSize = "16" x:Name="prixFinal"/>
+          </StackLayout>
+          <StackLayout Orientation="Horizontal">
+            <Label Text="Coeficient :" FontSize = "14" VerticalOptions="CenterAndExpand"/>
+            <Label Text=" " FontSize = "14" x:Name="coeff1"/>
+          </StackLayout>
+         </StackLayout>
+      </Grid>
+    </Frame>  
+  </StackLayout>              
+</Frame>
+
+
+
+  <Frame IsClippedToBounds="True" HasShadow="True" Padding="0" BackgroundColor="White" >
+  <Frame.Margin>
+    <OnPlatform x:TypeArguments="Thickness" Android="10" iOS="10" />
+  </Frame.Margin>
+  <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+    <Frame HorizontalOptions="FillAndExpand" Margin="0,0,0,0" HasShadow="False" Padding="0"  >
+      <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Padding="0" Margin="0,0,0,0"  BackgroundColor="Transparent">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="auto"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackLayout Grid.Row="0" Grid.Column="0" VerticalOptions="CenterAndExpand" Margin="0,0,0,0">
+          <Frame HasShadow="False" CornerRadius="20" 
+           Padding="0"
+           IsClippedToBounds="True">
+            <Image  Source="marge.jpeg" Aspect="Fill"  WidthRequest="90" HeightRequest="90" />
+          </Frame>
+        </StackLayout>
+        <StackLayout Grid.Row="0" Grid.Column="1" Padding="0"  Orientation="Vertical" VerticalOptions="CenterAndExpand">
+          <StackLayout Orientation="Horizontal" >
+            <Label Text="Marge " TextColor="#222" FontSize = "20" VerticalOptions="CenterAndExpand" />
+            <!--<Label Text="Prix d'achat" FontSize = "16" VerticalOptions="CenterAndExpand" x:Name="Marge1" />-->
+          </StackLayout>
+          <StackLayout Orientation="Horizontal">
+            <Label Text="0€" FontSize = "16"  x:Name="marge"/>
+          </StackLayout>
+          <StackLayout Orientation="Horizontal">
+            <Label Text="Coeficient :" FontSize = "14" VerticalOptions="CenterAndExpand"/>
+            <Label Text=" " FontSize = "14" x:Name="coeff2"/>
+          </StackLayout>
+         </StackLayout>
+      </Grid>
+    </Frame>  
+  </StackLayout>              
+</Frame>
+
+
+
+
+  <Frame IsClippedToBounds="True" HasShadow="True" Padding="0" BackgroundColor="White" >
+  <Frame.Margin>
+    <OnPlatform x:TypeArguments="Thickness" Android="10" iOS="10" />
+  </Frame.Margin>
+  <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+    <Frame HorizontalOptions="FillAndExpand" Margin="0,0,0,0" HasShadow="False" Padding="0"  >
+      <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Padding="0" Margin="0,0,0,0"  BackgroundColor="Transparent">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="auto"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackLayout Grid.Row="0" Grid.Column="0" VerticalOptions="CenterAndExpand" Margin="0,0,0,0">
+          <Frame HasShadow="False" CornerRadius="20" 
+           Padding="0"
+           IsClippedToBounds="True">
+            <Image  Source="tauxMarque.jpeg" Aspect="Fill"  WidthRequest="90" HeightRequest="90" />
+          </Frame>
+        </StackLayout>
+        <StackLayout Grid.Row="0" Grid.Column="1" Padding="0"  Orientation="Vertical" VerticalOptions="CenterAndExpand">
+          <StackLayout Orientation="Horizontal" >
+            <Label Text="Taux de marque" TextColor="#222" FontSize = "20" VerticalOptions="CenterAndExpand" />
+            <!--<Label Text="prix d'achat" FontSize = "16" VerticalOptions="CenterAndExpand" x:Name="tauxMarque1"  />-->
+          </StackLayout>
+          <StackLayout Orientation="Horizontal">
+            <Label Text="0€" FontSize = "16"  x:Name="tauxMarque"/>
+          </StackLayout>
+          <StackLayout Orientation="Horizontal">
+            <Label Text="Coeficient :" FontSize = "14" VerticalOptions="CenterAndExpand"/>
+            <Label Text=" " FontSize = "14" x:Name="coeff3"/>
+          </StackLayout>
+         </StackLayout>
+      </Grid>
+    </Frame>  
+  </StackLayout>              
+</Frame>
+
+
+
+   <Frame IsClippedToBounds="True" HasShadow="True" Padding="0" BackgroundColor="White" >
+  <Frame.Margin>
+    <OnPlatform x:TypeArguments="Thickness" Android="10" iOS="10" />
+  </Frame.Margin>
+  <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+    <Frame HorizontalOptions="FillAndExpand" Margin="0,0,0,0" HasShadow="False" Padding="0"  >
+      <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Padding="0" Margin="0,0,0,0"  BackgroundColor="Transparent">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="auto"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackLayout Grid.Row="0" Grid.Column="0" VerticalOptions="CenterAndExpand" Margin="0,0,0,0">
+          <Frame HasShadow="False" CornerRadius="20" 
+           Padding="0"
+           IsClippedToBounds="True">
+            <Image  Source="tauxMarge.jpeg" Aspect="Fill"  WidthRequest="90" HeightRequest="90" />
+          </Frame>
+        </StackLayout>
+        <StackLayout Grid.Row="0" Grid.Column="1" Padding="0"  Orientation="Vertical" VerticalOptions="CenterAndExpand">
+          <StackLayout Orientation="Horizontal" >
+            <Label Text="Taux de marge " TextColor="#222" FontSize = "20" VerticalOptions="CenterAndExpand"/>
+            <!--<Label Text="prix d'achat" FontSize = "16" VerticalOptions="CenterAndExpand"  x:Name="tauxMarge1" />-->
+          </StackLayout>
+          <StackLayout Orientation="Horizontal">
+            <Label Text="0€" FontSize = "16"  x:Name="tauxMarge" VerticalOptions="CenterAndExpand"/>
+            <!--<Label Text="0" FontSize = "16"  x:Name="dollars3" VerticalOptions="EndAndExpand" />-->
+          </StackLayout>
+          <StackLayout Orientation="Horizontal">
+            <Label Text="Coeficient :" FontSize = "14" VerticalOptions="CenterAndExpand"/>
+            <Label Text=" " FontSize = "14" x:Name="coeff4"/>
+          </StackLayout>
+         </StackLayout>
+      </Grid>
+    </Frame>  
+  </StackLayout>              
+</Frame>
+
               
 
-              <Image Source="lab_separator.png" Aspect="AspectFill"/>
+              <!--<Image Source="lab_separator.png" Aspect="AspectFill"/>-->
 
           
 
-             <StackLayout Spacing="0" BackgroundColor="White" Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Fill">
+       
 
-                        <forms1:AnimationView
-                        Margin="10,10,0,0"
-                x:Name="AnimationView"
-               HeightRequest="60"
-              WidthRequest="60"
-                Animation="devises.json" 
-                AutoPlay="True" 
-            HorizontalOptions="Start"
-           />
 
-                 <Label x:Name="dollars3" TextColor="Black" FontSize="Title" Margin="0,10,10,0" BackgroundColor="White"  HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
-                
-                  <local:MyEntry x:Name="prixFournisseur" WidthRequest="15" FontSize="Title" TextColor="Black" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Keyboard="Telephone" />
+              <StackLayout Margin="0,50,0,0" Spacing="0" BackgroundColor="White" Orientation="Vertical" >
+            </StackLayout>
+              
+        </StackLayout>
+          </ScrollView>   
+         
+                    
+   </Grid>
 
-                 <Label  TextColor="Black" Margin="10,10,0,10" FontSize="Title"  BackgroundColor="White" Text="Prix" HorizontalOptions="Center" VerticalOptions="Center"/>
+   </customControl:BottomSheet.ContentMainPage>
+        <customControl:BottomSheet.ContentBottomSheet>
+            <StackLayout Spacing="5" >
+
+                <StackLayout Margin="0,20,0,0" Spacing="0" BackgroundColor="Transparent" Orientation="Vertical" >
+            </StackLayout>
+              
+             <StackLayout Margin="0,20,0,40" Spacing="0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Fill">
+
+
+                  <local:MyEntry x:Name="prixFournisseur" WidthRequest="155" FontSize="Title" TextColor="Black" HorizontalOptions="CenterAndExpand" 
+                                 VerticalOptions="Center" Keyboard="Telephone" Placeholder="Prix d'achat" />
+
+                 <!--<Label  TextColor="Black" Margin="10,10,0,10" FontSize="Title"   Text="Prix initial" HorizontalOptions="Center" VerticalOptions="Center"/>-->
                   
-                  <forms1:AnimationView
-                        Margin="10,10,20,0"
-                x:Name="AnimationView1"
-               HeightRequest="60"
-              WidthRequest="60"
-                Animation="prices.json" 
-                AutoPlay="True"
-                RepeatMode="Infinite"
-            HorizontalOptions="Start"
-           />
+             
             </StackLayout>
 
-            <StackLayout Spacing="0" Margin="0,0" BackgroundColor="White" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                 <forms1:AnimationView
-                 Margin="10,10,10,0"
-                x:Name="AnimationView2"
-               HeightRequest="60"
-              WidthRequest="60"
-                Animation="pourcentage.json" 
-                AutoPlay="True" 
-            HorizontalOptions="StartAndExpand"/>
-          <StackLayout x:Name="coefficientLayout" Grid.Row="0" Grid.Column="0"  Spacing="0" BackgroundColor="White" Orientation="Horizontal" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+                     <StackLayout Spacing="0" Margin="0,0,0,20"  Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand">
+            <!--<wp:WheelPicker HorizontalOptions="Fill" SelectedItemsIndex="0"
+                    ItemsSourceSimple="{Binding Days}" 
+                    Command="{Binding ItemSelectedCommand}">
+            <wp:WheelDefinition Width="Auto" HorizontalOptions="Left" Alignment="Center" />
+         </wp:WheelPicker>-->
+
+<!--<wp:WheelPicker ItemsSourceSimple="{Binding Days}" x:Name="pickerTest" SelectedItemIndexChanged="WheelPicker_SelectedItemIndexChanged" Command="{Binding ItemSelectedCommand}">
+    <wp:WheelDefinition Width="*" HorizontalOptions="Left" Alignment="Center" IsCircular="True" RowHeight="48">
+        <DataTemplate>
+            <Image Source="https://picsum.photos/400/400" HeightRequest="48" Aspect="AspectFill" />
+        </DataTemplate>
+    </wp:WheelDefinition>
+</wp:WheelPicker>-->
+       
+          <StackLayout x:Name="coefficientLayout" Grid.Row="0" Grid.Column="0"  Spacing="0" BackgroundColor="White" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
         <Picker x:Name="picker1"
+                
              HorizontalOptions="StartAndExpand"
              SelectedIndexChanged="OnPickerSelectedIndexChanged1"
                 FontSize="Title"
-            Title="coeff"
+            Title="coefficient"
             TitleColor="Red">
           <Picker.ItemsSource>
             <x:Array Type="{x:Type x:String}">
@@ -282,65 +516,19 @@
             </x:Array>
           </Picker.ItemsSource>
         </Picker>
-               <Label Margin="10,0" TextColor="Black" x:Name="CoeffDeVente" Text="Coefficient" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Title"/>
+               <!--<Label Margin="10,0" TextColor="Black" x:Name="CoeffDeVente" Text="Coefficient" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Title"/>-->
     </StackLayout>
 
              </StackLayout>
+              <StackLayout  Margin="0,0,0,10"  Spacing="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-             <StackLayout  Margin="0,0,0,10"  Spacing="0" BackgroundColor="White" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-
-                  <!--<Image Source="tabletwithpricetag.png"  HorizontalOptions="Center" Margin="30,20" HeightRequest="50" VerticalOptions="Center"/>-->
-                     <forms1:AnimationView
-                 Margin="30,20"
-                x:Name="AnimationView21"
-              VerticalOptions="Center"
-               HeightRequest="60"
-              WidthRequest="60"
-                Animation="pourcentage.json" 
-                AutoPlay="True"
-           HorizontalOptions="Center"
-            />
-
-                
-                  <Button TextColor="White" FontSize="Title" Text="Prix final" Margin="50,0" HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="#c1ab24" Clicked="FinalButtonClick" BorderRadius="20" />
-                
-                  
+          
+            <Button TextColor="White" FontSize="Title" Text="Prix final" Margin="50,0"
+                    HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="#c1ab24"
+                    Clicked="FinalButtonClick" BorderRadius="20" />
+    
              </StackLayout>
-              <StackLayout Margin="0,50,0,0" Spacing="0" BackgroundColor="White" Orientation="Vertical" >
             </StackLayout>
-              
-        </StackLayout>
-          </ScrollView>   
-             <!--<StackLayout HeightRequest="65" Margin="30,0"
-              WidthRequest="65" AbsoluteLayout.LayoutFlags="PositionProportional"  
-            AbsoluteLayout.LayoutBounds=".95,.95,80,60" HorizontalOptions="StartAndExpand"
-            VerticalOptions="End">
-            bouton flottant save et cancel
-             <forms1:AnimationView 
-                x:Name="AnimationView6"
-                 HeightRequest="65"
-                 WidthRequest="65"
-                Animation="cancel.json" 
-                AutoPlay="True" 
-                 Clicked="AnimationClickedCommand5"/>
-            </StackLayout>
-
-            <StackLayout HeightRequest="65" Margin="30,0"
-            WidthRequest="65" AbsoluteLayout.LayoutFlags="PositionProportional"  
-            AbsoluteLayout.LayoutBounds=".95,.95,80,60" HorizontalOptions="EndAndExpand"
-             VerticalOptions="End" >
-             <forms1:AnimationView
-                x:Name="AnimationView7"
-                 HeightRequest="65"
-                 WidthRequest="65"
-                Animation="add.json" 
-                AutoPlay="True" 
-              AbsoluteLayout.LayoutFlags="PositionProportional"  
-            AbsoluteLayout.LayoutBounds=".10,.95,80,60"
-                 Clicked="AnimationView2_OnClick"/>
-            </StackLayout>-->
-                    
-   </Grid>
-
-    </ContentPage.Content>
+        </customControl:BottomSheet.ContentBottomSheet>
+    </customControl:BottomSheet>
 </ContentPage>

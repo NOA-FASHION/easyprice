@@ -23,6 +23,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)InAppPurchase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)calculator2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
@@ -43,5 +51,14 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)deviseClass.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MyEntry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)devises2Class.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TwoCardsAnimationControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)InAppPurchase.xaml.cs">
+      <DependentUpon>InAppPurchase.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)deviseclassCurrencyFreacks.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)calculator2.xaml.cs">
+      <DependentUpon>calculator2.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

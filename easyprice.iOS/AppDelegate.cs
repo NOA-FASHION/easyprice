@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using Lottie.Forms.Platforms.Ios;
+using StoreKit;
 using UIKit;
 
 namespace easyprice.iOS
@@ -27,8 +28,14 @@ namespace easyprice.iOS
             LoadApplication(new App());
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
             //AnimationViewRenderer.Init();
-
+            Plugin.InAppBilling.InAppBillingImplementation.OnShouldAddStorePayment = OnShouldAddStorePayment;
+            var current = Plugin.InAppBilling.CrossInAppBilling.Current; //initializes
             return base.FinishedLaunching(app, options);
+        }
+        bool OnShouldAddStorePayment(SKPaymentQueue queue, SKPayment payment, SKProduct product)
+        {
+            //Process and check purchases
+            return true;
         }
     }
 }
