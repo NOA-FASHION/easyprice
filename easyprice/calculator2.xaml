@@ -2,10 +2,12 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:easyprice"
+  
     x:Class="easyprice.calculator2">
-    <ContentPage.Content>
+  
 
 
+     
              <Grid>
          <ScrollView HorizontalScrollBarVisibility="Always" VerticalScrollBarVisibility="Always">
        
@@ -299,26 +301,23 @@
               
              <StackLayout Margin="0,10,0,0" Spacing="0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Fill">
 
+                    <Label  TextColor="Black" Margin="10,10,0,10" FontSize="Default"  x:Name="deviseEntry"  HorizontalOptions="Center" VerticalOptions="Center"/>
+                  <local:MyEntry x:Name="prixFournisseur" WidthRequest="155" FontSize="Default" TextColor="Black" HorizontalOptions="CenterAndExpand"  Placeholder="Money" 
+                                 VerticalOptions="Center"     Keyboard="Numeric" />
 
-                  <local:MyEntry x:Name="prixFournisseur" WidthRequest="155" FontSize="Title" TextColor="Black" HorizontalOptions="CenterAndExpand" 
-                                 VerticalOptions="Center" Keyboard="Telephone" Placeholder="Prix d'achats" />
+                 <Label  TextColor="Black" Margin="10,10,0,10" FontSize="Default"   Text="Prix d'achat" HorizontalOptions="Center" VerticalOptions="Center"/>
+                
 
-                 <!--<Label  TextColor="Black" Margin="10,10,0,10" FontSize="Title"   Text="Prix initial" HorizontalOptions="Center" VerticalOptions="Center"/>-->
-                  
-             
             </StackLayout>
-
-                     <StackLayout Spacing="0"   Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand">
-         
-       
+              <StackLayout Spacing="0"   Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand">
           <StackLayout x:Name="coefficientLayout" Grid.Row="0" Grid.Column="0"
-                       Spacing="0" BackgroundColor="White" Orientation="Horizontal"
+                       Spacing="0" Orientation="Horizontal"
                        HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
         <Picker x:Name="picker1"
                 
              HorizontalOptions="StartAndExpand"
              SelectedIndexChanged="OnPickerSelectedIndexChanged1"
-                FontSize="Title"
+                FontSize="Default"
             Title="coefficient"
             TitleColor="Red">
           <Picker.ItemsSource>
@@ -406,24 +405,25 @@
             </x:Array>
           </Picker.ItemsSource>
         </Picker>
-               <!--<Label Margin="10,0" TextColor="Black" x:Name="CoeffDeVente" Text="Coefficient" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Title"/>-->
+               <Label Margin="10,0" TextColor="Black" x:Name="CoeffDeVente" Text="Coefficient" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Default"/>
     </StackLayout>
 
              </StackLayout>
               <StackLayout  Margin="0,0,0,10"  Spacing="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
           
-            <Button TextColor="White" FontSize="Title" Text="Prix final" Margin="50,0"
+            <Button TextColor="White" FontSize="Default" Text="Annuler" Margin="50,0"
+                    HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="#c1ab24"
+                    Clicked="back" BorderRadius="20" />
+
+                     <Button TextColor="White" FontSize="Default" Text="Prix final" Margin="50,0"
                     HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="#c1ab24"
                     Clicked="FinalButtonClick" BorderRadius="20" />
     
              </StackLayout>
             </StackLayout>
 
-   </Frame>
-
-
-
+            </Frame>
            </Grid>
               </StackLayout>
                </ScrollView>
@@ -462,6 +462,6 @@
 
              </Grid>
 
-    </ContentPage.Content>
+
 </ContentPage>
 

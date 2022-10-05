@@ -1,18 +1,25 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
      Title="Simulateur"
 
     xmlns:local="clr-namespace:easyprice"
     xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
     xmlns:forms1="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+     xmlns:converterPack="clr-namespace:Xamarin.Forms.ConvertersPack;assembly=Xamarin.Forms.ConvertersPack"
     BackgroundColor="#518faa"
     NavigationPage.HasBackButton = "True"
     x:Class="easyprice.Simulator">
   
-    <ContentPage.Content>
+    <ContentPage.Resources>
+    <ResourceDictionary>
+       <local:CurrencyConverter x:Key="currencyConverter" />
+            <local:CurrencyConverter1 x:Key="CurrencyConverter1" />
+            <local:CurrencyConverter2 x:Key="CurrencyConverter2" />
+    </ResourceDictionary>
+  </ContentPage.Resources>
 
         <Grid>
          <ScrollView HorizontalScrollBarVisibility="Always" VerticalScrollBarVisibility="Always">
@@ -49,8 +56,10 @@
          HasShadow="True">
        <StackLayout   Spacing="0" BackgroundColor="White" Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Fill">
          <Label TextColor="Black" Margin="5,0" x:Name="CoeffDeVente" Text="Coût des articles" HorizontalOptions="Start" FontSize="15"  VerticalOptions="Center"/>
-           <local:MyEntry x:Name="EntryCoutcollecion" HorizontalTextAlignment="Center" WidthRequest="70" FontSize="Small"
-                          HorizontalOptions="FillAndExpand"  VerticalOptions="Start" Keyboard="Telephone" TextColor="Black"/>
+           <local:MyEntry x:Name="EntryCoutcollecion" HorizontalTextAlignment="Center" WidthRequest="70" FontSize="Small" Placeholder="Money" 
+              Keyboard="Telephone" 
+              Text="{Binding Money, Converter={StaticResource currencyConverter}}"
+                          HorizontalOptions="FillAndExpand"  VerticalOptions="Start"  TextColor="Black"/>
         <Picker x:Name="picker1"
              HorizontalOptions="EndAndExpand"
              SelectedIndexChanged="OnPickerSelectedIndexChanged1"
@@ -152,7 +161,10 @@
          HasShadow="True">
        <StackLayout   Spacing="0" BackgroundColor="White" Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Fill">
          <Label TextColor="Black" Margin="5,0" x:Name="fraisDePort" Text="Frais de port" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
-           <local:MyEntry x:Name="EntryFraisDePort" HorizontalTextAlignment="Center" FontSize="Small" HorizontalOptions="FillAndExpand" TextColor="Black" Margin="5,0" VerticalOptions="Start" Keyboard="Telephone" />
+           <local:MyEntry x:Name="EntryFraisDePort" HorizontalTextAlignment="Center" FontSize="Small" HorizontalOptions="FillAndExpand"
+                          Placeholder="Money" 
+              Keyboard="Telephone" Text="{Binding Money1, Converter={StaticResource CurrencyConverter1}}"
+                          TextColor="Black" Margin="5,0" VerticalOptions="Start"  />
             <Label TextColor="Black" x:Name="TotalFraisDePort"  HorizontalOptions="StartAndExpand" VerticalOptions="Center" IsVisible="false"/>
         <Picker x:Name="picker2"
              IsVisible="false"
@@ -269,8 +281,9 @@
          HasShadow="True">
        <StackLayout   Spacing="0" BackgroundColor="White" Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Fill">
          <Label  TextColor="Black" Text="Frais Divers" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
-         <local:MyEntry x:Name="EntryNoteDeFrais" HorizontalTextAlignment="Center" FontSize="Small" TextColor="Black"
-         HorizontalOptions="FillAndExpand" Margin="5,0" VerticalOptions="Start" Keyboard="Telephone" />
+         <local:MyEntry x:Name="EntryNoteDeFrais" HorizontalTextAlignment="Center" FontSize="Small" TextColor="Black" Placeholder="Money" 
+                Keyboard="Telephone" Text="{Binding Money2, Converter={StaticResource CurrencyConverter2}}"
+         HorizontalOptions="FillAndExpand" Margin="5,0" VerticalOptions="Start"  />
     </StackLayout>
      </Frame>
     
@@ -742,5 +755,5 @@ BorderRadius="20" />
               </Grid>
 
       
-    </ContentPage.Content>
+   
 </ContentPage>

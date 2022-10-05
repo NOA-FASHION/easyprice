@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Net;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -31,12 +32,13 @@ namespace easyprice
         string devise = "€";
         string coeffMultArt;
         bool pickerBool;
-
+        
         deviseclassCurrencyFreacks Devises = new deviseclassCurrencyFreacks();
         devises2Class Devises1 = new devises2Class();
         public calculator2 ()
         {
             InitializeComponent();
+            
             activeDeviseAsync();
             activaAppAsync();
             titelPicker = "€";
@@ -212,6 +214,59 @@ namespace easyprice
             {
                 pickerBool = true;
                 valeurPicker = (string)picker2.ItemsSource[selectedIndex];
+
+
+                if (valeurPicker == "€")
+                {
+                    deviseEntry.Text = "€";
+                }
+
+                if (valeurPicker == "$")
+                {
+                    deviseEntry.Text = "$";
+                }
+
+                if (valeurPicker == "$C")
+                {
+                    deviseEntry.Text = "$C";
+                }
+
+                if (valeurPicker == "£")
+                {
+                    deviseEntry.Text = "£";
+                }
+
+                if (valeurPicker == "￥")
+                {
+                    deviseEntry.Text = "￥";
+                }
+                if (valeurPicker == "$A")
+                {
+                    deviseEntry.Text = "$A";
+                }
+
+                if (valeurPicker == "FrS")
+                {
+                    deviseEntry.Text = "FrS";
+                }
+                if (valeurPicker == "kr")
+                {
+                    deviseEntry.Text = "kr";
+                }
+                if (valeurPicker == "JP¥")
+                {
+                    deviseEntry.Text = "JP¥";
+                }
+                if (valeurPicker == "$N")
+                {
+                    deviseEntry.Text = "$N";
+                }
+
+
+
+
+
+
                 if (valeurPicker == "€" && titelPicker == "€")
                 {
                     changDevisesEuros(valeurPicker, deviseEuros);
@@ -225,6 +280,8 @@ namespace easyprice
                     //dollars3.Text = "Devise: " + "NZD";
                     devise = valeurPicker;
                     titelPicker = "$";
+                    
+                  
                 }
                 else if (valeurPicker == "$C" && titelPicker == "€")
                 {
@@ -1311,6 +1368,10 @@ namespace easyprice
             layoutCollect(MaLayaoutNewCollection1);
         }
 
+        void back(System.Object sender, System.EventArgs e)
+        {
+            layoutCollectReverse(MaLayaoutNewCollection1);
+        }
     }
 
 }

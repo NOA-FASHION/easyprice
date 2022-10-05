@@ -30,7 +30,7 @@ namespace easyprice
             ObservableCollection<ChartEntry> entries3;
             ObservableCollection<ChartEntry> entries4;
             string ValeurStockHorsFrais = "0";
-            int NoteDeFrais;
+        float NoteDeFrais;
             float ValeurStockTotal = 0;
             //string coeffMultArt1;
             //string Pourcentage1;
@@ -55,13 +55,13 @@ namespace easyprice
         public Simulator()
         {
             InitializeComponent();
-    
+            BindingContext = new MainViewModel();
 
-        fraisDePort1 = 0;
+            fraisDePort1 = 0;
             //pourcentageOk = false;
             entryFraisDePort = 0;
             coefficentOk = false;
-            EntryFraisDePort.Text = "0";
+            
             isvisible6.IsVisible = false;
             valeurStockTotal.Text = "Valeur du";
             valeurStockTotalLabel.Text = "Chiffre d'affaire";
@@ -72,7 +72,7 @@ namespace easyprice
             valeurStockHorsFraisLayout1.BackgroundColor = Color.FromHex("#AAD0E1");
             valeurStockHorsFraisFrame.BackgroundColor = Color.FromHex("#AAD0E1");
             avecPourcentage = false;
-            EntryNoteDeFrais.Text = "0";
+          
         }
      
         void OnSwitchToggled(object sender, ToggledEventArgs args)
@@ -196,13 +196,16 @@ namespace easyprice
                 await DisplayAlert("Ooops", "vous devez rentrer un montant pour les frais divers", "Ok");
                 return;
             }
+            //string entryFraisDePortString = EntryFraisDePort.Text.Replace("€", "").Trim();
 
-            entryFraisDePort = float.Parse(EntryFraisDePort.Text);
-            EntryButtonCout = EntryCoutcollecion.Text;
-            NoteDeFrais = int.Parse(EntryNoteDeFrais.Text);
+            entryFraisDePort = float.Parse(EntryFraisDePort.Text.Replace("€", "").Trim());
+            EntryButtonCout = EntryCoutcollecion.Text.Replace("€", "").Trim();
+            NoteDeFrais = float.Parse(EntryNoteDeFrais.Text.Replace("€", "").Trim());
+           
+
             ValeurStockTotal = float.Parse(EntryButtonCout) * float.Parse(coeffMultArt);
-            budgetCollection = int.Parse(EntryButtonCout) + NoteDeFrais + fraisDePort1;
-            budgetCollection1 = int.Parse(EntryButtonCout) + NoteDeFrais + entryFraisDePort;
+            budgetCollection = float.Parse(EntryButtonCout) + NoteDeFrais + fraisDePort1;
+            budgetCollection1 = float.Parse(EntryButtonCout) + NoteDeFrais + entryFraisDePort;
          
             if (string.IsNullOrWhiteSpace(EntryFraisDePort.Text))
             {

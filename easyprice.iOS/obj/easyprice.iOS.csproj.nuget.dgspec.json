@@ -1,0 +1,103 @@
+{
+  "format": 1,
+  "restore": {
+    "/Volumes/USB2/easyprice/easyprice/easyprice.iOS/easyprice.iOS.csproj": {}
+  },
+  "projects": {
+    "/Volumes/USB2/easyprice/easyprice/easyprice.iOS/easyprice.iOS.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Volumes/USB2/easyprice/easyprice/easyprice.iOS/easyprice.iOS.csproj",
+        "projectName": "easyprice.iOS",
+        "projectPath": "/Volumes/USB2/easyprice/easyprice/easyprice.iOS/easyprice.iOS.csproj",
+        "packagesPath": "/Users/tintin/.nuget/packages/",
+        "outputPath": "/Volumes/USB2/easyprice/easyprice/easyprice.iOS/obj/",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "configFilePaths": [
+          "/Users/tintin/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "xamarinios10"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "xamarinios10": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "xamarinios10": {
+          "dependencies": {
+            "BottomSheetXF": {
+              "target": "Package",
+              "version": "[1.1.0, )"
+            },
+            "Com.Airbnb.Xamarin.Forms.Lottie": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
+            "CoolBottomSheet": {
+              "target": "Package",
+              "version": "[1.1.1, )"
+            },
+            "Microcharts.Forms": {
+              "target": "Package",
+              "version": "[0.9.5.9, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "Plugin.BottomSheet": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "Plugin.InAppBilling": {
+              "target": "Package",
+              "version": "[4.0.2, )"
+            },
+            "Vapolia.WheelPicker": {
+              "target": "Package",
+              "version": "[4.7.2, )"
+            },
+            "Vapolia.WheelPicker.Forms": {
+              "target": "Package",
+              "version": "[4.7.2, )"
+            },
+            "Xamarin.Essentials": {
+              "target": "Package",
+              "version": "[1.7.2, )"
+            },
+            "Xamarin.FFImageLoading.Forms": {
+              "target": "Package",
+              "version": "[2.4.11.982, )"
+            },
+            "Xamarin.Forms": {
+              "target": "Package",
+              "version": "[5.0.0.2401, )"
+            },
+            "Xamarin.Forms.ConvertersPack": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

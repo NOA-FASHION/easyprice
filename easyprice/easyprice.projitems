@@ -60,5 +60,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)calculator2.xaml.cs">
       <DependentUpon>calculator2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)MainViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CurrencyConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CurrencyConverter1.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CurrencyConverter2.cs" />
   </ItemGroup>
 </Project>
